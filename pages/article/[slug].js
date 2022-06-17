@@ -88,7 +88,7 @@ const Article = ({ article }) => {
                   article?.attributes?.media?.data[0]?.attributes
                     ?.alternativeText || "Blog image"
                 }
-                className="min-w-full w-full object-cover"
+                className="min-w-full w-full h-full object-cover"
               />
               {/* CATEGORIES */}
               <div className="absolute flex flex-wrap gap-2 bottom-3 w-[50%] right-0 left-3">
