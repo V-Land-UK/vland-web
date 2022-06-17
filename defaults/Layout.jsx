@@ -73,23 +73,23 @@ const Layout = ({ children, title, desc, keywords, image }) => {
         <link rel="shortcut icon" href="favicon.ico" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://v-land.co.uk" />
+        <meta property="og:url" content="https://v-landuk.com" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
         <meta property="og:image" content={image} />
 
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://v-land.co.uk" />
+        <meta property="twitter:url" content="https://v-landuk.com" />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={desc} />
         <meta property="twitter:image" content={image} />
 
-        <meta property="og:site_name" content="Frikax" />
-        <meta property="og:site" content="https://v-land.co.uk" />
+        <meta property="og:site_name" content="V-Land" />
+        <meta property="og:site" content="https://v-landuk.com" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
         <meta property="og:image" content={image} />
-        <meta property="og:url" content="https://v-land.co.uk" />
+        <meta property="og:url" content="https://v-landuk.com" />
         <title>{title}</title>
       </Head>
 
@@ -236,7 +236,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               </Link>
 
               <div className="flex py-3 space-x-4">
-                <Icon url="http://instagramm.com/vlanduk">
+                <Icon url="http://instagram.com/vlanduk">
                   <FaInstagram size={13} />
                 </Icon>
                 <Icon url="https://www.facebook.com/V-Land-UK-100137252369546">
