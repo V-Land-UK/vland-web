@@ -129,15 +129,15 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center text-[10px] font-medium lg:font-medium poppins mt-10 lg:mt-12">
-        &copy;{year} V-Land UK. All rights reserved. Built by{" "}
-        <a
+        &copy;{year} V-Land UK. All rights reserved.{" "}
+        {/* <a
           href="https://twitter.com/trulyao"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:text-primary hover:underline font-semibold"
         >
           Ayodeji
-        </a>
+        </a> */}
       </div>
       <ToastContainer />
     </footer>

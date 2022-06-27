@@ -16,10 +16,10 @@ const Recommendation = ({ article }) => {
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
+      className={` flex flex-col items-center bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
     >
       {/* POST IMAGE */}
-      <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
+      <div className="relative w-[50%] aspect-square object-cover block rounded-xl overflow-hidden">
         <img
           src={`${
             article.attributes?.media?.data[0]?.attributes?.formats?.medium
@@ -63,11 +63,11 @@ const Recommendation = ({ article }) => {
 
       <div className="article-body">
         <Link href={`/article/${article.attributes.slug}`} passHref>
-          <h1 className="text-[1.75rem] lg:text-4xl leading-tight article-title">
+          <h1 className="text-[1.75rem] lg:text-3xl lg:text-center leading-tight article-title">
             {article?.attributes?.title}
           </h1>
         </Link>
-        <p className="lg:text-xs article-desc">
+        <p className="lg:text-xs lg:text-center article-desc">
           {article?.attributes?.description}
         </p>
       </div>

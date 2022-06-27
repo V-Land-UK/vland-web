@@ -32,7 +32,7 @@ const Team = ({ excerpt, team }) => {
           {parse(excerpt)}
         </h2>
 
-        <section className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-5 gap-y-3 lg:gap-y-6 mt-10">
+        <section className="grid grid-cols-1  gap-y-3  mt-10">
           {team?.length > 0 &&
             team.map((staff, index) => (
               <motion.div
@@ -42,8 +42,8 @@ const Team = ({ excerpt, team }) => {
                 viewport={{ once: true }}
                 className="w-full flex flex-col gap-2 bg-white rounded-xl drop-shadow-md"
               >
-                <div className="w-full grid grid-cols-2 items-center gap-2 lg:gap-5 px-3 lg:px-7 py-5">
-                  <div className="w-[90%] lg:w-[90%] aspect-square rounded-xl overflow-hidden">
+                <div className="flex items-center space-x-20 px-3 lg:px-7 py-5">
+                  <div className="w-[38%] lg:w-[38%] aspect-square rounded-xl overflow-hidden">
                     <img
                       src={
                         staff?.attributes?.image?.data?.attributes?.formats
