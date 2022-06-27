@@ -30,7 +30,7 @@ const GlobalProvider = ({ children }) => {
         .get(`${API}/articles?${filters}`)
         .then((res) => {
           setArticles(res.data.data);
-          // console.log(res.data.data);
+          console.log(res);
         })
         .catch((err) => {
           setStatus((prev) => {
