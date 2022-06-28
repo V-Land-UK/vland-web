@@ -232,6 +232,14 @@ a {
   }
 }
 
+@media screen and (max-width: 1024px) {
+  .article-desc {
+    font-size: 10px;
+    font-weight: 500;
+    font-family: "Poppins", "Segoe UI", Tahoma !important;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .article-desc-home {
     font-size: 6px;
