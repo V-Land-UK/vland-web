@@ -32,7 +32,6 @@ const ArticleCard = ({ article, index }) => {
     }
   };
 
-  console.log(article?.attributes?.description > 180);
   return (
     <>
       <motion.div
