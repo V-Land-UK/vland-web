@@ -256,13 +256,13 @@ a {
 
 @media screen and (max-width: 480px) {
   .article-desc-home {
-    font-size: 6px;
+    font-size: 9.5px;
     font-weight: 500;
     font-family: "Poppins", "Segoe UI", Tahoma !important;
   }
 
   .article-desc {
-    font-size: 4px;
+    font-size: 6px;
     font-weight: 500;
     font-family: "Poppins", "Segoe UI", Tahoma !important;
   }
@@ -305,14 +305,14 @@ a {
     flex-direction: column;
   }
   .article-author-data p {
-    font-size: 6px;
+    font-size: 9px;
     color: var(--primary);
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
     font-weight: 600;
   }
 
   .article-date {
-    font-size: 4px;
+    font-size: 7px;
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
     color: rgb(90, 90, 90);
   }

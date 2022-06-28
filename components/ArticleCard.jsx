@@ -91,7 +91,7 @@ const ArticleCard = ({ article, index }) => {
               className="cursor-pointer"
               passHref
             >
-              <h1 className="text-[1rem] lg:text-3xl article-title my-auto">
+              <h1 className="text-[1.05rem] lg:text-3xl article-title my-auto">
                 {article?.attributes?.title.length > 60
                   ? article?.attributes?.title.slice(0, 60) + "..."
                   : article?.attributes?.title}
@@ -106,14 +106,14 @@ const ArticleCard = ({ article, index }) => {
             </p>
           </div>
 
-          <div className="article-author-home flex lg:space-x-4">
+          <div className="article-author-home flex lg:space-x-4 my-auto">
             <img
               src={
                 findUserByID(article?.attributes?.author?.data?.id)?.attributes
                   ?.image?.data?.attributes?.formats?.small?.url || "/User.svg"
               }
               alt="Author"
-              className="w-6 h-6 lg:w-9 lg:h-9 aspect-square object-cover rounded-full"
+              className="w-8 h-8 lg:w-9 lg:h-9 aspect-square object-cover rounded-full"
             />
 
             <div className="article-author-data ">
