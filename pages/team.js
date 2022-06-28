@@ -28,7 +28,6 @@ const Team = ({ excerpt, team }) => {
     }
   }, [mobileView]);
 
-  console.log(mobileView);
   return (
     <Layout
       title="Meet The Team"
@@ -67,7 +66,7 @@ const Team = ({ excerpt, team }) => {
                           "Placeholder.png"
                         }
                         alt={staff?.attributes?.name || "Staff"}
-                        className="w-full h-full aspect-square rounded-xl object-cover"
+                        className="w-full h-full aspect-square rounded-full object-cover"
                       />
                     </div>
 
@@ -147,7 +146,7 @@ const Team = ({ excerpt, team }) => {
                           "Placeholder.png"
                         }
                         alt={staff?.attributes?.name || "Staff"}
-                        className="w-full h-full aspect-square rounded-xl object-cover"
+                        className="w-full h-full aspect-square rounded-full object-cover"
                       />
                     </div>
                     <div className="w-[65%]">

@@ -55,18 +55,15 @@ a {
   gap: 0.5rem;
 }
 .article-body {
-  display: flex;
-  flex-direction: column;
   gap: 0.3rem;
   font-family: "Poppins", Arial, Helvetica, sans-serif, "Segoe UI", Tahoma !important;
-  padding-inline: 0.7rem;
-  padding-bottom: 0.6rem;
   cursor: pointer;
 }
 .article-desc {
   font-size: 15px;
   font-weight: 500;
   font-family: "Poppins", "Segoe UI", Tahoma !important;
+  height: 30px;
 }
 
 /* .article-poppins {
@@ -78,11 +75,11 @@ a {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.3rem 0.4rem 0.3rem 0.4rem;
+  /* padding: 0.3rem 0.4rem 0.3rem 0.4rem; */
   border-radius: 2rem;
   margin-top: auto !important;
-  margin-bottom: 0.5rem;
-  margin-inline: 0.4rem;
+  /* margin-bottom: 0.5rem;
+  margin-inline: 0.4rem; */
 }
 .article-author-data {
   display: flex;
@@ -233,5 +230,50 @@ a {
   100% {
     display: none;
     transform: scaleY(0);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .article-desc {
+    font-size: 4px;
+    font-weight: 500;
+    font-family: "Poppins", "Segoe UI", Tahoma !important;
+  }
+
+  .article-title {
+    font-weight: 900 !important;
+    transition: all 0.75s ease-in-out;
+    color: var(--primary);
+    line-height: 1 !important;
+    /* font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important; */
+  }
+
+  .article-author {
+    width: max-content;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    /* padding: 0.3rem 0.4rem 0.3rem 0.4rem; */
+    border-radius: 2rem;
+    margin-top: auto !important;
+    /* margin-bottom: 0.5rem;
+  margin-inline: 0.4rem; */
+  }
+  .article-author-data {
+    display: flex;
+    flex-direction: column;
+  }
+  .article-author-data p {
+    font-size: 6px;
+    color: var(--primary);
+    font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+    font-weight: 600;
+  }
+
+  .article-date {
+    font-size: 4px;
+    font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+    color: rgb(90, 90, 90);
   }
 }
