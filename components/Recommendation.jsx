@@ -12,14 +12,9 @@ const Recommendation = ({ article }) => {
   const router = useRouter();
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className={` flex flex-col items-center bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
-    >
+    <>
       {/* POST IMAGE */}
-      <div className="relative w-[50%] aspect-square object-cover block rounded-xl overflow-hidden">
+      <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
         <img
           src={`${
             article.attributes?.media?.data[0]?.attributes?.formats?.medium
@@ -45,7 +40,7 @@ const Recommendation = ({ article }) => {
             article.attributes.categories.data.map((category, current) => (
               <p
                 key={current}
-                className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
+                className={`text-[5px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
                   category.attributes.name.toLowerCase() === "sponsored"
                     ? "text-white bg-green-800 hover:bg-white hover:text-primary"
                     : "text-white bg-primary hover:bg-white hover:text-primary"
@@ -60,40 +55,47 @@ const Recommendation = ({ article }) => {
         </div>
       </div>
       {/* POST BODY */}
-
-      <div className="article-body">
-        <Link href={`/article/${article.attributes.slug}`} passHref>
-          <h1 className="text-[1.75rem] lg:text-3xl lg:text-center leading-tight article-title">
-            {article?.attributes?.title}
-          </h1>
-        </Link>
-        <p className="lg:text-xs lg:text-center article-desc">
-          {article?.attributes?.description}
+      <div
+        className={`flex flex-col h-[6rem] lg:h-[19rem]  bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
+      >
+        <div className="article-body px-4 lg:px-10 py-1 ">
+          <Link href={`/article/${article.attributes.slug}`} passHref>
+            <h1 className="text-[0.35rem] lg:text-xl lg:text-center lg:pb-3 leading-tight article-title">
+              {article?.attributes?.title.length > 60
+                ? article?.attributes?.title.slice(0, 60) + "..."
+                : article?.attributes?.title}
+            </h1>
+          </Link>
+        </div>
+        <p className="lg:text-xs lg:text-center article-desc mt-auto px-4 lg:px-10">
+          {article?.attributes?.description.length > 180
+            ? article?.attributes?.description.slice(0, 180) + "..."
+            : article?.attributes?.description}
         </p>
-      </div>
-      <div className="article-author">
-        <img
-          src={
-            findUserByID(article?.attributes?.author?.data?.id)?.attributes
-              ?.image?.data?.attributes?.formats?.small?.url || "/User.svg"
-          }
-          alt="Author"
-          className="w-7 aspect-square object-cover rounded-full"
-        />
+        <div className="article-author pb-2 lg:pb-3 mx-auto">
+          <img
+            src={
+              findUserByID(article?.attributes?.author?.data?.id)?.attributes
+                ?.image?.data?.attributes?.formats?.small?.url || "/User.svg"
+            }
+            alt="Author"
+            className="w-3 lg:w-10 aspect-square object-cover rounded-full"
+          />
 
-        <div className="article-author-data">
-          <p>
-            {findUserByID(article?.attributes?.author?.data?.id)?.attributes
-              ?.fullname || "V-Land UK"}
-          </p>
-          <Moment format="MMM Do YYYY" className="article-date">
-            {article?.attributes?.PublishDate ||
-              article?.attributes?.publishedAt ||
-              article?.attributes?.createdAt}
-          </Moment>
+          <div className="article-author-data ">
+            <p>
+              {findUserByID(article?.attributes?.author?.data?.id)?.attributes
+                ?.fullname || "V-Land UK"}
+            </p>
+            <Moment format="MMM Do YYYY" className="article-date">
+              {article?.attributes?.PublishDate ||
+                article?.attributes?.publishedAt ||
+                article?.attributes?.createdAt}
+            </Moment>
+          </div>
         </div>
       </div>
-    </motion.div>
+    </>
   );
 };
 

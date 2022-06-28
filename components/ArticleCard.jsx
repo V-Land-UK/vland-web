@@ -84,42 +84,50 @@ const ArticleCard = ({ article, index }) => {
           </div>
         </div>
         {/* POST BODY */}
-        <div className="article-body">
-          <Link
-            href={`/article/${article.attributes.slug}`}
-            className="cursor-pointer"
-            passHref
-          >
-            <h1 className="text-[1.75rem] lg:text-4xl article-title">
-              {article?.attributes?.title}
-            </h1>
-          </Link>
-          <p className="lg:text-xs article-desc">
-            {article?.attributes?.description}
-          </p>
-        </div>
-
-        <div className="article-author">
-          <img
-            src={
-              findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                ?.image?.data?.attributes?.formats?.small?.url || "/User.svg"
-            }
-            alt="Author"
-            className="w-7 aspect-square object-cover rounded-full"
-          />
-
-          <div className="article-author-data">
-            <p>
-              {findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                ?.fullname || "V-Land UK"}
+        <div className="px-5 py-3 h-[12rem] lg:h-[25rem] flex flex-col justify-around">
+          <div className="article-body ">
+            <Link
+              href={`/article/${article.attributes.slug}`}
+              className="cursor-pointer"
+              passHref
+            >
+              <h1 className="text-[1rem] lg:text-3xl article-title my-auto">
+                {article?.attributes?.title.length > 60
+                  ? article?.attributes?.title.slice(0, 60) + "..."
+                  : article?.attributes?.title}
+              </h1>
+            </Link>
+          </div>
+          <div className="my-auto">
+            <p className=" lg:text-xs article-desc-home">
+              {article?.attributes?.description.length > 180
+                ? article?.attributes?.description.slice(0, 180) + "..."
+                : article?.attributes?.description}
             </p>
+          </div>
 
-            <Moment format="MMM Do YYYY" className="article-date">
-              {article?.attributes?.PublishDate ||
-                article?.attributes?.publishedAt ||
-                article?.attributes?.createdAt}
-            </Moment>
+          <div className="article-author-home flex lg:space-x-4">
+            <img
+              src={
+                findUserByID(article?.attributes?.author?.data?.id)?.attributes
+                  ?.image?.data?.attributes?.formats?.small?.url || "/User.svg"
+              }
+              alt="Author"
+              className="w-6 h-6 lg:w-9 lg:h-9 aspect-square object-cover rounded-full"
+            />
+
+            <div className="article-author-data ">
+              <p>
+                {findUserByID(article?.attributes?.author?.data?.id)?.attributes
+                  ?.fullname || "V-Land UK"}
+              </p>
+
+              <Moment format="MMM Do YYYY" className="article-date">
+                {article?.attributes?.PublishDate ||
+                  article?.attributes?.publishedAt ||
+                  article?.attributes?.createdAt}
+              </Moment>
+            </div>
           </div>
         </div>
       </motion.div>
