@@ -84,16 +84,16 @@ const ArticleCard = ({ article, index }) => {
           </div>
         </div>
         {/* POST BODY */}
-        <div className="px-5 py-3 h-[12rem] lg:h-[23rem] flex flex-col justify-around">
+        <div className="px-5 py-3 h-[12rem] lg:h-[25rem] flex flex-col justify-around">
           <div className="article-body ">
             <Link
               href={`/article/${article.attributes.slug}`}
               className="cursor-pointer"
               passHref
             >
-              <h1 className="text-[1rem] lg:text-4xl article-title my-auto">
-                {article?.attributes?.title.length > 65
-                  ? article?.attributes?.title.slice(0, 65) + "..."
+              <h1 className="text-[1rem] lg:text-3xl article-title my-auto">
+                {article?.attributes?.title.length > 60
+                  ? article?.attributes?.title.slice(0, 60) + "..."
                   : article?.attributes?.title}
               </h1>
             </Link>
@@ -106,14 +106,14 @@ const ArticleCard = ({ article, index }) => {
             </p>
           </div>
 
-          <div className="article-author-home">
+          <div className="article-author-home flex lg:space-x-4">
             <img
               src={
                 findUserByID(article?.attributes?.author?.data?.id)?.attributes
                   ?.image?.data?.attributes?.formats?.small?.url || "/User.svg"
               }
               alt="Author"
-              className="w-7 aspect-square object-cover rounded-full"
+              className="w-6 h-6 lg:w-9 lg:h-9 aspect-square object-cover rounded-full"
             />
 
             <div className="article-author-data ">
