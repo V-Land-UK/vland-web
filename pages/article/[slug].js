@@ -12,6 +12,7 @@ import Back from "../../components/Back";
 import ArticleCard from "../../components/ArticleCard";
 const qs = require("qs");
 const parse = require("html-react-parser");
+
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -35,6 +36,10 @@ import Slider from "react-slick";
 
 const Article = ({ article }) => {
   const router = useRouter();
+
+  const tag = article?.attributes?.content.search("<strong>");
+  const tagEnd = article?.attributes?.content.search("</strong>") + 9;
+  const dropcap = article?.attributes?.content.charAt(tag + 8);
 
   const { findUserByID, Articles } = useContext(GlobalContext);
 
@@ -194,7 +199,10 @@ const Article = ({ article }) => {
 
             {/* <ReactMarkdown className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5 whitespace-pre-line"> */}
             <div className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5 whitespace-pre-line">
-              {parse(article?.attributes?.content)}
+              {parse(
+                `<strong className="dropcap">${dropcap}</strong>` +
+                  article?.attributes?.content.slice(tagEnd)
+              )}
             </div>
             {/* {article?.attributes?.content} */}
             {/* </ReactMarkdown> */}
