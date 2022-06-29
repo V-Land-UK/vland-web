@@ -182,7 +182,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
         </AnimatePresence>
       </nav>
 
-      <main className="w-[94%] lg:w-[87%] 2xl:w-4/6 mx-auto mt-[16vh] lg:mt-[17vh]">
+      <main className="w-[94%] lg:w-4/5 2xl:w-4/6 mx-auto mt-[16vh] lg:mt-[17vh]">
         {children}
       </main>
       <Footer />
