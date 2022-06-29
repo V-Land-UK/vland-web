@@ -39,7 +39,13 @@ const Article = ({ article }) => {
 
   const tag = article?.attributes?.content.search("<strong>");
   const tagEnd = article?.attributes?.content.search("</strong>") + 9;
+
   const dropcap = article?.attributes?.content.charAt(tag + 8);
+
+  const imageInText = article?.attributes?.content.replace(
+    "<img",
+    "<img  style={{ borderRadius: '16px !important' }} "
+  );
 
   const { findUserByID, Articles } = useContext(GlobalContext);
 

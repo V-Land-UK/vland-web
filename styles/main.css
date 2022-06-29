@@ -41,6 +41,7 @@ a {
   animation: 600ms FadeOutUp ease-out forwards;
   display: block;
 }
+
 .poppins {
   font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
@@ -212,6 +213,15 @@ a {
 }
 
 @-moz-document url-prefix() {
+  .article-preview::first-letter {
+    color: var(--primary);
+    font-size: 6rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.45;
+    /* margin-right: 0.5rem; */
+    margin: 0.1em 0.1em 0.2em 0;
+  }
   .dropcap {
     color: var(--primary);
     font-weight: 800;
