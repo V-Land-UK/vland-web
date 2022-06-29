@@ -140,14 +140,14 @@ a {
   font-weight: 900 !important;
   transition: all 0.75s ease-in-out;
   color: var(--primary);
-  line-height: 1 !important;
+  line-height: 1.12 !important;
   /* font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important; */
 }
 .article-title:hover,
 .article-title:focus {
   text-decoration: underline;
-  text-underline-offset: 0.2em;
-  text-decoration-color: #d5ffd3;
+  text-underline-offset: 0.05em;
+  text-decoration-color: #4fc049;
   text-decoration-thickness: 5px !important;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
