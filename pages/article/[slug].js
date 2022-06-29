@@ -113,7 +113,7 @@ const Article = ({ article }) => {
         <main className="grid grid-cols-1 gap-0 lg:grid-cols-12 lg:gap-5">
           <section className="lg:col-span-12">
             {/* IMAGE & CATEGORIES */}
-            <div className="relative w-full max-w-full aspect-square lg:h-[40vh] mt-4 mb-4 lg:mb-8 rounded-2xl overflow-hidden">
+            <div className="relative w-full max-w-full aspect-square lg:h-[60vh] mt-4 mb-4 lg:mb-8  overflow-hidden">
               <img
                 src={
                   article?.attributes?.media?.data[0]?.attributes?.formats
