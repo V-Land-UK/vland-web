@@ -92,8 +92,8 @@ const ArticleCard = ({ article, index }) => {
               passHref
             >
               <h1 className="text-[1.05rem] lg:text-3xl article-title ">
-                {article?.attributes?.title?.length > 70
-                  ? article?.attributes?.title.slice(0, 70) + "..."
+                {article?.attributes?.title?.length > 65
+                  ? article?.attributes?.title.slice(0, 65) + "..."
                   : article?.attributes?.title}
               </h1>
             </Link>
