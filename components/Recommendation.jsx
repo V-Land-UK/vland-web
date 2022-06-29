@@ -61,15 +61,15 @@ const Recommendation = ({ article }) => {
         <div className="article-body px-4 lg:px-10 py-1 ">
           <Link href={`/article/${article.attributes.slug}`} passHref>
             <h1 className="text-[0.35rem] lg:text-xl lg:text-center lg:pb-3 leading-tight article-title">
-              {article?.attributes?.title.length > 60
-                ? article?.attributes?.title.slice(0, 60) + "..."
+              {article?.attributes?.title.length > 70
+                ? article?.attributes?.title.slice(0, 70) + "..."
                 : article?.attributes?.title}
             </h1>
           </Link>
         </div>
         <p className="lg:text-xs lg:text-center article-desc mt-auto px-4 lg:px-10">
-          {article?.attributes?.description.length > 180
-            ? article?.attributes?.description.slice(0, 180) + "..."
+          {article?.attributes?.description.length > 160
+            ? article?.attributes?.description.slice(0, 160) + "..."
             : article?.attributes?.description}
         </p>
         <div className="article-author pb-2 lg:pb-3 mx-auto">

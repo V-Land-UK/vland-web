@@ -92,16 +92,16 @@ const ArticleCard = ({ article, index }) => {
               passHref
             >
               <h1 className="text-[1.05rem] lg:text-3xl article-title my-auto">
-                {article?.attributes?.title.length > 60
-                  ? article?.attributes?.title.slice(0, 60) + "..."
+                {article?.attributes?.title.length > 70
+                  ? article?.attributes?.title.slice(0, 70) + "..."
                   : article?.attributes?.title}
               </h1>
             </Link>
           </div>
           <div className="my-auto">
             <p className=" lg:text-xs article-desc-home">
-              {article?.attributes?.description.length > 180
-                ? article?.attributes?.description.slice(0, 180) + "..."
+              {article?.attributes?.description.length > 160
+                ? article?.attributes?.description.slice(0, 160) + "..."
                 : article?.attributes?.description}
             </p>
           </div>
