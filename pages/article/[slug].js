@@ -12,6 +12,7 @@ import Back from "../../components/Back";
 import ArticleCard from "../../components/ArticleCard";
 const qs = require("qs");
 const parse = require("html-react-parser");
+
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -31,9 +32,20 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import CommentForm from "../../components/CommentForm";
 import CommentsArea from "../../components/CommentsArea";
 import Recommendation from "../../components/Recommendation";
+import Slider from "react-slick";
 
 const Article = ({ article }) => {
   const router = useRouter();
+
+  const tag = article?.attributes?.content.search("<strong>");
+  const tagEnd = article?.attributes?.content.search("</strong>") + 9;
+
+  const dropcap = article?.attributes?.content.charAt(tag + 8);
+
+  const imageInText = article?.attributes?.content.replace(
+    "<img",
+    "<img  style={{ borderRadius: '16px !important' }} "
+  );
 
   const { findUserByID, Articles } = useContext(GlobalContext);
 
@@ -49,6 +61,42 @@ const Article = ({ article }) => {
   //Article Data
   const Title = article?.attributes?.title;
   const Slug = article?.attributes?.slug;
+
+  const settings = {
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+    dots: false,
+    infinite: true,
+    centerPadding: "0px",
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <Layout
@@ -69,9 +117,9 @@ const Article = ({ article }) => {
       <Back />
       {article ? (
         <main className="grid grid-cols-1 gap-0 lg:grid-cols-12 lg:gap-5">
-          <section className="lg:col-span-8">
+          <section className="lg:col-span-12">
             {/* IMAGE & CATEGORIES */}
-            <div className="relative w-full max-w-full aspect-square lg:h-[40vh] mt-4 mb-4 lg:mb-8 rounded-2xl overflow-hidden">
+            <div className="relative w-full max-w-full aspect-square lg:h-[40vh] rounded-2xl mt-4 mb-4 lg:mb-8  overflow-hidden">
               <img
                 src={
                   article?.attributes?.media?.data[0]?.attributes?.formats
@@ -151,13 +199,16 @@ const Article = ({ article }) => {
             </div>
 
             {/* ARTICLE TITLE */}
-            <h1 className="text-primary font-[900] text-4xl lg:text-6xl mt-2 lg:mt-3 mb-0 px-2">
+            <h1 className="text-primary font-[900] text-2xl lg:text-4xl mt-2 lg:mt-3 mb-0 px-2">
               {article?.attributes?.title}
             </h1>
 
             {/* <ReactMarkdown className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5 whitespace-pre-line"> */}
             <div className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5 whitespace-pre-line">
-              {parse(article?.attributes?.content)}
+              {parse(
+                `<strong className="dropcap">${dropcap}</strong>` +
+                  article?.attributes?.content.slice(tagEnd)
+              )}
             </div>
             {/* {article?.attributes?.content} */}
             {/* </ReactMarkdown> */}
@@ -245,14 +296,16 @@ const Article = ({ article }) => {
               </motion.div>
             </AnimateSharedLayout>
           </section>
-          <section className="col-span-4">
-            <h1 className="text-4xl lg:text-5xl text-primary font-[800] mt-2 px-2">
+          <section className="col-span-12">
+            <h1 className="text-2xl lg:text-3xl text-primary font-[800] mt-2 px-2">
               Read More
             </h1>
-            <div className="grid grid-cols-2 lg:grid-cols-1 mt-4 gap-3 lg:gap-4 lg:h-[100vh] overflow-y-scroll px-2 pb-5">
-              {Others.slice(0, 6).map((current, index) => (
-                <Recommendation key={index} article={current} />
-              ))}
+            <div className=" grid grid-cols-1 lg:grid-cols-1 mt-4 gap-3 lg:gap-0  px-2 pb-5">
+              <Slider {...settings}>
+                {Others.slice(0, 6).map((current, index) => (
+                  <Recommendation key={index} article={current} />
+                ))}
+              </Slider>
             </div>
           </section>
         </main>
