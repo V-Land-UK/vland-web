@@ -200,7 +200,9 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               mx="auto"
               onClick={() => router.push("/")}
             >
-              <img src="/Header.svg" alt="Header" className="w-full" />
+              <Link href={"/"} replace>
+                <img src="/Header.svg" alt="Header" className="w-full" />
+              </Link>
             </Box>
             <div className="flex border-[1px] border-neutral-800 justify-between rounded-3xl overflow-hidden px-1 py-1">
               <input
