@@ -8,6 +8,7 @@ const { Provider } = GlobalContext;
 
 const GlobalProvider = ({ children }) => {
   const [Authors, setAuthors] = useState([]);
+  const [Categories, setCategories] = useState([]);
   const [Articles, setArticles] = useState([]);
   const [Status, setStatus] = useState({
     loading: false,
@@ -38,7 +39,20 @@ const GlobalProvider = ({ children }) => {
           });
         });
     }
-  }, [Articles.length, Articles]);
+
+    if (Categories.length == 0) {
+      axios
+        .get(`${API}/categories?populate=*`)
+        .then((response) => {
+          setCategories(response.data.data);
+        })
+        .catch((err) => {
+          setStatus((prev) => {
+            return { ...prev, error: true };
+          });
+        });
+    }
+  }, [Categories.length, Categories, Articles.length, Articles]);
 
   //Get all authors
   if (Authors.length == 0) {
@@ -66,11 +80,13 @@ const GlobalProvider = ({ children }) => {
     <Provider
       value={{
         Authors,
+        Categories,
         Status,
         Articles,
         setArticles,
         setStatus,
         setAuthors,
+        setCategories,
         findUserByID,
       }}
     >
