@@ -162,8 +162,11 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               exit={{ y: -45, originY: "top", zIndex: 0 }}
             >
               <div className="h-auto bg-neutral-50 flex gap-1 lg:gap-2 flex-nowrap 2xl:justify-center overflow-x-scroll py-[12px] px-4 lg:pr-0 pr-6">
-                <NavLink link="/">Home</NavLink>
-                {Categories.map((category) => (
+                {/* <NavLink link="/">Home</NavLink> */}
+                {Categories.filter(
+                  (category) =>
+                    category?.attributes?.name.toLowerCase() != "sponsored"
+                ).map((category) => (
                   <>
                     <NavLink link={`/category/${category?.attributes?.slug}`}>
                       {category?.attributes?.name}
