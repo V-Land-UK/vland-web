@@ -92,7 +92,7 @@ const Article = ({ article }) => {
               />
               {/* CATEGORIES */}
               <div className="absolute flex flex-wrap gap-2 bottom-3 w-[50%] right-0 left-3">
-                {article?.attributes?.categories?.data.length > 0 &&
+                {article?.attributes?.categories?.data?.length > 0 &&
                   article?.attributes?.categories?.data?.map(
                     (category, current) => (
                       <p
@@ -300,7 +300,7 @@ export async function getStaticProps(ctx) {
   //   },
   // };
 
-  if (data.data.length > 0) {
+  if (data?.data?.length > 0) {
     return {
       props: {
         article: data?.data[0],
