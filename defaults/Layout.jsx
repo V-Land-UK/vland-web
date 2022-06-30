@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useContext } from "react";
 import Head from "next/head";
 import { Fade as Hamburger } from "hamburger-react";
+
 import {
   Drawer,
   DrawerBody,
@@ -29,9 +30,12 @@ import Footer from "../components/Footer";
 import SearchCard from "../components/SearchCard";
 import Icon from "../components/Icon";
 const qs = require("qs");
+import { GlobalContext } from "../context/GlobalContext";
+import { attributesToProps } from "html-react-parser";
 
 const Layout = ({ children, title, desc, keywords, image }) => {
   const router = useRouter();
+  const { Categories } = useContext(GlobalContext);
   const { isScrollingUp, isScrollingDown, isScrolling } = useScrollDirection();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [Open, setOpen] = useState(false);
@@ -63,6 +67,22 @@ const Layout = ({ children, title, desc, keywords, image }) => {
   return (
     <>
       <Head>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
+        />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no"
@@ -142,8 +162,19 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               exit={{ y: -45, originY: "top", zIndex: 0 }}
             >
               <div className="h-auto bg-neutral-50 flex gap-1 lg:gap-2 flex-nowrap 2xl:justify-center overflow-x-scroll py-[12px] px-4 lg:pr-0 pr-6">
-                <NavLink link="/">Home</NavLink>
-                <NavLink link="/category/articles">Articles</NavLink>
+                {/* <NavLink link="/">Home</NavLink> */}
+                {Categories.filter(
+                  (category) =>
+                    category?.attributes?.name.toLowerCase() != "sponsored"
+                ).map((category) => (
+                  <>
+                    <NavLink link={`/category/${category?.attributes?.slug}`}>
+                      {category?.attributes?.name}
+                    </NavLink>
+                  </>
+                ))}
+
+                {/* <NavLink link="/category/articles">Articles</NavLink>
                 <NavLink link="/category/interviews">Interviews</NavLink>
                 <NavLink link="/category/food-and-drink">Food & Drink</NavLink>
                 <NavLink link="/category/lifestyle">Lifestyle</NavLink>
@@ -156,7 +187,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
                 <NavLink link="/category/shopping">Shopping</NavLink>
                 <NavLink link="/category/entertainment">Entertainment</NavLink>
                 <NavLink link="/category/environment">Environment</NavLink>
-                <NavLink link="/category/recipes">Recipes</NavLink>
+                <NavLink link="/category/recipes">Recipes</NavLink> */}
                 {/* <NavLink link="/category/shoutout">Shoutout</NavLink> */}
                 {/* <NavLink link="/category/europe">Europe</NavLink> */}
                 {/* <NavLink link="/category/events">Events</NavLink> */}
@@ -184,7 +215,9 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               mx="auto"
               onClick={() => router.push("/")}
             >
-              <img src="/Header.svg" alt="Header" className="w-full" />
+              <Link href={"/"} replace>
+                <img src="/Header.svg" alt="Header" className="w-full" />
+              </Link>
             </Box>
             <div className="flex border-[1px] border-neutral-800 justify-between rounded-3xl overflow-hidden px-1 py-1">
               <input
