@@ -15,22 +15,26 @@ const ArticleCard = ({ article, index }) => {
   const articleIndex = parseInt(index) + 1;
 
   //FIND SPONSORED POSTS
-  const Sponsored = (post) => {
-    const AddClass = post.some((cat) => {
-      if (
-        cat.attributes.name.toLowerCase() === "sponsored" &&
-        articleIndex % 2 !== 0
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+  // const Sponsored = (post) => {
+  //   const AddClass = post.some((cat) => {
+  //     if (
+  //       cat.attributes.name.toLowerCase() === "sponsored" &&
+  //       articleIndex % 2 !== 0
+  //     ) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   });
 
-    if (AddClass) {
-      return " col-span-2";
-    }
-  };
+  //   if (AddClass) {
+  //     return " col-span-2";
+  //   }
+  // };
+
+  // className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container ${Sponsored(
+  //   article.attributes?.categories?.data
+  // )}`}
 
   return (
     <>
@@ -38,9 +42,7 @@ const ArticleCard = ({ article, index }) => {
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container ${Sponsored(
-          article.attributes?.categories?.data
-        )}`}
+        className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container `}
       >
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
