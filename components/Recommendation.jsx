@@ -56,11 +56,11 @@ const Recommendation = ({ article }) => {
       </div>
       {/* POST BODY */}
       <div
-        className={`flex flex-col h-[6rem] lg:h-[11.7rem]  bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
+        className={`flex flex-col h-[6rem] lg:h-[18rem]  bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
           <Link href={`/article/${article.attributes.slug}`} passHref>
-            <h1 className="text-[0.5rem] py-1 lg:text-xl  lg:pb-3 leading-tight article-title">
+            <h1 className="text-[0.5rem] py-1 lg:text-3xl  lg:pb-3 leading-tight article-title">
               {article?.attributes?.title?.length > 65
                 ? article?.attributes?.title.slice(0, 65) + "..."
                 : article?.attributes?.title}
