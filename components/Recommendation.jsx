@@ -56,7 +56,7 @@ const Recommendation = ({ article }) => {
       </div>
       {/* POST BODY */}
       <div
-        className={`flex flex-col h-[12rem] lg:h-[18rem]  bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
+        className={`flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
           <Link href={`/article/${article.attributes.slug}`} passHref>
