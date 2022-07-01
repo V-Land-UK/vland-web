@@ -297,7 +297,7 @@ const Article = ({ article }) => {
             </AnimateSharedLayout>
           </section>
           <section className="col-span-12">
-            <h1 className="text-2xl lg:text-3xl text-primary font-[800] mt-2 px-2">
+            <h1 className="text-2xl lg:text-3xl text-primary text-center font-[800] mt-2 px-2">
               Read More
             </h1>
             <div className=" grid grid-cols-1 lg:grid-cols-1 mt-4 gap-3 lg:gap-0  px-2 pb-5">
