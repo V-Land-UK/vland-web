@@ -37,11 +37,6 @@ import Slider from "react-slick";
 const Article = ({ article }) => {
   const router = useRouter();
 
-  const tag = article?.attributes?.content.search("<strong>");
-  const tagEnd = article?.attributes?.content.search("</strong>") + 9;
-
-  const dropcap = article?.attributes?.content.charAt(tag + 8);
-
   const imageInText = article?.attributes?.content.replace(
     "<img",
     "<img  style={{ borderRadius: '16px !important' }} "
@@ -205,10 +200,7 @@ const Article = ({ article }) => {
 
             {/* <ReactMarkdown className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5 whitespace-pre-line"> */}
             <div className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5 whitespace-pre-line">
-              {parse(
-                `<strong className="dropcap">${dropcap}</strong>` +
-                  article?.attributes?.content.slice(tagEnd)
-              )}
+              {parse(article?.attributes?.content)}
             </div>
             {/* {article?.attributes?.content} */}
             {/* </ReactMarkdown> */}
