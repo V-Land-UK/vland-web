@@ -11,6 +11,7 @@ const qs = require("qs");
 
 export default function Home({ articles, meta, ads }) {
   const { setArticles } = useContext(GlobalContext);
+
   useEffect(() => {
     setArticles(articles);
   }, []);
