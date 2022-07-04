@@ -56,30 +56,30 @@ const Recommendation = ({ article }) => {
       </div>
       {/* POST BODY */}
       <div
-        className={`flex flex-col h-[6rem] lg:h-[12rem]  bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
+        className={`flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
       >
-        <div className="article-body px-4 lg:px-10 py-1 ">
+        <div className="article-body px-4 lg:px-5 my-auto ">
           <Link href={`/article/${article.attributes.slug}`} passHref>
-            <h1 className="text-[0.35rem] lg:text-xl lg:text-center lg:pb-3 leading-tight article-title">
+            <h1 className="text-[1.05rem] py-1 lg:text-3xl  lg:pb-3 leading-tight article-title">
               {article?.attributes?.title?.length > 65
                 ? article?.attributes?.title.slice(0, 65) + "..."
                 : article?.attributes?.title}
             </h1>
           </Link>
         </div>
-        <p className="lg:text-xs lg:text-center article-desc mt-auto px-4 lg:px-10">
+        <p className="lg:text-xs  article-desc my-auto px-4 lg:px-10">
           {article?.attributes?.description?.length > 160
             ? article?.attributes?.description.slice(0, 160) + "..."
             : article?.attributes?.description}
         </p>
-        <div className="article-author pb-2 lg:pb-3 mx-auto">
+        <div className="article-author pb-2 lg:pb-3 ml-5">
           <img
             src={
               findUserByID(article?.attributes?.author?.data?.id)?.attributes
                 ?.image?.data?.attributes?.formats?.small?.url || "/User.svg"
             }
             alt="Author"
-            className="w-3 lg:w-10 aspect-square object-cover rounded-full"
+            className="w-8 h-8 lg:w-9 lg:h-9 aspect-square object-cover rounded-full"
           />
 
           <div className="article-author-data ">

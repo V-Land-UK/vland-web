@@ -58,11 +58,13 @@ const Footer = () => {
         {/* Sitemap */}
         <div className="flex justify-center items-center lg:gap-5">
           <div className="flex flex-col items-center justify-center px-4 gap-4 lg:gap-3">
-            <img
-              src="/Header.svg"
-              alt="Header"
-              className="h-9 lg:h-12 object-contain"
-            />
+            <Link href={"/"} replace>
+              <img
+                src="/Header.svg"
+                alt="Header"
+                className="h-9 lg:h-12 object-contain"
+              />
+            </Link>
 
             <div className="flex gap-2 lg:gap-2">
               <Icon url="http://instagram.com/vlanduk">

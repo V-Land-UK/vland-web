@@ -37,11 +37,6 @@ import Slider from "react-slick";
 const Article = ({ article }) => {
   const router = useRouter();
 
-  const tag = article?.attributes?.content.search("<strong>");
-  const tagEnd = article?.attributes?.content.search("</strong>") + 9;
-
-  const dropcap = article?.attributes?.content.charAt(tag + 8);
-
   const imageInText = article?.attributes?.content.replace(
     "<img",
     "<img  style={{ borderRadius: '16px !important' }} "
@@ -70,15 +65,15 @@ const Article = ({ article }) => {
     infinite: true,
     centerPadding: "0px",
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     centerMode: true,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 4,
+          slidesToScroll: 1,
         },
       },
       {
@@ -91,7 +86,7 @@ const Article = ({ article }) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -140,7 +135,7 @@ const Article = ({ article }) => {
               />
               {/* CATEGORIES */}
               <div className="absolute flex flex-wrap gap-2 bottom-3 w-[50%] right-0 left-3">
-                {article?.attributes?.categories?.data.length > 0 &&
+                {article?.attributes?.categories?.data?.length > 0 &&
                   article?.attributes?.categories?.data?.map(
                     (category, current) => (
                       <p
@@ -205,10 +200,7 @@ const Article = ({ article }) => {
 
             {/* <ReactMarkdown className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5 whitespace-pre-line"> */}
             <div className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5 whitespace-pre-line">
-              {parse(
-                `<strong className="dropcap">${dropcap}</strong>` +
-                  article?.attributes?.content.slice(tagEnd)
-              )}
+              {parse(article?.attributes?.content)}
             </div>
             {/* {article?.attributes?.content} */}
             {/* </ReactMarkdown> */}
@@ -297,7 +289,7 @@ const Article = ({ article }) => {
             </AnimateSharedLayout>
           </section>
           <section className="col-span-12">
-            <h1 className="text-2xl lg:text-3xl text-primary font-[800] mt-2 px-2">
+            <h1 className="text-2xl lg:text-3xl text-primary text-center font-[800] mt-2 px-2">
               Read More
             </h1>
             <div className=" grid grid-cols-1 lg:grid-cols-1 mt-4 gap-3 lg:gap-0  px-2 pb-5">
@@ -353,7 +345,7 @@ export async function getStaticProps(ctx) {
   //   },
   // };
 
-  if (data.data.length > 0) {
+  if (data?.data?.length > 0) {
     return {
       props: {
         article: data?.data[0],
