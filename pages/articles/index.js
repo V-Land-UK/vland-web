@@ -8,6 +8,7 @@ import { PAGINATION_LIMIT } from "../../config/meta";
 const qs = require("qs");
 
 export default function ArticlesPage({ articles, meta }) {
+  console.log("articles = ", articles);
   return (
     <Layout title="Articles">
       <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5 lg:gap-y-6">
