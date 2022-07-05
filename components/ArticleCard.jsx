@@ -42,7 +42,7 @@ const ArticleCard = ({ article, index }) => {
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container `}
+        className={`w-full break-inside-avoid flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container `}
       >
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
@@ -86,14 +86,24 @@ const ArticleCard = ({ article, index }) => {
           </div>
         </div>
         {/* POST BODY */}
-        <div className="px-5 py-3 h-[12rem] lg:h-[18rem] flex flex-col justify-around ">
-          <div className="article-body ">
+        <div
+          className={`${
+            article.id % 5 === 0 ? "green-body " : ""
+          }px-5 py-3 h-[12rem] lg:h-[18rem] flex flex-col justify-around rounded-b-xl`}
+        >
+          <div className="article-body">
             <Link
               href={`/article/${article.attributes.slug}`}
               className="cursor-pointer"
               passHref
             >
-              <h1 className="text-[1.05rem] lg:text-3xl article-title ">
+              <h1
+                className={`text-[1.05rem] lg:text-3xl  ${
+                  article.id % 5 === 0
+                    ? "article-title-green "
+                    : "article-title"
+                }`}
+              >
                 {article?.attributes?.title?.length > 65
                   ? article?.attributes?.title.slice(0, 65) + "..."
                   : article?.attributes?.title}
@@ -118,13 +128,22 @@ const ArticleCard = ({ article, index }) => {
               className="w-8 h-8 lg:w-9 lg:h-9 aspect-square object-cover rounded-full"
             />
 
-            <div className="article-author-data ">
-              <p>
+            <div className={"article-author-data"}>
+              <p
+                className={`txt ${
+                  article.id % 5 === 0 ? " text-white" : " text-primary"
+                }`}
+              >
                 {findUserByID(article?.attributes?.author?.data?.id)?.attributes
                   ?.fullname || "V-Land UK"}
               </p>
 
-              <Moment format="MMM Do YYYY" className="article-date">
+              <Moment
+                format="MMM Do YYYY"
+                className={`${
+                  article.id % 5 === 0 ? "article-date-green" : "article-date"
+                }`}
+              >
                 {article?.attributes?.PublishDate}
               </Moment>
             </div>
