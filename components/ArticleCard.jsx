@@ -8,7 +8,7 @@ import Link from "next/link";
 import Moment from "react-moment";
 
 const ArticleCard = ({ article, index }) => {
-  const { findUserByID } = useContext(GlobalContext);
+  const { findUserByID, Articles } = useContext(GlobalContext);
   const router = useRouter();
 
   // ARTICLE INDEX
@@ -42,7 +42,7 @@ const ArticleCard = ({ article, index }) => {
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`w-full break-inside-avoid flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container `}
+        className={`w-full  flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container `}
       >
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
@@ -88,8 +88,8 @@ const ArticleCard = ({ article, index }) => {
         {/* POST BODY */}
         <div
           className={`${
-            article.id % 5 === 0 ? "green-body " : ""
-          }px-5 py-3 h-[12rem] lg:h-[18rem] flex flex-col justify-around rounded-b-xl`}
+            article.id % 3 === 0 ? "green-body " : ""
+          } px-5 py-3 h-[12rem] lg:h-[18rem] flex flex-col justify-around rounded-b-xl`}
         >
           <div className="article-body">
             <Link
@@ -99,7 +99,7 @@ const ArticleCard = ({ article, index }) => {
             >
               <h1
                 className={`text-[1.05rem] lg:text-3xl  ${
-                  article.id % 5 === 0
+                  article.id % 3 === 0
                     ? "article-title-green "
                     : "article-title"
                 }`}
@@ -131,7 +131,7 @@ const ArticleCard = ({ article, index }) => {
             <div className={"article-author-data"}>
               <p
                 className={`txt ${
-                  article.id % 5 === 0 ? " text-white" : " text-primary"
+                  article.id % 3 === 0 ? " text-white" : " text-primary"
                 }`}
               >
                 {findUserByID(article?.attributes?.author?.data?.id)?.attributes
@@ -141,7 +141,7 @@ const ArticleCard = ({ article, index }) => {
               <Moment
                 format="MMM Do YYYY"
                 className={`${
-                  article.id % 5 === 0 ? "article-date-green" : "article-date"
+                  article.id % 3 === 0 ? "article-date-green" : "article-date"
                 }`}
               >
                 {article?.attributes?.PublishDate}
