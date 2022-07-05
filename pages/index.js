@@ -26,6 +26,7 @@ export default function Home({ articles, meta, ads }) {
     }
   };
 
+  // grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[10px] lg:gap-5 lg:gap-y-6
   const getAdsIndex = (index) => {
     return (index + 1) / articlesBeforeAd - 1;
   };
@@ -34,7 +35,7 @@ export default function Home({ articles, meta, ads }) {
     <Layout>
       {articles.length > 0 ? (
         <>
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[10px] lg:gap-5 lg:gap-y-6">
+          <div className="columns-2 lg:columns-3 xl:columns-4 space-y-3 lg:space-5 ">
             {articles?.map((article, index) => (
               <Fragment key={index}>
                 <ArticleCard article={article} index={index} />
