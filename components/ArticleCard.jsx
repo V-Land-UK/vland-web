@@ -125,9 +125,7 @@ const ArticleCard = ({ article, index }) => {
               </p>
 
               <Moment format="MMM Do YYYY" className="article-date">
-                {article?.attributes?.PublishDate ||
-                  article?.attributes?.publishedAt ||
-                  article?.attributes?.createdAt}
+                {article?.attributes?.PublishDate}
               </Moment>
             </div>
           </div>

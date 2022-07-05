@@ -187,7 +187,7 @@ const Article = ({ article }) => {
                     format="MMM Do YYYY"
                     className="text-[11px] font-normal poppins"
                   >
-                    {article?.attributes?.publishedAt}
+                    {article?.attributes?.PublishDate}
                   </Moment>
                 )}
               </div>
