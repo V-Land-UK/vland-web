@@ -209,6 +209,7 @@ const Team = ({ excerpt, team }) => {
 export async function getStaticProps() {
   const excerptRequest = await fetch(`${API}/team-excerpt`);
   const excerpt = await excerptRequest.json();
+  console.log(excerpt);
 
   // Query
   const filters = qs.stringify(

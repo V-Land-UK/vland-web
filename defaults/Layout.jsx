@@ -45,7 +45,6 @@ const Layout = ({ children, title, desc, keywords, image }) => {
 
   //Function to toggle drawer
   const toggleDrawer = () => {
-    // setOpen(isOpen ? false : true);
     onOpen();
   };
 
@@ -116,11 +115,6 @@ const Layout = ({ children, title, desc, keywords, image }) => {
       <nav className="bg-transparent w-screen h-auto fixed top-0 drop-shadow-md z-[999]">
         <div className="relative bg-white flex lg:grid lg:grid-cols-3 lg:justify-items-center justify-between items-center py-1 px-5 lg:px-8 z-[999]">
           <div className="items-center space-x-4 hidden lg:block lg:place-self-start lg:self-center">
-            {/* <button
-              className="bg-primary text-white text-sm py-2 px-6 rounded-3xl hover:bg-transparent hover:border-[1.5px] border-primary hover:text-primary transition-all"
-            >
-              Subscribe
-            </button> */}
             <NavMenu />
           </div>
           <div
@@ -128,15 +122,9 @@ const Layout = ({ children, title, desc, keywords, image }) => {
             onClick={() => router.push("/")}
           >
             <img src="/Header.svg" alt="Header" className="h-full" />
-            {/* <img src="/Header.svg" /> */}
           </div>
           <div className="lg:hidden">
-            <Hamburger
-              color="#4BAC48"
-              size={22}
-              toggled={isOpen}
-              toggle={toggleDrawer}
-            />
+            <Hamburger color="#000" rounded size={30} toggle={toggleDrawer} />
           </div>
           <div className="hidden lg:flex lg:flex-row-reverse w-[22vw] border-[1px] border-neutral-800 justify-between rounded-3xl overflow-hidden px-1 py-1 place-self-end self-center">
             <input
@@ -205,7 +193,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
       {/* NAVIGATION DRAWER */}
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent style={{ backgroundColor: "#eeffee" }}>
           <DrawerCloseButton _focus={{ border: "none" }} />
           <DrawerHeader>
             <Box
@@ -219,7 +207,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
                 <img src="/Header.svg" alt="Header" className="w-full" />
               </Link>
             </Box>
-            <div className="flex border-[1px] border-neutral-800 justify-between rounded-3xl overflow-hidden px-1 py-1">
+            <div className="bg-white flex border-[1px] border-neutral-800 justify-between rounded-3xl overflow-hidden px-1 py-1">
               <input
                 name="SearchText"
                 type="text"
@@ -244,13 +232,6 @@ const Layout = ({ children, title, desc, keywords, image }) => {
                 </div>
               </Link>
 
-              {/* <div className="hover:text-primary hover:translate-x-3 transition-all">
-                <Link href="/shop">Shop</Link>
-              </div>
-
-              <div className="hover:text-primary hover:translate-x-3 transition-all">
-                <Link href="/join-us">Join Us</Link>
-              </div> */}
               <Link href="/about">
                 <div className="hover:text-primary hover:translate-x-3 transition-all">
                   About
