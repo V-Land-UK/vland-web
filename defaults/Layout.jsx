@@ -33,7 +33,15 @@ const qs = require("qs");
 import { GlobalContext } from "../context/GlobalContext";
 import { attributesToProps } from "html-react-parser";
 
-const Layout = ({ children, title, desc, keywords, image }) => {
+const Layout = ({
+  children,
+  title,
+  desc,
+  metaTitle,
+  metaDescription,
+  keywords,
+  image,
+}) => {
   const router = useRouter();
   const { Categories } = useContext(GlobalContext);
   const { isScrollingUp, isScrollingDown, isScrolling } = useScrollDirection();
@@ -90,7 +98,8 @@ const Layout = ({ children, title, desc, keywords, image }) => {
         <meta name="description" content={desc} />
         <meta name="keywords" content={keywords} />
         <link rel="shortcut icon" href="favicon.ico" />
-
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://v-landuk.com" />
         <meta property="og:title" content={title} />
