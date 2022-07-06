@@ -83,7 +83,7 @@ const Recommendation = ({ article }) => {
           />
 
           <div className="article-author-data ">
-            <p>
+            <p className="txt">
               {findUserByID(article?.attributes?.author?.data?.id)?.attributes
                 ?.fullname || "V-Land UK"}
             </p>

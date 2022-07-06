@@ -108,6 +108,8 @@ const Article = ({ article }) => {
       image={
         article?.attributes?.media?.data[0]?.attributes?.formats?.medium?.url
       }
+      metaTitle={article?.attributes?.SEO[0]?.metaTitle}
+      metaDescription={article?.attributes?.SEO[0]?.metaDescription}
     >
       <Back />
       {article ? (
