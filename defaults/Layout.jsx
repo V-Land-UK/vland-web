@@ -223,7 +223,6 @@ const Layout = ({
                 type="text"
                 placeholder="Search anything..."
                 className="w-full px-3 py-1 text-[16px] placeholder-neutral-300 text-neutral-800 focus:outline-none"
-                value={MobileQuery}
                 onChange={(e) => setMobileQuery(e.target.value)}
               />
               <button
