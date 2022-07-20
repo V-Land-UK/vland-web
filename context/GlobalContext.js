@@ -29,9 +29,9 @@ const GlobalProvider = ({ children }) => {
 
       axios
         .get(`${API}/articles?${filters}`)
-        .then((res) => {
-          setArticles(res.data.data);
-          console.log(res);
+        .then(({ data }) => {
+          setArticles(data?.data);
+          // console.log(res);
         })
         .catch((err) => {
           setStatus((prev) => {
@@ -40,11 +40,11 @@ const GlobalProvider = ({ children }) => {
         });
     }
 
-    if (Categories.length == 0) {
+    if (Categories.length < 1) {
       axios
         .get(`${API}/categories?populate=*`)
-        .then((response) => {
-          setCategories(response.data.data);
+        .then(({ data }) => {
+          setCategories(data?.data);
         })
         .catch((err) => {
           setStatus((prev) => {
@@ -55,18 +55,20 @@ const GlobalProvider = ({ children }) => {
   }, [Categories.length, Categories, Articles.length, Articles]);
 
   //Get all authors
-  if (Authors.length == 0) {
-    axios
-      .get(`${API}/authors?populate=*`)
-      .then((response) => {
-        setAuthors(response.data.data);
-      })
-      .catch((err) => {
-        setStatus((prev) => {
-          return { ...prev, error: true };
+  useEffect(() => {
+    if (Authors.length < 1) {
+      axios
+        .get(`${API}/authors?populate=*`)
+        .then((response) => {
+          setAuthors(response.data.data);
+        })
+        .catch((err) => {
+          setStatus((prev) => {
+            return { ...prev, error: true };
+          });
         });
-      });
-  }
+    }
+  }, [Authors.length, Authors]);
 
   //Find a user by ID
   const findUserByID = (id) => {
