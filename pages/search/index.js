@@ -7,7 +7,6 @@ const qs = require("qs");
 import { PAGINATION_LIMIT } from "../../config/meta";
 import Back from "../../components/Back";
 import { BiSearch } from "react-icons/bi";
-import { Result } from "postcss";
 import Loader from "../../components/Loader";
 import request from "../../utils/request.util";
 
