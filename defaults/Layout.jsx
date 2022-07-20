@@ -163,12 +163,13 @@ const Layout = ({
                 {Categories.filter(
                   (category) =>
                     category?.attributes?.name.toLowerCase() != "sponsored"
-                ).map((category) => (
-                  <>
-                    <NavLink link={`/category/${category?.attributes?.slug}`}>
-                      {category?.attributes?.name}
-                    </NavLink>
-                  </>
+                ).map((category, index) => (
+                  <NavLink
+                    key={index}
+                    link={`/category/${category?.attributes?.slug}`}
+                  >
+                    {category?.attributes?.name}
+                  </NavLink>
                 ))}
 
                 {/* <NavLink link="/category/articles">Articles</NavLink>
@@ -194,7 +195,7 @@ const Layout = ({
         </AnimatePresence>
       </nav>
 
-      <main className="w-[94%] lg:w-4/5 2xl:w-4/6 mx-auto mt-[16vh] lg:mt-[17vh]">
+      <main className="w-[94%] lg:w-4/5 2xl:w-4/6 mx-auto mt-[17vh] lg:mt-[18vh]">
         {children}
       </main>
       <Footer />

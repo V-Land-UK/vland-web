@@ -36,7 +36,7 @@ export async function getServerSideProps({ req, res, query }) {
         pageSize: PAGINATION_LIMIT,
         page: page || "1",
       },
-      // sort: ["publishedAt:desc"],
+      sort: ["publishedAt:desc"],
     },
     { encodeValuesOnly: true }
   );

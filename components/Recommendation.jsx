@@ -76,7 +76,10 @@ const Recommendation = ({ article }) => {
           <img
             src={
               findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                ?.image?.data?.attributes?.formats?.small?.url || "/User.svg"
+                ?.image?.data?.attributes?.formats?.small?.url ||
+              findUserByID(article?.attributes?.author?.data?.id)?.attributes
+                ?.image?.data?.attributes?.url ||
+              "/User.svg"
             }
             alt="Author"
             className="w-8 h-8 lg:w-9 lg:h-9 aspect-square object-cover rounded-full"
