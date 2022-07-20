@@ -3,16 +3,13 @@ import { useRouter } from "next/router";
 import Pagination from "../../components/Pagination";
 import ArticleCard from "../../components/ArticleCard";
 import Layout from "../../defaults/Layout";
-import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
 const qs = require("qs");
-import { API } from "../../config/api";
 import { PAGINATION_LIMIT } from "../../config/meta";
 import Back from "../../components/Back";
 import { BiSearch } from "react-icons/bi";
 import { Result } from "postcss";
 import Loader from "../../components/Loader";
-import Recommendation from "../../components/Recommendation";
+import request from "../../utils/request.util";
 
 const Search = () => {
   const router = useRouter();
@@ -22,12 +19,67 @@ const Search = () => {
   const [stringQuery, setStringQuery] = useState("");
   const [Loading, setLoading] = useState(false);
 
-  //Get query from router
+  //  Get query from router
   const { query } = router;
   const { q, page } = query;
 
-  //Stringify query
+  //  Stringify query
   const { q: string } = qs.parse(query);
+
+  //  Search function
+  const searchFunc = () => {
+    ///// Live Search From Strapi /////
+    const filters = qs.stringify(
+      {
+        populate: "*",
+        filters: {
+          $or: [
+            {
+              title: {
+                $contains: q,
+              },
+            },
+            {
+              content: {
+                $contains: q,
+              },
+            },
+            {
+              description: {
+                $contains: q,
+              },
+            },
+          ],
+        },
+        pagination: {
+          pageSize: PAGINATION_LIMIT,
+          page: page || "1",
+        },
+        sort: ["PublishDate:desc"],
+      },
+      {
+        encodeValuesOnly: true,
+      }
+    );
+
+    if (q) {
+      setLoading(true);
+
+      request
+        .get(`/articles?${filters}`)
+        .then(({ data }) => {
+          setResults(data?.data);
+          setMeta(data?.meta);
+          // console.log(data?.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  };
 
   //Handle query change
   const handleChange = (e) => {
@@ -37,85 +89,19 @@ const Search = () => {
       pathname: "/search",
       query: queryFilter,
     });
-
-    //Filters
-    const filters = `filters[$or][0][description][$containsi]=${q}&filters[$or][1][content][$containsi]=${q}&filters[$or][2][title][$containsi]=${q}&populate=*&pagination[pageSize]=${PAGINATION_LIMIT}&pagination[page]=${
-      page || "1"
-    }`;
-
-    //Set loading state to true
-    setLoading(true);
-
-    axios
-      .get(`${API}/articles?${filters}`)
-      .then((res) => {
-        // console.log("lOading");
-        setResults(res.data.data);
-        console.log(res.data.meta);
-        setMeta(res.data.meta);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(false);
-        toast.error("Something went wrong", options);
-      });
+    ///// Live Search From Strapi /////
+    searchFunc();
   };
 
-  //Toast options
-  const options = {
-    position: "top-right",
-    autoClose: 4000,
-    draggable: true,
-    pauseOnHover: true,
-    closeOnClick: true,
-  };
-
-  //   //If query changes
+  //   If query changes
   useEffect(() => {
     setStringQuery(string);
   }, [q]);
 
+  //   On page load
   useEffect(() => {
-    //Get data for external query
-    //Filters
-    const filters = `filters[$or][0][description][$containsi]=${q}&filters[$or][1][content][$containsi]=${q}&filters[$or][2][title][$containsi]=${q}&populate=*&pagination[pageSize]=${PAGINATION_LIMIT}&pagination[page]=${
-      page || "1"
-    }`;
-
-    //Set loading state to true
-    setLoading(true);
-
-    axios
-      .get(`${API}/articles?${filters}`)
-      .then((res) => {
-        // console.log("lOading");
-        setResults(res.data.data);
-        console.log(res.data.meta);
-        setMeta(res.data.meta);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setLoading(false);
-        toast.error("Something went wrong", options);
-      });
+    searchFunc();
   }, []);
-
-  //Sort articles that match query
-  //   useEffect(() => {
-  //     if (q) {
-  //       const filtered = All.filter((article) => {
-  //         if (
-  //           article.attributes.title.toLowerCase().includes(q.toLowerCase()) ||
-  //           article.attributes.content.toLowerCase().includes(q.toLowerCase()) ||
-  //           article.attributes.description.toLowerCase().includes(q.toLowerCase())
-  //         ) {
-  //           return true;
-  //         }
-  //       });
-  //       setResults(filtered);
-  //       //   console.log(filtered);
-  //     }
-  //   }, [All, q, page]);
 
   return (
     <Layout>
@@ -146,7 +132,7 @@ const Search = () => {
             <>
               <div className="w-full grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5 lg:gap-y-6">
                 {Results.map((article, index) => (
-                  <Recommendation article={article} key={index} />
+                  <ArticleCard article={article} key={index} />
                 ))}
               </div>
 
@@ -168,7 +154,6 @@ const Search = () => {
           )}
         </>
       )}
-      <ToastContainer />
     </Layout>
   );
 };

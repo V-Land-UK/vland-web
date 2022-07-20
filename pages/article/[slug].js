@@ -33,6 +33,7 @@ import CommentForm from "../../components/CommentForm";
 import CommentsArea from "../../components/CommentsArea";
 import Recommendation from "../../components/Recommendation";
 import Slider from "react-slick";
+import request from "../../utils/request.util";
 
 const Article = ({ article }) => {
   const router = useRouter();
@@ -318,7 +319,7 @@ const Article = ({ article }) => {
 };
 
 export async function getStaticPaths() {
-  const { data } = await axios.get(`${API}/articles`);
+  const { data } = await request.get(`/articles`);
   const articles = data.data;
   const paths = articles.map((current) => ({
     params: { slug: current.attributes.slug },
@@ -339,17 +340,9 @@ export async function getStaticProps(ctx) {
     populate: "*",
   });
 
-  const query = await fetch(`${API}/articles?${filter}`);
-  const data = await query.json();
-
-  // return {
-  //   props: {
-  //     props: {
-  //       article: data?.data[0] || null,
-  //     },
-  //     revalidate: 10, // In seconds
-  //   },
-  // };
+  // const query = await fetch(`${API}/articles?${filter}`);
+  // const data = await query.json();
+  const { data } = await request.get(`/articles?${filter}`);
 
   if (data?.data?.length > 0) {
     return {

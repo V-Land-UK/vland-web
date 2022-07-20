@@ -19,7 +19,7 @@ const GlobalProvider = ({ children }) => {
 
   //Get Articles again
   useEffect(() => {
-    if (Articles.length == 0) {
+    if (Articles.length < 1) {
       const filters = qs.stringify({
         populate: "*",
         pagination: {
