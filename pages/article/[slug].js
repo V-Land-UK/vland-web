@@ -127,6 +127,7 @@ const Article = ({ article }) => {
                     ?.small?.url ||
                   article?.attributes?.media?.data[0]?.attributes?.formats
                     ?.thumbnail?.url ||
+                  article?.attributes?.media?.data[0]?.attributes?.url ||
                   "/Placeholder.png"
                 }
                 alt={
@@ -173,7 +174,10 @@ const Article = ({ article }) => {
                 src={
                   findUserByID(article?.attributes?.author?.data?.id)
                     ?.attributes?.image?.data?.attributes?.formats?.small
-                    ?.url || "/User.svg"
+                    ?.url ||
+                  findUserByID(article?.attributes?.author?.data?.id)
+                    ?.attributes?.image?.data?.attributes?.url ||
+                  "/User.svg"
                 }
                 alt="Author"
                 className="w-11 aspect-square object-cover rounded-full"

@@ -41,10 +41,7 @@ export default function Home({ articles, meta, ads }) {
                 <ArticleCard article={article} index={index} />
                 {/* Show Ads */}
                 {ads.length > 0 && checkAds(index) && (
-                  <Ads
-                    ad={ads[getAdsIndex(index)]}
-                    hey={ads[getAdsIndex(index)]}
-                  />
+                  <Ads ad={ads[getAdsIndex(index)]} />
                 )}
               </Fragment>
             ))}
@@ -76,7 +73,7 @@ export async function getServerSideProps({ req, res, query }) {
         pageSize: PAGINATION_LIMIT,
         page: page || "1",
       },
-      // sort: ["publishedAt:desc"],
+      sort: ["publishedAt:desc"],
     },
     { encodeValuesOnly: true }
   );
@@ -92,6 +89,7 @@ export async function getServerSideProps({ req, res, query }) {
   const visible_articles = data?.data?.filter((article) => {
     const publishedDate = new Date(article?.attributes?.PublishDate);
     const currentDate = new Date();
+
     return publishedDate <= currentDate;
   });
 
