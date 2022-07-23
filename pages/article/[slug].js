@@ -343,9 +343,23 @@ export async function getStaticProps({params, preview=null}) {
     populate: "*",
   });
 
+
   // const query = await fetch(`${API}/articles?${filter}`);
   // const data = await query.json();
+
   const { data } = await request.get(`/articles?${filter}${preview && '&publicationState=preview'}`);
+
+ 
+
+  // return {
+  //   props: {
+  //     props: {
+  //       article: data?.data[0] || null,
+  //     },
+  //     revalidate: 10, // In seconds
+  //   },
+  // };
+
 
   if (data?.data?.length > 0) {
     return {
