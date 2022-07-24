@@ -10,7 +10,7 @@ const qs = require("qs");
 export default function ArticlesPage({ articles, meta }) {
   return (
     <Layout title="Articles">
-      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5 lg:gap-y-6">
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 lg:gap-5 lg:gap-y-6">
         {articles.map((article, index) => (
           <ArticleCard article={article} key={index} />
         ))}
