@@ -195,7 +195,7 @@ const Layout = ({
         </AnimatePresence>
       </nav>
 
-      <main className="w-[94%] lg:w-4/5 2xl:w-4/6 mx-auto mt-[17vh] lg:mt-[18vh]">
+      <main className="w-[94%] lg:w-4/5 2xl:w-11/12 mx-auto mt-[17vh] lg:mt-[18vh]">
         {children}
       </main>
       <Footer />
