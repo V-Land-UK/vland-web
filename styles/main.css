@@ -115,9 +115,11 @@ a {
   max-width: 100%;
   font-weight: 400;
   font-family: "Poppins", "Segoe UI", Tahoma !important;
-  line-height: 1.5;
+  line-height: 1.45;
   padding-inline: 0.5rem;
-  overflow-x: hidden;
+  
+  
+  
 }
 .article-preview h5 {
   /* font-size: 14px;
@@ -141,7 +143,7 @@ a {
   font-weight: 900;
   float: left;
   line-height: 0.45;
-
+  
   margin: 0.1em 0.1em 0.2em 0;
 }
 .article-title {
