@@ -112,8 +112,8 @@ const Article = ({ article }) => {
       image={
         article?.attributes?.media?.data[0]?.attributes?.formats?.medium?.url
       }
-      metaTitle={article?.attributes?.SEO[0]?.metaTitle}
-      metaDescription={article?.attributes?.SEO[0]?.metaDescription}
+      metaTitle={article?.attributes?.SEO ? article?.attributes?.SEO[0]?.metaTitle: ''}
+      metaDescription={article?.attributes?.SEO? article?.attributes?.SEO[0]?.metaDescription: ''}
     >
       <div className="w-[94%] lg:w-4/5 2xl:w-3/4 mx-auto mt-[17vh] lg:mt-[18vh]">
         <Back />
