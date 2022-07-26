@@ -115,10 +115,25 @@ a {
   max-width: 100%;
   font-weight: 400;
   font-family: "Poppins", "Segoe UI", Tahoma !important;
-  line-height: 1.5;
+  line-height: 1.45;
   padding-inline: 0.5rem;
-  overflow-x: hidden;
+  padding-top: .5rem;
+  overflow-x:hidden;
+  
+  
 }
+.article-preview p:nth-child(1)::first-letter{
+  color: var(--primary);
+  font-size: 6rem;
+  font-weight: 900;
+  float: left;
+  line-height: 0.45;
+  
+  margin: 0.1em 0.1em 0.2em 0;
+
+}
+
+
 .article-preview h5 {
   /* font-size: 14px;
   font-weight: 600;
@@ -135,15 +150,16 @@ a {
 .article-preview b {
   font-weight: 800;
 }
-.article-preview::first-letter {
+/*.article-preview::first-letter {
   color: var(--primary);
   font-size: 6rem;
   font-weight: 900;
   float: left;
   line-height: 0.45;
-
+  
   margin: 0.1em 0.1em 0.2em 0;
-}
+}*/
+
 .article-title {
   font-weight: 900 !important;
   transition: all 0.75s ease-in-out;

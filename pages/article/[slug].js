@@ -5,6 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Moment from "react-moment";
 import { API, SITE_URL } from "../../config/api";
+import { getPreviewArticleBySlug } from "../../lib/api.js";
 import Layout from "../../defaults/Layout";
 import { GlobalContext } from "../../context/GlobalContext";
 import ReactMarkdown from "react-markdown";
@@ -37,6 +38,8 @@ import request from "../../utils/request.util";
 
 const Article = ({ article }) => {
   const router = useRouter();
+
+  
 
   const imageInText = article?.attributes?.content.replace(
     "<img",
@@ -328,9 +331,9 @@ export async function getStaticPaths() {
   return { paths, fallback: "blocking" };
 }
 
-export async function getStaticProps(ctx) {
-  const { slug } = ctx.params;
-
+export async function getStaticProps({params, preview=null}) {
+  const { slug } = params;
+  
   const filter = qs.stringify({
     filters: {
       slug: {
@@ -340,9 +343,23 @@ export async function getStaticProps(ctx) {
     populate: "*",
   });
 
+
   // const query = await fetch(`${API}/articles?${filter}`);
   // const data = await query.json();
-  const { data } = await request.get(`/articles?${filter}`);
+
+  const { data } = await request.get(`/articles?${filter}${preview && '&publicationState=preview'}`);
+
+ 
+
+  // return {
+  //   props: {
+  //     props: {
+  //       article: data?.data[0] || null,
+  //     },
+  //     revalidate: 10, // In seconds
+  //   },
+  // };
+
 
   if (data?.data?.length > 0) {
     return {
