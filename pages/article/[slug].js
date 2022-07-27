@@ -38,7 +38,7 @@ import request from "../../utils/request.util";
 
 const Article = ({ article }) => {
   const router = useRouter();
-  console.log(article.attributes);
+  
   
 
   const imageInText = article?.attributes?.content.replace(
