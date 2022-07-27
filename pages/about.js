@@ -16,10 +16,7 @@ const About = ({ about }) => {
       <Back />
       <main className="w-[95%] lg:w-4/5 mx-auto mt-3">
         <h1 className="text-4xl lg:text-6xl text-primary">About V-Land</h1>
-        <div className="relative w-full lg:w-3/5 mx-auto aspect-square my-3">
-          <Image src="/Placeholder.png" alt="About Image" layout="fill" />
-        </div>
-        <div className="text-[16px] lg:text-lg text-neutral-700 tracking-wide leading-relaxed poppins my-2 whitespace-pre-line about">
+        <div className="text-[16px] pt-3 lg:text-lg text-neutral-700 tracking-wide leading-relaxed poppins my-2 whitespace-pre-line about">
           {parse(about)}
         </div>
       </main>
