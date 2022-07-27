@@ -38,7 +38,7 @@ import request from "../../utils/request.util";
 
 const Article = ({ article }) => {
   const router = useRouter();
-
+  console.log(article.attributes);
   
 
   const imageInText = article?.attributes?.content.replace(
@@ -343,7 +343,9 @@ export async function getStaticProps({params, preview=null}) {
     filters: {
       slug: {
         $eq: slug,
+
       },
+      
     },
     populate: "*",
   });
@@ -352,7 +354,7 @@ export async function getStaticProps({params, preview=null}) {
   // const query = await fetch(`${API}/articles?${filter}`);
   // const data = await query.json();
 
-  const { data } = await request.get(`/articles?${filter}${preview && '&publicationState=preview'}`);
+  const { data } = preview ? await request.get(`/articles?${filter}&publicationState=preview`): await request.get(`/articles?${filter}`);
 
  
 
