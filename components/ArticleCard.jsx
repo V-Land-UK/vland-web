@@ -42,7 +42,7 @@ const ArticleCard = ({ article, index }) => {
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`w-full  flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container `}
+        className={`w-full  flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-2xl lg:shadow-lg article-container `}
       >
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">

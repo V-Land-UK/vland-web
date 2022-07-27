@@ -146,7 +146,7 @@ const Team = ({ excerpt, team }) => {
                           "Placeholder.png"
                         }
                         alt={staff?.attributes?.name || "Staff"}
-                        className="w-full h-full aspect-square rounded-full object-cover"
+                        className="w-9/12 aspect-square rounded-full object-cover"
                       />
                     </div>
                     <div className="w-[65%]">
