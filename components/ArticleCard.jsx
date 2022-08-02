@@ -89,7 +89,10 @@ const ArticleCard = ({ article, index }) => {
         {/* POST BODY */}
         <div
           className={`${
-            article.id % 3 === 0 ? "green-body " : ""
+            article.attributes?.categories?.data[0]?.attributes?.name ===
+            "Food & Drink"
+              ? "green-body "
+              : ""
           } px-5 py-3 h-[12rem] lg:h-[18rem] flex flex-col justify-around rounded-b-xl`}
         >
           <div className="article-body">
@@ -100,7 +103,8 @@ const ArticleCard = ({ article, index }) => {
             >
               <h1
                 className={`text-[1.05rem] lg:text-3xl  ${
-                  article.id % 3 === 0
+                  article.attributes?.categories?.data[0]?.attributes?.name ===
+                  "Food & Drink"
                     ? "article-title-green "
                     : "article-title"
                 }`}
@@ -135,7 +139,10 @@ const ArticleCard = ({ article, index }) => {
             <div className={"article-author-data"}>
               <p
                 className={`txt ${
-                  article.id % 3 === 0 ? " text-white" : " text-primary"
+                  article.attributes?.categories?.data[0]?.attributes?.name ===
+                  "Food & Drink"
+                    ? " text-white"
+                    : " text-primary"
                 }`}
               >
                 {findUserByID(article?.attributes?.author?.data?.id)?.attributes
@@ -145,7 +152,10 @@ const ArticleCard = ({ article, index }) => {
               <Moment
                 format="MMM Do YYYY"
                 className={`${
-                  article.id % 3 === 0 ? "article-date-green" : "article-date"
+                  article.attributes?.categories?.data[0]?.attributes?.name ===
+                  "Food & Drink"
+                    ? "article-date-green"
+                    : "article-date"
                 }`}
               >
                 {article?.attributes?.PublishDate}
