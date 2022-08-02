@@ -102,7 +102,7 @@ const ArticleCard = ({ article, index }) => {
               passHref
             >
               <h1
-                className={`text-[1.05rem] lg:text-3xl  ${
+                className={`text-[1.05rem] lg:text-xl  xl:text-3xl  ${
                   article.attributes?.categories?.data[0]?.attributes?.name ===
                   "Food & Drink"
                     ? "article-title-green "

@@ -60,7 +60,7 @@ const Recommendation = ({ article }) => {
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
           <Link href={`/article/${article.attributes.slug}`} passHref>
-            <h1 className="text-[1.05rem] py-1 lg:text-3xl  lg:pb-3 leading-tight article-title">
+            <h1 className="text-[1.05rem] py-1 lg:text-xl  xl:text-3xl lg:pb-3 leading-tight article-title">
               {article?.attributes?.title?.length > 65
                 ? article?.attributes?.title.slice(0, 65) + "..."
                 : article?.attributes?.title}
