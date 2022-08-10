@@ -59,7 +59,9 @@ a {
   gap: 0.3rem;
   font-family: "Poppins", Arial, Helvetica, sans-serif, "Segoe UI", Tahoma !important;
   cursor: pointer;
+  
 }
+
 .article-desc {
   font-size: 15px;
   font-weight: 500;
@@ -132,7 +134,32 @@ a {
   margin: 0.1em 0.1em 0.2em 0;
 
 }
+.cardGrid__list{
+  position: relative;
+  max-height: 6049px;
+  overflow-y: hidden;
+}
+.hv-toggle{
+  transition: .24s ease-in-out;
 
+}
+.hv-toggle:hover{
+  border-color: #000000;
+  color: #000000;
+}
+
+.cardGrid__list::after{
+  content:'';
+  left: 0;
+  right:0;
+  width: 98%;
+  
+  z-index: 2;
+  position:absolute;
+  bottom:0;
+  height: 5rem;
+  background: linear-gradient(-180deg, rgba(248,249,248,0) 5%, #ffffff 80%);
+}
 
 .article-preview h5 {
   /* font-size: 14px;
