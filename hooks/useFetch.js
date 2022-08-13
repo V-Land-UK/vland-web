@@ -4,10 +4,11 @@ import { PAGINATION_LIMIT } from "../config/meta.js";
 const qs = require("qs");
 
 
-const useFetch = (page)=>{
+const useFetch = (articles, page)=>{
     const [loading,setLoading] = useState(true);
     const [error,setError] = useState(false);
-    const [list,setList] = useState([]);
+    
+    const [hasMore, setHasMore] = useState(true);
    
     const filters  = qs.stringify({
         populate:"*",
@@ -19,46 +20,45 @@ const useFetch = (page)=>{
     }, {encodeValuesOnly:true});
     const sendQuery = useCallback(async ()=>{
        
-       try{
-            setLoading(true);
-            setError(false);
+    
+        setLoading(true);
+        setError(false);
+        
+        const promise = new Promise((resolve,reject)=>{
             
-            const promise = new Promise((resolve,reject)=>{
-                
-                
-                fetch(`${API}/articles?${filters}`, {
-                    method: 'GET',
-                    mode:'cors',
-                    credentials:'same-origin',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    redirect:'follow',
-                    referrerPolicy: 'no-referrer'
+            
+            fetch(`${API}/articles?${filters}`, {
+                method: 'GET',
+                mode:'cors',
+                credentials:'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                redirect:'follow',
+                referrerPolicy: 'no-referrer'
 
-                })
-                .then((response)=>{
-                    return response.json();
-                })
-                .then((data)=>{
-                    resolve(data);
-                })
-                .catch((err) =>{
-                    
-                    reject(err)
-                });    
-            });     
-            
-            const data = await promise;
-            
-            setList((prev)=>[...prev,...data.data]);
-            setLoading(false);
-            
-       }
-       catch(err){
-         setError(err);
-       }
+            })
+            .then((response)=>{
+                return response.json();
+            })
+            .then((data)=>{
+                resolve(data);
+            })
+            .catch((err) =>{
+                setError(err);
+                reject(err)
+            });    
+        });     
+        
+        const data = await promise;
+        
+        articles.push(...data.data);
 
+        setLoading(false);
+        setHasMore(data.meta.pagination.pageCount < page);
+            
+       
+       
 
 
 
@@ -67,9 +67,10 @@ const useFetch = (page)=>{
     useEffect(()=>{
         sendQuery(page);
     }, [sendQuery, page]);
+    
 
 
-    return {loading, error, list};
+    return {loading, error,hasMore};
 
 
 }

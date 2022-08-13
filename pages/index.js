@@ -13,11 +13,12 @@ import useFetch from "../hooks/useFetch.js";
 const qs = require("qs");
 
 export default function Home({ articles, meta, ads }) {
-  const { setArticles } = useContext(GlobalContext);
+  
+  
 
-  const [page,setPage] = useState(2);
+  const [page,setPage] = useState(meta.pagination.page + 1);
 
-  const {loading,error,list} = useFetch(page);
+  const {loading,error, hasMore} = useFetch(articles,page);
   const ref = useRef();
   
 
@@ -26,8 +27,12 @@ export default function Home({ articles, meta, ads }) {
   const handleObserver = useCallback((node)=>{
     if(loading)return;
     setPage(prev => prev + 1);
-    
-    ref.current.style.maxHeight  = `${ref.current.clientHeight*(page)}px`;
+    if(!hasMore){
+      ref.current.style.maxHeight  = `${ref.current.clientHeight*(page)}px`;
+    }
+    else{
+      ref.current.removeAttribute("maxHeight");
+    }
 
     
     
@@ -36,9 +41,7 @@ export default function Home({ articles, meta, ads }) {
 
   });
 
-  useEffect(() => {
-    setArticles(articles);
-  }, []);
+ 
 
   
 
@@ -60,39 +63,12 @@ export default function Home({ articles, meta, ads }) {
   return (
     <Layout>
       {articles.length > 0 ? (
-        !list.length ? (
-          <>
-            {/* <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[10px] lg:gap-5 lg:gap-y-6 "> */}
-            <div className="cardGrid__list grid xs:grid-cols-1 gap-5 sm:grid-cols-2 gap-5 md:grid-cols-3 gap-5 lg:grid-cols-3 gap-5 xl:grid-cols-4 gap-5 2xl:grid-cols-5 gap-5" ref={ref}>
-              
-              {articles?.map((article, index) => (
-              
-                    <Fragment key={index}>
-                      <ArticleCard article={article} index={index}/>
-                      {/* Show Ads */}
-                      {ads.length > 0 && checkAds(index) && (
-                        <Ads ad={ads[getAdsIndex(index)]} />
-                      )}
-                    </Fragment>
-              ))}
-          
-              
-              
-            </div>
-            <div className="block w-[100%] h-[8rem] text-center bg-gradient-to-t from-white">
-                <button className="hv-toggle inline-block w-[12rem] h-[4rem] mt-[2rem] text-primary bg-transparent border-4 border-primary cursor-pointer rounded-md text-lg" onClick={handleObserver}>{loading ? "loading...": "View More"}</button>
-            </div>
-          
-            {error && <div>error...</div>}
-            
-            
-          </>
-        ):(
+       
           <>
           {/* <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[10px] lg:gap-5 lg:gap-y-6 "> */}
           <div className="cardGrid__list grid xs:grid-cols-1 gap-5 sm:grid-cols-2 gap-5 md:grid-cols-3 gap-5 lg:grid-cols-3 gap-5 xl:grid-cols-4 gap-5 2xl:grid-cols-5 gap-5" ref={ref}>
             
-            {list?.map((article, index) => (
+            {articles?.map((article, index) => (
             
                   <Fragment key={index}>
                     <ArticleCard article={article} index={index}/>
@@ -106,16 +82,18 @@ export default function Home({ articles, meta, ads }) {
             
             
           </div>
-          <div className="block w-[100%] h-[8rem] text-center bg-gradient-to-t from-white">
-              <button className="hv-toggle inline-block w-[12rem] h-[4rem] mt-[2rem] text-primary bg-transparent border-4 border-primary cursor-pointer rounded-md text-lg" onClick={handleObserver}>{loading ? "loading...": "View More"}</button>
-          </div>
+          {!hasMore && (
+            <div className="block w-[100%] h-[8rem] text-center bg-gradient-to-t from-white">
+                <button className="hv-toggle inline-block w-[12rem] h-[4rem] mt-[2rem] text-primary bg-transparent border-4 border-primary cursor-pointer rounded-md text-lg" onClick={handleObserver}>{loading ? "loading...": "View More"}</button>
+            </div>
+          )}
         
           {error && <div>error...</div>}
           
           
         </>
 
-        )
+        
       ) : (
         <div className="py-[10vh] lg:py-[15vh] text-center text-primary text-3xl lg:text-4xl font-semibold px-6">
           No Articles Yet.
