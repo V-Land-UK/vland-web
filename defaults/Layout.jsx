@@ -2,6 +2,7 @@
 import { useState, useEffect, useContext } from "react";
 import Head from "next/head";
 import { Fade as Hamburger } from "hamburger-react";
+import debounce from "lodash.debounce";
 
 import {
   Drawer,
@@ -70,6 +71,13 @@ const Layout = ({
     q: MobileQuery,
   });
   const searchLink = `/search?${searchQuery}`;
+
+  const updateSearchQuery = (e) => {
+    setQuery(e.target.value);
+  };
+
+  //wait half a sec later to ensure all input has been entered before fetching from server
+  const debouncedOnChange = debounce(updateSearchQuery, 500);
 
   return (
     <>
@@ -141,8 +149,8 @@ const Layout = ({
               type="text"
               placeholder="Search anything..."
               className="w-full px-3 py-1 text-[16px] placeholder-neutral-300 text-neutral-800 focus:outline-none"
-              value={Query}
-              onChange={(e) => setQuery(e.target.value)}
+              // value={Query}
+              onChange={debouncedOnChange}
             />
             <div className="text-neutral-800 h-auto aspect-square p-2 rounded-full">
               <BiSearch size={20} />
