@@ -117,7 +117,7 @@ const Article = ({ article }) => {
       }
       metaTitle={article?.attributes?.seo ? article?.attributes?.seo?.metaTitle: ''}
       metaDescription={article?.attributes?.seo? article?.attributes?.seo?.metaDescription: ''}
-      canonicalUrl={article?.attributes?.seo ? article?.attributes?.seo?.canonicalUrl: null}
+      canonicalUrl={article?.attributes?.seo ? article?.attributes?.seo?.canonicalURL: null}
     >
       <div className="w-[94%] lg:w-4/5 2xl:w-3/4 mx-auto mt-[17vh] lg:mt-[18vh]">
         <Back />
