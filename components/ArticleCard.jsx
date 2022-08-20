@@ -6,43 +6,58 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Moment from "react-moment";
+import React from "react";
 
-const ArticleCard = ({ article, index }) => {
+const ArticleCard =({article, index}) => {
+  
   const { findUserByID, Articles } = useContext(GlobalContext);
   const router = useRouter();
 
   // ARTICLE INDEX
   const articleIndex = parseInt(index) + 1;
+  const culture = (cat)=>{
+    if (
+      cat.attributes.name.toLowerCase() === "culture" 
+      
+    ) {
+     return true;
+    } else {
+     return false;
+   }
 
+  };
   //FIND SPONSORED POSTS
-  // const Sponsored = (post) => {
-  //   const AddClass = post.some((cat) => {
-  //     if (
-  //       cat.attributes.name.toLowerCase() === "sponsored" &&
-  //       articleIndex % 2 !== 0
-  //     ) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   });
+  const Sponsored = (post) => {
+    const AddClass = post.some((cat) => {
+     if (
+        cat.attributes.name.toLowerCase() === "culture" 
+        
+      ) {
+       return true;
+      } else {
+       return false;
+     }
+   });
 
-  //   if (AddClass) {
-  //     return " col-span-2";
-  //   }
-  // };
+    if (AddClass) {
+      return "card-medium";
+    }
+    else{
+      return "";
+    }
+   };
 
   // className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container ${Sponsored(
   //   article.attributes?.categories?.data
   // )}`}
 
   return (
-    <>
+    
       <motion.div
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`w-full  flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-2xl lg:shadow-lg article-container `}
+        className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-2xl lg:shadow-lg col-span-1 row-span-2 ${Sponsored(article.attributes.categories.data)}`}
       >
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
@@ -154,7 +169,7 @@ const ArticleCard = ({ article, index }) => {
           </div>
         </div>
       </motion.div>
-    </>
+   
   );
 };
 

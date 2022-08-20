@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap);
 @import url(https://fonts.googleapis.com/css?family=Macondo:100,200,300,400,500,600,700,800,900&display=swap);
 :root {
+  font-size: 16px;
   --primary: #4bac48;
   --secondary: #004d2a;
 }
@@ -40,6 +41,15 @@ a {
 .nav-hide {
   animation: 600ms FadeOutUp ease-out forwards;
   display: block;
+}
+
+.cardList_ctnr{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 16.75rem);
+  gap: 1.25rem;
+  grid-auto-rows: 16.75rem;
+  grid-auto-flow: row;
+  justify-content: center;
 }
 
 .poppins {
@@ -109,6 +119,13 @@ a {
 .sponsored .article-author-data p {
   font-size: 13px;
   color: white;
+}
+
+.card-medium{
+
+  
+  grid-column-end: span 2 !important;
+
 }
 
 .article-preview {
