@@ -88,7 +88,9 @@ export default function Home({ articles, meta, ads }) {
     <Layout>
       {articles.length > 0 ? (
         <>
-          <div className="cardGrid__list relative grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[10px] lg:gap-5 lg:gap-y-6 " ref={ref}>
+          
+          {/* <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[10px] lg:gap-5 lg:gap-y-6 "> */}
+          <div className="cardList_ctnr relative" ref={ref}>
             {articles?.map((article, index) => (
             
                   <Fragment key={index}>
