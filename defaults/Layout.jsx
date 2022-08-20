@@ -105,6 +105,7 @@ const Layout = ({
           content="width=device-width, initial-scale=1.0, user-scalable=no"
         />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="google-site-verification" content="nMcgclVIYZbbksryEI2ihhobvvAS4X6FXkHvhY9YYjI" />
         
         <meta name="theme-color" content="#FFFFFF" />
         <meta name="keywords" content={keywords} />
