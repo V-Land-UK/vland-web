@@ -8,7 +8,7 @@ import Link from "next/link";
 import Moment from "react-moment";
 import Image from "next/image";
 
-const Recommendation = ({ article, key }) => {
+const Recommendation = ({ article}) => {
   const { findUserByID } = useContext(GlobalContext);
   const router = useRouter();
 
@@ -40,10 +40,10 @@ const Recommendation = ({ article, key }) => {
           {/* TAGS/CATEGORIES */}
           {article.attributes?.categories?.data.length > 0 &&
             article.attributes.categories.data.map((category, current) => (
-              <Link href={`/category/${category.attributes.slug}`} passHref>
+              <Link  key={current} href={`/category/${category.attributes.slug}`} passHref>
                 <a className="no-underline">
                   <p
-                    key={current}
+                   
                     className={`text-[5px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
                       category.attributes.name.toLowerCase() === "sponsored"
                         ? "text-white bg-green-800 hover:bg-white hover:text-primary"
