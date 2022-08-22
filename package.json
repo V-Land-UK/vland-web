@@ -18,6 +18,7 @@
     "framer-motion": "^6.3.3",
     "hamburger-react": "^2.5.0",
     "html-react-parser": "^1.4.12",
+    "lodash.debounce": "^4.0.8",
     "moment": "^2.29.4",
     "next": "^12.1.5",
     "nprogress": "^0.2.0",

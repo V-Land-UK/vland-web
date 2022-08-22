@@ -94,13 +94,13 @@ a {
 .article-date {
   font-size: 9px;
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-  color: rgb(90, 90, 90);
+  color: rgb(0, 0, 0);
 }
 
 .article-date-green {
   font-size: 9px;
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-  color: rgb(90, 90, 90);
+  color: rgb(0, 0, 0);
 }
 
 .sponsored .article-date {
@@ -117,22 +117,18 @@ a {
   font-family: "Poppins", "Segoe UI", Tahoma !important;
   line-height: 1.45;
   padding-inline: 0.5rem;
-  padding-top: .5rem;
-  overflow-x:hidden;
-  
-  
+  padding-top: 0.5rem;
+  overflow-x: hidden;
 }
-.article-preview p:nth-child(1)::first-letter{
+.article-preview p:nth-child(1)::first-letter {
   color: var(--primary);
   font-size: 6rem;
   font-weight: 900;
   float: left;
   line-height: 0.45;
-  
+
   margin: 0.1em 0.1em 0.2em 0;
-
 }
-
 
 .article-preview h5 {
   /* font-size: 14px;
@@ -376,13 +372,13 @@ a {
   .article-date {
     font-size: 5.5px;
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-    color: rgb(90, 90, 90);
+    color: rgb(0, 0, 0);
   }
 
   .article-date-green {
     font-size: 5.5px;
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-    color: rgb(90, 90, 90);
+    color: rgb(0, 0, 0);
   }
 
 
