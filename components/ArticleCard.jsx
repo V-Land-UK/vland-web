@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { GlobalContext } from "../context/GlobalContext";
 import { useRouter } from "next/router";
@@ -8,9 +8,16 @@ import Link from "next/link";
 import Moment from "react-moment";
 import Image from "next/image";
 
+
 const ArticleCard = ({ article, index }) => {
   const { findUserByID, Articles } = useContext(GlobalContext);
   const router = useRouter();
+  
+
+  
+ 
+
+
 
   // ARTICLE INDEX
   const articleIndex = parseInt(index) + 1;
@@ -48,6 +55,7 @@ const ArticleCard = ({ article, index }) => {
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
           <Image
+             priority={index <= 10 ? true: false}
              src={`${
               article.attributes?.media?.data[0]?.attributes?.formats?.medium
                 ?.url ||
