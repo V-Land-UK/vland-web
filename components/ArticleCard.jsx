@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext } from "react";
+import { useContext,useRef,useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { GlobalContext } from "../context/GlobalContext";
 import { useRouter } from "next/router";
@@ -8,9 +8,36 @@ import Link from "next/link";
 import Moment from "react-moment";
 import Image from "next/image";
 
+
 const ArticleCard = ({ article, index }) => {
   const { findUserByID, Articles } = useContext(GlobalContext);
   const router = useRouter();
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const articleCardRef = useRef();
+  
+
+  useEffect(()=>{
+    
+    const observer = new IntersectionObserver((entries)=>{
+
+      if(entries[0].isIntersecting){
+        setIsIntersecting(entries[0].isIntersecting);
+      }
+      
+    }, {
+        rootMargin: "300px",
+        threshold:0
+    });
+    articleCardRef.current && observer.observe(articleCardRef.current);
+
+    return ()=>{
+      articleCardRef.current && observer.unobserve(articleCardRef.current);
+    }
+  }, [articleCardRef]);
+  
+ 
+
+
 
   // ARTICLE INDEX
   const articleIndex = parseInt(index) + 1;
@@ -46,8 +73,9 @@ const ArticleCard = ({ article, index }) => {
         className={`w-full  flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-2xl lg:shadow-lg article-container `}
       >
         {/* POST IMAGE */}
-        <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
+        <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden" ref={articleCardRef}>
           <Image
+             priority={isIntersecting}
              src={`${
               article.attributes?.media?.data[0]?.attributes?.formats?.medium
                 ?.url ||
