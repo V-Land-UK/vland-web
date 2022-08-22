@@ -289,12 +289,27 @@ a {
   }
 }
 
+@media screen and (max-width: 1366px){
+  .txt{
+    font-size:12.5px;
+    font-weight: 600;
+    font-family: "Poppins", "Segoe UI", Tahoma !important;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .article-desc {
     font-size: 10px;
     font-weight: 500;
     font-family: "Poppins", "Segoe UI", Tahoma !important;
   }
+
+  .txt{
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "Poppins", "Segoe UI", Tahoma !important;
+  }
+ 
 }
 
 @media screen and (max-width: 480px) {
@@ -365,4 +380,6 @@ a {
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
     color: rgb(0, 0, 0);
   }
+
+
 }
