@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Moment from "react-moment";
+import Image from "next/image";
 
 const Recommendation = ({ article }) => {
   const { findUserByID } = useContext(GlobalContext);
@@ -60,11 +61,13 @@ const Recommendation = ({ article }) => {
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
           <Link href={`/article/${article.attributes.slug}`} passHref>
-            <h1 className="text-[1.05rem] py-1 lg:text-xl  xl:text-3xl lg:pb-3 leading-tight article-title">
-              {article?.attributes?.title?.length > 65
-                ? article?.attributes?.title.slice(0, 65) + "..."
-                : article?.attributes?.title}
-            </h1>
+            <a>
+              <h1 className="text-[1.05rem] py-1 lg:text-xl  xl:text-3xl lg:pb-3 leading-tight article-title">
+                {article?.attributes?.title?.length > 65
+                  ? article?.attributes?.title.slice(0, 65) + "..."
+                  : article?.attributes?.title}
+              </h1>
+            </a>
           </Link>
         </div>
         <p className="lg:text-xs  article-desc my-auto px-4 lg:px-10">
@@ -73,18 +76,28 @@ const Recommendation = ({ article }) => {
             : article?.attributes?.description}
         </p>
         <div className="article-author pb-2 lg:pb-3 ml-5">
-          <img
-            src={
-              findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                ?.image?.data?.attributes?.formats?.small?.url ||
-              findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                ?.image?.data?.attributes?.url ||
-              "/User.svg"
-            }
-            alt="Author"
-            className="w-8 h-8 lg:w-9 lg:h-9 aspect-square object-cover rounded-full"
-          />
+          <div className= "relative  w-7 h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9">
+              <Image
+                src={
+                  findUserByID(article?.attributes?.author?.data?.id)?.attributes
+                  ?.image?.data?.attributes?.formats?.small?.url ||
+                findUserByID(article?.attributes?.author?.data?.id)?.attributes
+                  ?.image?.data?.attributes?.url ||
+                "/User.svg"
+                }
+                
+                alt="Picture of author"
+                layout="fill"
+                objectFit="cover"
+                style={{borderRadius: "50%",
+                       
+                      }}
+              
+                
 
+              />
+            </div>
+         
           <div className="article-author-data ">
             <p className="txt">
               {findUserByID(article?.attributes?.author?.data?.id)?.attributes
