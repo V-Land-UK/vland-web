@@ -8,7 +8,7 @@ import Link from "next/link";
 import Moment from "react-moment";
 import Image from "next/image";
 
-const Recommendation = ({ article }) => {
+const Recommendation = ({ article, key }) => {
   const { findUserByID } = useContext(GlobalContext);
   const router = useRouter();
 
@@ -16,7 +16,7 @@ const Recommendation = ({ article }) => {
     <>
       {/* POST IMAGE */}
       <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
-        <img
+        <Image
           src={`${
             article.attributes?.media?.data[0]?.attributes?.formats?.medium
               ?.url ||
@@ -28,30 +28,33 @@ const Recommendation = ({ article }) => {
               ?.url ||
             "/Placeholder.png"
           }`}
-          className="w-full h-full object-cover"
+          layout="fill"
           alt={`${
             article.attributes?.media?.data[0]?.attributes?.alternativeText ||
             article?.attributes?.title ||
             ""
           }`}
+          objectFit="cover"
         />
         <div className="absolute flex flex-wrap gap-2 bottom-3 w-[94%] mx-auto right-0 left-0">
           {/* TAGS/CATEGORIES */}
           {article.attributes?.categories?.data.length > 0 &&
             article.attributes.categories.data.map((category, current) => (
-              <p
-                key={current}
-                className={`text-[5px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
-                  category.attributes.name.toLowerCase() === "sponsored"
-                    ? "text-white bg-green-800 hover:bg-white hover:text-primary"
-                    : "text-white bg-primary hover:bg-white hover:text-primary"
-                }`}
-                onClick={() =>
-                  router.push(`/category/${category.attributes.slug}`)
-                }
-              >
-                {category.attributes.name}
-              </p>
+              <Link href={`/category/${category.attributes.slug}`} passHref>
+                <a className="no-underline">
+                  <p
+                    key={current}
+                    className={`text-[5px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
+                      category.attributes.name.toLowerCase() === "sponsored"
+                        ? "text-white bg-green-800 hover:bg-white hover:text-primary"
+                        : "text-white bg-primary hover:bg-white hover:text-primary"
+                    }`}
+                    
+                  >
+                    {category.attributes.name}
+                  </p>
+                </a>
+              </Link>
             ))}
         </div>
       </div>
