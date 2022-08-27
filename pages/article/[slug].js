@@ -101,19 +101,23 @@ const Article = ({ article }) => {
     <Layout
       title={article?.attributes?.title || "Page Not Found!"}
       desc={
+        article?.attributes?.seo?.metaDescription ||
         article?.attributes?.description ||
-        article?.attributes?.content ||
         "This page does not exist yet."
       }
       keywords={
+        article?.attributes?.seo?.keywords ||
         article?.attributes?.keywords ||
         "vland, magazine, article, vegan, v-land, uk, brazil, veggy"
       }
       image={
+        article?.attributes?.seo?.metaImge?.data?.attributes?.url ||
         article?.attributes?.media?.data[0]?.attributes?.formats?.medium?.url
+        
       }
-      metaTitle={article?.attributes?.SEO ? article?.attributes?.SEO[0]?.metaTitle: ''}
-      metaDescription={article?.attributes?.SEO? article?.attributes?.SEO[0]?.metaDescription: ''}
+      metaTitle={article?.attributes?.seo ? article?.attributes?.seo?.metaTitle: ''}
+      metaDescription={article?.attributes?.seo? article?.attributes?.seo?.metaDescription: ''}
+      canonicalUrl={article?.attributes?.seo ? article?.attributes?.seo?.canonicalURL: null}
     >
       <div className="w-[94%] lg:w-4/5 2xl:w-3/4 mx-auto mt-[17vh] lg:mt-[18vh]">
         <Back />

@@ -33,12 +33,14 @@ import Icon from "../components/Icon";
 const qs = require("qs");
 import { GlobalContext } from "../context/GlobalContext";
 import { attributesToProps } from "html-react-parser";
+import Image from "next/image";
 
 const Layout = ({
   children,
   title,
   desc,
   metaTitle,
+  canonicalUrl,
   metaDescription,
   keywords,
   image,
@@ -98,34 +100,38 @@ const Layout = ({
           `,
           }}
         />
+        <meta charset="UTF-8"/>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no"
         />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="google-site-verification" content="nMcgclVIYZbbksryEI2ihhobvvAS4X6FXkHvhY9YYjI" />
+        
         <meta name="theme-color" content="#FFFFFF" />
-        <meta name="description" content={desc} />
         <meta name="keywords" content={keywords} />
+        <meta name="description" content={metaDescription || desc} />
         <link rel="shortcut icon" href="favicon.ico" />
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDescription} />
+
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:title" content={metaTitle || title} />
+        <meta property="og:description" content={metaDescription || desc} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://v-landuk.com" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={desc} />
+        <meta property="og:url" content={canonicalUrl || "https://v-landuk.com"} />
         <meta property="og:image" content={image} />
 
+        
+        <meta property="og:site_name" content="V-Land" />
+        <meta property="og:site" content="https://v-landuk.com" />
+
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://v-landuk.com" />
+        <meta property="twitter:url" content={canonicalUrl || "https://v-landuk.com"} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={desc} />
         <meta property="twitter:image" content={image} />
 
-        <meta property="og:site_name" content="V-Land" />
-        <meta property="og:site" content="https://v-landuk.com" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={desc} />
-        <meta property="og:image" content={image} />
-        <meta property="og:url" content="https://v-landuk.com" />
+        
+        
         <title>{title}</title>
       </Head>
 
@@ -134,14 +140,23 @@ const Layout = ({
           <div className="items-center space-x-4 hidden lg:block lg:place-self-start lg:self-center">
             <NavMenu />
           </div>
-          <div
-            className="h-[8vh] lg:h-[9vh] py-[1.8vh] lg:py-[1.5vh] cursor-pointer"
-            onClick={() => router.push("/")}
-          >
-            <img src="/Header.svg" alt="Header" className="h-full" />
-          </div>
+          <Link href='/' passHref>
+            <a
+              className=" no-underline block relative h-[8vh] lg:h-[9vh] py-[1.8vh] lg:py-[1.5vh] cursor-pointer"
+              
+            >
+              <img
+                src="/Header.svg" 
+                alt="Header"
+                className="h-full"
+                
+              />
+            </a>
+          </Link>
           <div className="lg:hidden">
+           
             <Hamburger color="#000" rounded size={30} toggle={toggleDrawer} />
+            
           </div>
           <div className="hidden lg:flex lg:flex-row-reverse w-[22vw] border-[1px] border-neutral-800 justify-between rounded-3xl overflow-hidden px-1 py-1 place-self-end self-center">
             <input
