@@ -53,7 +53,7 @@ const ArticleCard = ({ article, index }) => {
         className={`w-full  flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-2xl lg:shadow-lg article-container `}
       >
         {/* POST IMAGE */}
-        <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
+        <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden img_ctnr">
           <Image
              priority={index <= 10 ? true: false}
              src={`${
@@ -75,6 +75,7 @@ const ArticleCard = ({ article, index }) => {
             }`}
             layout="fill"
             objectFit="cover"
+            
             
           />
           
