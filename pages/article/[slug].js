@@ -157,11 +157,11 @@ const Article = ({ article }) => {
                       (category, current) => (
                         <p
                           key={current}
-                          className={`text-[11px] lg:text-[12px] font-bold  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-white hover:text-green-600 hover:scale-95 transition-all tag ${
+                          className={`text-[11px] lg:text-[12px] font-bold  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-white hover:text-primary hover:scale-95 transition-all tag ${
                             category.attributes.name.toLowerCase() ===
                             "sponsored"
-                              ? "text-white bg-green-600"
-                              : "text-white bg-green-600"
+                              ? "text-white bg-primary"
+                              : "text-white bg-primary"
                           }`}
                           onClick={() =>
                             router.push(`/category/${category.attributes.slug}`)
