@@ -41,7 +41,7 @@ const ArticleCard =({article, index}) => {
    });
 
     if (AddClass) {
-      return "card-medium";
+      return "col-span-2";
     }
     else{
       return "";
