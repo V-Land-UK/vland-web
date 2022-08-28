@@ -46,7 +46,7 @@ const ArticleCard = ({ article, index }) => {
         className={`w-full  flex flex-col bg-white  rounded-2xl shadow-md lg:drop-shadow-2xl lg:shadow-lg article-container `}
       >
         {/* POST IMAGE */}
-        <div className="relative w-full aspect-square object-cover block rounded-t-md rounded-t-lg rounded-t-xl rounded-t-2xl overflow-hidden">
+        <div className="relative w-full aspect-square object-cover block rounded-t-2xl overflow-hidden">
           <Image
             priority={index <= 10 ? true : false}
             src={`${
