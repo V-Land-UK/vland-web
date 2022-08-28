@@ -38,8 +38,6 @@ import request from "../../utils/request.util";
 
 const Article = ({ article }) => {
   const router = useRouter();
-  
-  
 
   const imageInText = article?.attributes?.content.replace(
     "<img",
@@ -113,11 +111,18 @@ const Article = ({ article }) => {
       image={
         article?.attributes?.seo?.metaImge?.data?.attributes?.url ||
         article?.attributes?.media?.data[0]?.attributes?.formats?.medium?.url
-        
       }
-      metaTitle={article?.attributes?.seo ? article?.attributes?.seo?.metaTitle: ''}
-      metaDescription={article?.attributes?.seo? article?.attributes?.seo?.metaDescription: ''}
-      canonicalUrl={article?.attributes?.seo ? article?.attributes?.seo?.canonicalURL: null}
+      metaTitle={
+        article?.attributes?.seo ? article?.attributes?.seo?.metaTitle : ""
+      }
+      metaDescription={
+        article?.attributes?.seo
+          ? article?.attributes?.seo?.metaDescription
+          : ""
+      }
+      canonicalUrl={
+        article?.attributes?.seo ? article?.attributes?.seo?.canonicalURL : null
+      }
     >
       <div className="w-[94%] lg:w-4/5 2xl:w-3/4 mx-auto mt-[17vh] lg:mt-[18vh]">
         <Back />
@@ -152,11 +157,11 @@ const Article = ({ article }) => {
                       (category, current) => (
                         <p
                           key={current}
-                          className={`text-[11px] lg:text-[12px] font-bold  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-primary hover:text-white hover:scale-95 transition-all tag ${
+                          className={`text-[11px] lg:text-[12px] font-bold  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-white hover:text-green-600 hover:scale-95 transition-all tag ${
                             category.attributes.name.toLowerCase() ===
                             "sponsored"
-                              ? "text-white bg-green-800"
-                              : "text-primary bg-green-50"
+                              ? "text-white bg-green-600"
+                              : "text-white bg-green-600"
                           }`}
                           onClick={() =>
                             router.push(`/category/${category.attributes.slug}`)
@@ -340,27 +345,24 @@ export async function getStaticPaths() {
   return { paths, fallback: "blocking" };
 }
 
-export async function getStaticProps({params, preview=null}) {
+export async function getStaticProps({ params, preview = null }) {
   const { slug } = params;
-  
+
   const filter = qs.stringify({
     filters: {
       slug: {
         $eq: slug,
-
       },
-      
     },
     populate: "*",
   });
 
-
   // const query = await fetch(`${API}/articles?${filter}`);
   // const data = await query.json();
 
-  const { data } = preview ? await request.get(`/articles?${filter}&publicationState=preview`): await request.get(`/articles?${filter}`);
-
- 
+  const { data } = preview
+    ? await request.get(`/articles?${filter}&publicationState=preview`)
+    : await request.get(`/articles?${filter}`);
 
   // return {
   //   props: {
@@ -370,7 +372,6 @@ export async function getStaticProps({params, preview=null}) {
   //     revalidate: 10, // In seconds
   //   },
   // };
-
 
   if (data?.data?.length > 0) {
     return {
