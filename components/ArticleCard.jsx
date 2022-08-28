@@ -48,6 +48,7 @@ const ArticleCard = ({ article, index }) => {
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-2xl overflow-hidden">
           <Image
+            style={{ borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
             priority={index <= 10 ? true : false}
             src={`${
               article.attributes?.media?.data[0]?.attributes?.formats?.medium
