@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap);
 @import url(https://fonts.googleapis.com/css?family=Macondo:100,200,300,400,500,600,700,800,900&display=swap);
 :root {
+  font-size: 16px;
   --primary: #4bac48;
   --secondary: #004d2a;
 }
@@ -42,6 +43,18 @@ a {
   display: block;
 }
 
+.cardList_ctnr{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 16.75rem);
+  gap: 1.25rem;
+  grid-auto-rows: 16.75rem;
+  grid-auto-flow: dense;
+  justify-content: center;
+}
+
+.img-ctnr{
+  -webkit-mask-image:  -webkit-radial-gradient(white, black);
+}
 .poppins {
   font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
@@ -50,7 +63,7 @@ a {
   color: white !important;
 }
 .sponsored h1 {
-  color: white !important;
+  color: white !important; 
 }
 .article-container {
   /* gap: 0.5rem; */
@@ -94,13 +107,13 @@ a {
 .article-date {
   font-size: 9px;
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-  color: rgb(0, 0, 0);
+  color: rgb(90, 90, 90);
 }
 
 .article-date-green {
   font-size: 9px;
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-  color: rgb(0, 0, 0);
+  color: rgb(90, 90, 90);
 }
 
 .sponsored .article-date {
@@ -110,6 +123,14 @@ a {
   font-size: 13px;
   color: white;
 }
+
+.card-medium{
+
+  grid-column-start: span 2;
+  grid-column-end: span 2;
+
+}
+
 .article-preview {
   color: rgba(0, 0, 0);
   max-width: 100%;
@@ -117,18 +138,22 @@ a {
   font-family: "Poppins", "Segoe UI", Tahoma !important;
   line-height: 1.45;
   padding-inline: 0.5rem;
-  padding-top: 0.5rem;
-  overflow-x: hidden;
+  padding-top: .5rem;
+  overflow-x:hidden;
+  
+  
 }
-.article-preview p:nth-child(1)::first-letter {
+.article-preview p:nth-child(1)::first-letter{
   color: var(--primary);
   font-size: 6rem;
   font-weight: 900;
   float: left;
   line-height: 0.45;
-
+  
   margin: 0.1em 0.1em 0.2em 0;
+
 }
+
 
 .article-preview h5 {
   /* font-size: 14px;
@@ -289,27 +314,12 @@ a {
   }
 }
 
-@media screen and (max-width: 1366px){
-  .txt{
-    font-size:12.5px;
-    font-weight: 600;
-    font-family: "Poppins", "Segoe UI", Tahoma !important;
-  }
-}
-
 @media screen and (max-width: 1024px) {
   .article-desc {
     font-size: 10px;
     font-weight: 500;
     font-family: "Poppins", "Segoe UI", Tahoma !important;
   }
-
-  .txt{
-    font-size: 12px;
-    font-weight: 600;
-    font-family: "Poppins", "Segoe UI", Tahoma !important;
-  }
- 
 }
 
 @media screen and (max-width: 480px) {
@@ -372,14 +382,12 @@ a {
   .article-date {
     font-size: 5.5px;
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-    color: rgb(0, 0, 0);
+    color: rgb(90, 90, 90);
   }
 
   .article-date-green {
     font-size: 5.5px;
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-    color: rgb(0, 0, 0);
+    color: rgb(90, 90, 90);
   }
-
-
 }
