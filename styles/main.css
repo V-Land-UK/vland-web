@@ -48,7 +48,7 @@ a {
   grid-template-columns: repeat(auto-fit, 16.75rem);
   gap: 1.25rem;
   grid-auto-rows: 16.75rem;
-  grid-auto-flow: row;
+  grid-auto-flow: dense;
   justify-content: center;
 }
 
@@ -123,8 +123,8 @@ a {
 
 .card-medium{
 
-  
-  grid-column-end: span 2 !important;
+  grid-column-start: span 2;
+  grid-column-end: span 2;
 
 }
 
