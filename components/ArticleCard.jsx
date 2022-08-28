@@ -8,16 +8,9 @@ import Link from "next/link";
 import Moment from "react-moment";
 import Image from "next/image";
 
-
 const ArticleCard = ({ article, index }) => {
   const { findUserByID, Articles } = useContext(GlobalContext);
   const router = useRouter();
-  
-
-  
- 
-
-
 
   // ARTICLE INDEX
   const articleIndex = parseInt(index) + 1;
@@ -50,13 +43,13 @@ const ArticleCard = ({ article, index }) => {
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`w-full  flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-2xl lg:shadow-lg article-container `}
+        className={`w-full  flex flex-col bg-white  rounded-2xl shadow-md lg:drop-shadow-2xl lg:shadow-lg article-container `}
       >
         {/* POST IMAGE */}
-        <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
+        <div className="relative w-full aspect-square object-cover block rounded-t-md rounded-t-lg rounded-t-xl rounded-t-2xl overflow-hidden">
           <Image
-             priority={index <= 10 ? true: false}
-             src={`${
+            priority={index <= 10 ? true : false}
+            src={`${
               article.attributes?.media?.data[0]?.attributes?.formats?.medium
                 ?.url ||
               article.attributes?.media?.data[0]?.attributes?.formats?.large
@@ -68,30 +61,31 @@ const ArticleCard = ({ article, index }) => {
               article.attributes?.media?.data[0]?.attributes?.url ||
               "/Placeholder.png"
             }`}
-            alt= {`${
+            alt={`${
               article.attributes?.media?.data[0]?.attributes?.alternativeText ||
               article?.attributes?.title ||
               ""
             }`}
             layout="fill"
             objectFit="cover"
-            
           />
-          
+
           <div className="absolute flex flex-wrap gap-2 bottom-3 w-[94%] mx-auto right-0 left-0">
             {/* TAGS/CATEGORIES */}
             {article.attributes?.categories?.data.length > 0 &&
               article.attributes.categories.data.map((category, current) => (
-                <Link key={current} href={`/category/${category.attributes.slug}`} passHref>
+                <Link
+                  key={current}
+                  href={`/category/${category.attributes.slug}`}
+                  passHref
+                >
                   <a className="no-underline">
                     <p
-                      
                       className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
                         category.attributes.name.toLowerCase() === "sponsored"
                           ? "text-white bg-green-800 hover:bg-white hover:text-primary"
                           : "text-white bg-primary hover:bg-white hover:text-primary"
                       }`}
-                      
                     >
                       {category.attributes.name}
                     </p>
@@ -107,7 +101,7 @@ const ArticleCard = ({ article, index }) => {
             "Food & Drink"
               ? "green-body "
               : ""
-          } px-5 py-3 h-[12rem] lg:h-[18rem] flex flex-col justify-around rounded-b-xl`}
+          } px-5 py-3 h-[12rem] lg:h-[18rem] flex flex-col justify-around rounded-b-2xl`}
         >
           <div className="article-body">
             <Link
@@ -115,12 +109,11 @@ const ArticleCard = ({ article, index }) => {
               className="cursor-pointer"
               passHref
             >
-
               <a>
                 <h1
                   className={`text-[1.05rem] lg:text-xl  xl:text-3xl  ${
-                    article.attributes?.categories?.data[0]?.attributes?.name ===
-                    "Food & Drink"
+                    article.attributes?.categories?.data[0]?.attributes
+                      ?.name === "Food & Drink"
                       ? "article-title-green "
                       : "article-title"
                   }`}
@@ -130,7 +123,6 @@ const ArticleCard = ({ article, index }) => {
                     : article?.attributes?.title}
                 </h1>
               </a>
-
             </Link>
           </div>
           <div className="my-auto">
@@ -142,26 +134,20 @@ const ArticleCard = ({ article, index }) => {
           </div>
 
           <div className="article-author-home flex lg:space-x-4 ">
-
-            <div className= "relative  w-7 h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9">
+            <div className="relative  w-7 h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9">
               <Image
                 src={
-                  findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                  ?.image?.data?.attributes?.formats?.small?.url ||
-                findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                  ?.image?.data?.attributes?.url ||
-                "/User.svg"
+                  findUserByID(article?.attributes?.author?.data?.id)
+                    ?.attributes?.image?.data?.attributes?.formats?.small
+                    ?.url ||
+                  findUserByID(article?.attributes?.author?.data?.id)
+                    ?.attributes?.image?.data?.attributes?.url ||
+                  "/User.svg"
                 }
-                
                 alt="Picture of author"
                 layout="fill"
                 objectFit="cover"
-                style={{borderRadius: "50%",
-                       
-                      }}
-              
-                
-
+                style={{ borderRadius: "50%" }}
               />
             </div>
 
