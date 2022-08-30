@@ -7,14 +7,63 @@ import { GlobalContext } from "../context/GlobalContext";
 import { API } from "../config/api";
 import { PAGINATION_LIMIT } from "../config/meta";
 import Ads from "../components/Ads";
+import { min } from "moment";
+import useFetch from "../hooks/useFetch.js";
+import Preloader from "../components/Preloader";
+import { data } from "autoprefixer";
+
+
 const qs = require("qs");
 
 export default function Home({ articles, meta, ads }) {
   const { setArticles } = useContext(GlobalContext);
 
-  useEffect(() => {
-    setArticles(articles);
-  }, []);
+  const [page,setPage] = useState(meta.pagination.page + 1);
+  
+  const {loading,Articles,error, hasMore,queriesSent} = useFetch(page);
+  
+  const ref = useRef();
+  
+
+
+  
+  const handleObserver = useCallback((node)=>{
+    if(loading)return;
+    
+    setPage(prev => prev + 1);
+    
+
+    
+    
+    
+
+
+  });
+
+  useEffect(()=>{
+    
+    
+    if(hasMore){
+      ref.current.style.maxHeight  = `${ref.current.clientHeight*(page)}px`;
+    }
+    else{
+      ref.current.removeAttribute("maxHeight");
+      ref.current.classList.remove("cardGrid__list");
+    }
+    
+    Articles.length && articles.push(...Articles);
+    
+    
+
+
+
+  }, [queriesSent])
+
+  
+
+ 
+
+  
 
   const articlesBeforeAd = 15;
 
@@ -35,7 +84,7 @@ export default function Home({ articles, meta, ads }) {
     <Layout>
       {articles.length > 0 ? (
         <>
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[10px] lg:gap-5 lg:gap-y-6 ">
+          <div className="cardGrid__list relative grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[10px] lg:gap-5 lg:gap-y-6 ">
             {articles?.map((article, index) => (
               <Fragment key={index}>
                 <ArticleCard article={article} index={index} />
@@ -46,7 +95,23 @@ export default function Home({ articles, meta, ads }) {
               </Fragment>
             ))}
           </div>
-          <Pagination meta={meta} min={3} prefix="articles?" />
+          {hasMore && (
+            <div className="block w-[100%] h-[8rem] text-center bg-gradient-to-t from-white">
+                <button aria-label="load more articles" className="hv-toggle inline-block w-[12rem] h-[4rem] mt-[2rem] text-primary bg-transparent border-4 border-primary cursor-pointer rounded-md text-lg" onClick={handleObserver}>{loading ? 
+                (
+                  <Preloader />
+                ): error ? (
+                  <div className="inline-block align-left">
+                    <i className="fa fa-error mx-[1.5rem]"></i>
+                    <p>Error</p>
+                  </div>
+                ) : "Read More"}</button>
+            </div>
+          )}
+        
+          
+          
+          
         </>
       ) : (
         <div className="py-[10vh] lg:py-[15vh] text-center text-primary text-3xl lg:text-4xl font-semibold px-6">
