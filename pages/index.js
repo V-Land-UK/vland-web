@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect, Fragment } from "react";
+import { useContext, useEffect, useState, useRef, useCallback, Fragment } from "react";
 import Layout from "../defaults/Layout";
 import ArticleCard from "../components/ArticleCard";
 import Pagination from "../components/Pagination";
@@ -16,7 +16,8 @@ import { data } from "autoprefixer";
 const qs = require("qs");
 
 export default function Home({ articles, meta, ads }) {
-  const { setArticles } = useContext(GlobalContext);
+  
+  
 
   const [page,setPage] = useState(meta.pagination.page + 1);
   
@@ -39,6 +40,8 @@ export default function Home({ articles, meta, ads }) {
 
 
   });
+
+
 
   useEffect(()=>{
     
@@ -86,14 +89,18 @@ export default function Home({ articles, meta, ads }) {
         <>
           <div className="cardGrid__list relative grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[10px] lg:gap-5 lg:gap-y-6 ">
             {articles?.map((article, index) => (
-              <Fragment key={index}>
-                <ArticleCard article={article} index={index} />
-                {/* Show Ads */}
-                {ads.length > 0 && checkAds(index) && (
-                  <Ads ad={ads[getAdsIndex(index)]} />
-                )}
-              </Fragment>
+            
+                  <Fragment key={index}>
+                    <ArticleCard article={article} index={index}/>
+                    {/* Show Ads */}
+                    {ads.length > 0 && checkAds(index) && (
+                      <Ads ad={ads[getAdsIndex(index)]} />
+                    )}
+                  </Fragment>
             ))}
+        
+            
+            
           </div>
           {hasMore && (
             <div className="block w-[100%] h-[8rem] text-center bg-gradient-to-t from-white">
@@ -113,6 +120,8 @@ export default function Home({ articles, meta, ads }) {
           
           
         </>
+
+        
       ) : (
         <div className="py-[10vh] lg:py-[15vh] text-center text-primary text-3xl lg:text-4xl font-semibold px-6">
           No Articles Yet.
