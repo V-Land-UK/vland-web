@@ -4,11 +4,13 @@ import { PAGINATION_LIMIT } from "../config/meta.js";
 const qs = require("qs");
 
 
-const useFetch = (articles, page)=>{
+const useFetch = (page)=>{
     const [loading,setLoading] = useState(true);
+    const [Articles,setArticles] = useState([]);
     const [error,setError] = useState(false);
-    
+    const [queriesSent,setQueriesSent] = useState(0);
     const [hasMore, setHasMore] = useState(true);
+     
    
     const filters  = qs.stringify({
         populate:"*",
@@ -22,7 +24,7 @@ const useFetch = (articles, page)=>{
        
     
         setLoading(true);
-        setError(false);
+        
         
         const promise = new Promise((resolve,reject)=>{
             
@@ -51,11 +53,16 @@ const useFetch = (articles, page)=>{
         });     
         
         const data = await promise;
+        setHasMore(data.meta.pagination.pageCount > page - 1);
         
-        articles.push(...data.data);
-
+        setArticles(()=>{
+           return [...data.data]
+        });
+        
         setLoading(false);
-        setHasMore(data.meta.pagination.pageCount < page);
+        
+        
+        setQueriesSent(prev => prev + 1);
             
        
        
@@ -63,14 +70,16 @@ const useFetch = (articles, page)=>{
 
 
         
-    }, [page]);
+    }
+    , [page]);
     useEffect(()=>{
         sendQuery(page);
     }, [sendQuery, page]);
-    
+
+  
 
 
-    return {loading, error,hasMore};
+    return {loading,Articles, error,hasMore, queriesSent};
 
 
 }

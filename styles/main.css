@@ -135,7 +135,7 @@ a {
 
 }
 .cardGrid__list{
-  position: relative;
+  
   max-height: 6049px;
   overflow-y: hidden;
 }
@@ -149,11 +149,34 @@ a {
   color: #000000;
 }
 
+.load_animation_item {
+  will-change: transform opacity;
+  background-color: #4bac48;
+  margin:0 2px;
+  animation: preloader 1.5s infinite ease-out;
+}
+.load_animation_item:nth-child(1){
+  animation-delay: .1s;
+}
+.load_animation_item:nth-child(2){
+  animation-delay: .2s;
+}
+.load_animation_item:nth-child(3){
+  animation-delay: .3s;
+}
+@keyframes preloader{
+  0%,50%,100%{
+    transform: scale(1);
+  }
+  20%{
+    transform: scale(2);
+  }
+}
 .cardGrid__list::after{
   content:'';
   left: 0;
   right:0;
-  width: 98%;
+  width: 100%;
   
   z-index: 2;
   position:absolute;

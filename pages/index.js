@@ -10,6 +10,11 @@ import Ads from "../components/Ads";
 import Scroll from "../components/Scroll";
 import { min } from "moment";
 import useFetch from "../hooks/useFetch.js";
+import Preloader from "../components/Preloader";
+import usePrevious from "../hooks/usePrevious";
+import { data } from "autoprefixer";
+
+
 const qs = require("qs");
 
 export default function Home({ articles, meta, ads }) {
@@ -17,8 +22,9 @@ export default function Home({ articles, meta, ads }) {
   
 
   const [page,setPage] = useState(meta.pagination.page + 1);
-
-  const {loading,error, hasMore} = useFetch(articles,page);
+  
+  const {loading,Articles,error, hasMore,queriesSent} = useFetch(page);
+  
   const ref = useRef();
   
 
@@ -26,13 +32,9 @@ export default function Home({ articles, meta, ads }) {
   
   const handleObserver = useCallback((node)=>{
     if(loading)return;
+    
     setPage(prev => prev + 1);
-    if(!hasMore){
-      ref.current.style.maxHeight  = `${ref.current.clientHeight*(page)}px`;
-    }
-    else{
-      ref.current.removeAttribute("maxHeight");
-    }
+    
 
     
     
@@ -40,6 +42,27 @@ export default function Home({ articles, meta, ads }) {
 
 
   });
+
+  useEffect(()=>{
+    
+    
+    if(hasMore){
+      ref.current.style.maxHeight  = `${ref.current.clientHeight*(page)}px`;
+    }
+    else{
+      ref.current.removeAttribute("maxHeight");
+      ref.current.classList.remove("cardGrid__list");
+    }
+    
+    Articles.length && articles.push(...Articles);
+    
+    
+
+
+
+  }, [queriesSent])
+
+  
 
  
 
@@ -66,7 +89,7 @@ export default function Home({ articles, meta, ads }) {
        
           <>
           {/* <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[10px] lg:gap-5 lg:gap-y-6 "> */}
-          <div className="cardGrid__list grid xs:grid-cols-1 gap-5 sm:grid-cols-2 gap-5 md:grid-cols-3 gap-5 lg:grid-cols-3 gap-5 xl:grid-cols-4 gap-5 2xl:grid-cols-5 gap-5" ref={ref}>
+          <div className="cardGrid__list relative grid xs:grid-cols-1 gap-5 sm:grid-cols-2 gap-5 md:grid-cols-3 gap-5 lg:grid-cols-3 gap-5 xl:grid-cols-4 gap-5 2xl:grid-cols-5 gap-5" ref={ref}>
             
             {articles?.map((article, index) => (
             
@@ -82,13 +105,21 @@ export default function Home({ articles, meta, ads }) {
             
             
           </div>
-          {!hasMore && (
+          {hasMore && (
             <div className="block w-[100%] h-[8rem] text-center bg-gradient-to-t from-white">
-                <button className="hv-toggle inline-block w-[12rem] h-[4rem] mt-[2rem] text-primary bg-transparent border-4 border-primary cursor-pointer rounded-md text-lg" onClick={handleObserver}>{loading ? "loading...": "View More"}</button>
+                <button aria-label="load more articles" className="hv-toggle inline-block w-[12rem] h-[4rem] mt-[2rem] text-primary bg-transparent border-4 border-primary cursor-pointer rounded-md text-lg" onClick={handleObserver}>{loading ? 
+                (
+                  <Preloader />
+                ): error ? (
+                  <div className="inline-block align-left">
+                    <i className="fa fa-error mx-[1.5rem]"></i>
+                    <p>Error</p>
+                  </div>
+                ) : "Read More"}</button>
             </div>
           )}
         
-          {error && <div>error...</div>}
+          
           
           
         </>
