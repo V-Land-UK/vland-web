@@ -11,7 +11,8 @@ import { min } from "moment";
 import useFetch from "../hooks/useFetch.js";
 import Preloader from "../components/Preloader";
 import { data } from "autoprefixer";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 const qs = require("qs");
 
@@ -87,7 +88,7 @@ export default function Home({ articles, meta, ads }) {
     <Layout>
       {articles.length > 0 ? (
         <>
-          <div className="cardGrid__list relative grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[10px] lg:gap-5 lg:gap-y-6 ">
+          <div className="cardGrid__list relative grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[10px] lg:gap-5 lg:gap-y-6 " ref={ref}>
             {articles?.map((article, index) => (
             
                   <Fragment key={index}>
@@ -104,13 +105,13 @@ export default function Home({ articles, meta, ads }) {
           </div>
           {hasMore && (
             <div className="block w-[100%] h-[8rem] text-center bg-gradient-to-t from-white">
-                <button aria-label="load more articles" className="hv-toggle inline-block w-[12rem] h-[4rem] mt-[2rem] text-primary bg-transparent border-4 border-primary cursor-pointer rounded-md text-lg" onClick={handleObserver}>{loading ? 
+                <button aria-label="load more articles" className={`hv-toggle inline-block w-[12rem] h-[4rem] mt-[2rem] text-primary bg-transparent border-4 border-primary cursor-pointer rounded-md text-lg ${error ? "err_view": ""}`} onClick={handleObserver}>{loading ? 
                 (
                   <Preloader />
                 ): error ? (
                   <div className="inline-block align-left">
-                    <i className="fa fa-error mx-[1.5rem]"></i>
-                    <p>Error</p>
+                    <FontAwesomeIcon icon={faExclamationTriangle} className="inline-block text-white w-[1rem] mr-[.6rem]"/>
+                    <p className="inline-block text-white">Error</p>
                   </div>
                 ) : "Read More"}</button>
             </div>
@@ -153,6 +154,7 @@ export async function getServerSideProps({ req, res, query }) {
   );
 
   const response = await fetch(`${API}/articles?${filters}`);
+
   const data = await response.json();
 
   // get ads

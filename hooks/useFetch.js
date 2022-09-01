@@ -52,6 +52,7 @@ const useFetch = (page)=>{
         });     
         
         const data = await promise;
+        
         setHasMore(data.meta.pagination.pageCount > page - 1);
         
         setArticles(()=>{

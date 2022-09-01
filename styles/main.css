@@ -170,6 +170,13 @@ a {
   color: #000000;
 }
 
+.err_view{
+  background-color: #ff4d4d !important;
+  border-width: 0 0 0 0 !important;
+  pointer-events: none !important;
+  
+}
+
 .load_animation_item {
   will-change: transform opacity;
   background-color: #4bac48;
