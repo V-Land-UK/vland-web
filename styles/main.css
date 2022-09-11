@@ -72,7 +72,9 @@ a {
   gap: 0.3rem;
   font-family: "Poppins", Arial, Helvetica, sans-serif, "Segoe UI", Tahoma !important;
   cursor: pointer;
+  
 }
+
 .article-desc {
   font-size: 15px;
   font-weight: 500;
@@ -153,7 +155,63 @@ a {
   margin: 0.1em 0.1em 0.2em 0;
 
 }
+.cardGrid__list{
+  
+  max-height: 6049px;
+  overflow-y: hidden;
+}
+.hv-toggle{
+  transition: .24s ease-in-out;
 
+}
+
+.hv-toggle:hover{
+  border-color: #000000;
+  color: #000000;
+}
+
+.err_view{
+  background-color: #ff4d4d !important;
+  border-width: 0 0 0 0 !important;
+  pointer-events: none !important;
+  
+}
+
+.load_animation_item {
+  will-change: transform opacity;
+  background-color: #4bac48;
+  margin:0 2px;
+  animation: preloader 1.5s infinite ease-out;
+}
+.load_animation_item:nth-child(1){
+  animation-delay: .1s;
+}
+.load_animation_item:nth-child(2){
+  animation-delay: .2s;
+}
+.load_animation_item:nth-child(3){
+  animation-delay: .3s;
+}
+@keyframes preloader{
+  0%,50%,100%{
+    transform: scale(1);
+  }
+  20%{
+    transform: scale(2);
+  }
+}
+.cardGrid__list::after{
+  content:'';
+  left: 0;
+  right:0;
+  width: 100%;
+  
+  z-index: 2;
+  position:absolute;
+  bottom:0;
+  height: 5rem;
+  background: linear-gradient(-180deg, rgba(248,249,248,0) 5%, #ffffff 80%);
+}
 
 .article-preview h5 {
   /* font-size: 14px;
