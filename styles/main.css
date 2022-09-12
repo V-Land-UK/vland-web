@@ -52,6 +52,9 @@ a {
   justify-content: center;
 }
 
+.img-ctnr{
+  -webkit-mask-image:  -webkit-radial-gradient(white, black);
+}
 .poppins {
   font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
@@ -60,7 +63,7 @@ a {
   color: white !important;
 }
 .sponsored h1 {
-  color: white !important;
+  color: white !important; 
 }
 .article-container {
   /* gap: 0.5rem; */
@@ -347,6 +350,15 @@ a {
 }
 
 
+@media screen and (max-width: 1366px){
+  .txt{
+    font-size: 12.5px;
+    font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+    font-weight: 600;
+
+  }
+
+}
 
 @media screen and (max-width: 1024px) {
 
@@ -390,6 +402,12 @@ a {
   }
   
 
+  .txt{
+    font-size: 12px;
+    font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+    font-weight: 600;
+
+  }
 }
 
 @media screen and (max-width: 480px) {
