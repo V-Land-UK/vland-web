@@ -8,28 +8,33 @@ import Link from "next/link";
 import Moment from "react-moment";
 import Image from "next/image";
 import React from "react";
+import { stringify } from "qs";
+
 
 const ArticleCard =({article, index}) => {
   
   const { findUserByID, Articles } = useContext(GlobalContext);
   const router = useRouter();
-
+  const rmvWhiteSpace = (str)=>{
+    return str.replace(/\s+/g, '');
+  }
   // ARTICLE INDEX
   const articleIndex = parseInt(index) + 1;
-  const culture = (cat)=>{
-    if (
-      cat.attributes.name.toLowerCase() === "culture" 
-      
-    ) {
-     return true;
-    } else {
-     return false;
-   }
-
-  };
+  
   //FIND SPONSORED POSTS
-  const Sponsored = (post) => {
-    const AddClass = post.some((cat) => {
+  const checkCharCount = (post) => {
+    const titleChars = rmvWhiteSpace(post);
+    const titleCharsCount = titleChars.split('').length - 1;
+
+    return titleCharsCount > 50;
+  };
+
+  //const Sponsored = (post) =>{
+    //const AddClass = 0;
+    
+
+    
+    /*post.some((cat) => {
      if (
         cat.attributes.name.toLowerCase() === "culture" 
         
@@ -37,16 +42,19 @@ const ArticleCard =({article, index}) => {
        return true;
       } else {
        return false;
-     }
-   });
+     }*/
+   
 
-    if (AddClass) {
+    /*if (titleCharsCount > 40) {
+      console.log(titleCharsCount);
       return "col-span-2";
     }
     else{
+      
       return "";
     }
-   };
+  };*/
+  
 
   // className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container ${Sponsored(
   //   article.attributes?.categories?.data
@@ -58,7 +66,7 @@ const ArticleCard =({article, index}) => {
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-2xl lg:shadow-lg col-span-1 row-span-2 ${Sponsored(article.attributes.categories.data)}`}
+        className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-2xl lg:shadow-lg row-span-2 ${checkCharCount(article.attributes.title)? "card-medium": "col-span-1"}`}
       >
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden img_ctnr">
@@ -118,7 +126,8 @@ const ArticleCard =({article, index}) => {
             "Food & Drink"
               ? "green-body "
               : ""
-          } px-5 py-3 h-[12rem] lg:h-[18rem] flex flex-col justify-around rounded-b-2xl`}
+          } px-5 py-3 xs:h-[11.0715rem] sm:h-[11.0715rem] md:h-[15.75rem] lg:h-[18rem] flex flex-col justify-around rounded-b-2xl`}
+          
         >
           <div className="article-body">
             <Link
@@ -141,6 +150,7 @@ const ArticleCard =({article, index}) => {
                 </h1>
               </a>
             </Link>
+            
           </div>
           <div className="my-auto">
             <p className=" lg:text-xs article-desc-home">
