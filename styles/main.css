@@ -254,7 +254,7 @@ ol,ul {
   overflow:hidden;
   font-weight: 900 !important;
   transition: all 0.75s ease-in-out;
-  line-height: 1.12 !important;
+  line-height: 1.18 !important;
   color: var(--primary);
   -webkit-line-clamp: 5;
   max-height: 15rem;
@@ -270,7 +270,7 @@ ol,ul {
   overflow: hidden;
   font-weight: 900 !important;
   transition: all 0.75s ease-in-out;
-  line-height: 1.12 !important;
+  line-height: 1.18 !important;
   color: white;
   -webkit-line-clamp:5;
   
