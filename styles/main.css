@@ -46,10 +46,16 @@ a {
 .cardList_ctnr{
   display: grid;
   grid-template-columns: repeat(auto-fit, 16.75rem);
-  gap: 1.25rem;
+  padding-top: 0.625rem;
+  gap: .625rem;
   grid-auto-rows: 16.75rem;
   grid-auto-flow: dense;
   justify-content: center;
+  overflow-x: visible;
+  
+}
+.hasMore{
+  overflow-y:hidden;
 }
 
 .img-ctnr{
@@ -155,6 +161,9 @@ a {
   margin: 0.1em 0.1em 0.2em 0;
 
 }
+ol,ul {
+  list-style: disc inside;
+}
 .cardGrid__list{
   
   max-height: 6049px;
@@ -200,7 +209,7 @@ a {
     transform: scale(2);
   }
 }
-.cardGrid__list::after{
+.hasMore::after{
   content:'';
   left: 0;
   right:0;
@@ -240,41 +249,71 @@ a {
 }*/
 
 .article-title {
+  display: -webkit-box;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
   font-weight: 900 !important;
   transition: all 0.75s ease-in-out;
   line-height: 1.12 !important;
   color: var(--primary);
+  -webkit-line-clamp: 5;
+  max-height: 15rem;
+  
+
+  
   /* font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important; */
 }
 
 .article-title-green {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   font-weight: 900 !important;
   transition: all 0.75s ease-in-out;
   line-height: 1.12 !important;
   color: white;
+  -webkit-line-clamp:5;
+  
 
   /* font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important; */
 }
-.article-title:hover,
-.article-title:focus {
-  text-decoration: underline;
+.underline{
+  text-decoration:none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0% 90%;
+  background-size:0% .4rem !important;
+  transition:background-size .6s ease-in !important;
+  will-change: background-size;
+
+
+}
+
+.article-title:hover .underline,
+.article-title:focus .underline{
+  
+  background-size: 100% .4rem !important;
+  
+  /*text-decoration: underline;
   text-underline-offset: 0.05em;
   text-decoration-color: #4fc049;
   text-decoration-thickness: 5px !important;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  transition-duration: 150ms;*/
 }
 
-.article-title-green:hover,
-.article-title-green:focus {
-  text-decoration: underline;
+.article-title-green:hover .underline,
+.article-title-green:focus .underline{
+
+  background-size: 100% .4rem !important;
+  /*text-decoration: underline;
   text-underline-offset: 0.05em;
   text-decoration-color: white;
   text-decoration-thickness: 5px !important;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  transition-duration: 150ms;*/
 }
 .article-title::before {
   /* content: ""; */
@@ -338,6 +377,11 @@ a {
   background-color: var(--primary);
 }
 
+.card-medium div .article-body .article-title,
+.card-medium div .article-body .article-title-green{
+  -webkit-line-clamp:3;
+}
+
 @-moz-document url-prefix() {
   .article-preview::first-letter {
     -moz-color: var(--primary);
@@ -372,6 +416,7 @@ a {
   }
 }
 
+
 @media screen and (max-width: 1366px){
   .txt{
     font-size: 12.5px;
@@ -383,17 +428,99 @@ a {
 }
 
 @media screen and (max-width: 1024px) {
+
+  .cardList_ctnr{
+    grid-template-columns: repeat(auto-fit, 15.125rem);
+    gap: .625rem;
+    grid-auto-rows: 15.125rem;
+    
+    
+  }
   .article-desc {
     font-size: 10px;
     font-weight: 500;
     font-family: "Poppins", "Segoe UI", Tahoma !important;
   }
+  .article-title,
+  .article-title-green{
+    line-height: 1.18 !important;
+    max-height: 13.1rem;
+  }
+  .card-medium div .article-body .article-title,
+  .card-medium div .article-body .article-title-green{
+    -webkit-line-clamp:2;
+    max-height: 13.1rem;
+  }
+  .underline{
+    background-size: 0% .3rem !important;
+  }
+  .article-title:hover .underline,
+  .article-title:focus .underline,
+  .article-title-green:hover .underline,
+  .article-title-green:focus .underline{
+    background-size: 100% .3rem !important;
+  }
+
+}
+@media screen and (max-width: 768px){
+  .cardList_ctnr{
+    grid-template-columns: repeat(auto-fit, 10.8215rem);
+    gap: .25rem;
+    grid-auto-rows: 10.8215rem;
+    
+    
+  }
+
+  .article-title,
+  .article-title-green{
+    -webkit-line-clamp: 4;
+    max-height: 11.2rem;
+  }
+  
+
   .txt{
     font-size: 12px;
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
     font-weight: 600;
 
   }
+  .article-title,
+  .article-title-green{
+    line-height: 1.18 !important;
+    max-height: 13.1rem;
+  }
+  .card-medium div .article-body .article-title,
+  .card-medium div .article-body .article-title-green{
+    -webkit-line-clamp:2;
+    max-height: 13.1rem;
+  }
+  .underline{
+    background-size: 0% .3rem !important;
+  }
+  .article-title:hover .underline,
+  .article-title:focus .underline,
+  .article-title-green:hover .underline,
+  .article-title-green:focus .underline{
+    background-size: 100% .3rem !important;
+  }
+
+}
+@media screen and (max-width: 768px){
+  .cardList_ctnr{
+    grid-template-columns: repeat(auto-fit, 10.8215rem);
+    gap: .25rem;
+    grid-auto-rows: 10.8215rem;
+    
+    
+  }
+
+  .article-title,
+  .article-title-green{
+    -webkit-line-clamp: 4;
+    max-height: 11.2rem;
+  }
+  
+
 }
 
 @media screen and (max-width: 480px) {
@@ -409,13 +536,7 @@ a {
     font-family: "Poppins", "Segoe UI", Tahoma !important;
   }
 
-  .article-title {
-    font-weight: 900 !important;
-    transition: all 0.75s ease-in-out;
-    color: var(--primary);
-    line-height: 1 !important;
-    /* font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important; */
-  }
+  
 
   .article-author {
     width: max-content;
@@ -464,4 +585,24 @@ a {
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
     color: rgb(90, 90, 90);
   }
+  .article-title,
+  .article-title-green{
+    font-weight: 700 !important;
+    max-height: fit-content;
+    
+    line-height: 1.23 !important;
+    
+  }
+  .underline{
+    background-size: 0% .25rem !important;
+  }
+  .article-title:hover .underline,
+  .article-title:focus .underline{
+    background-size:100% .25rem !important;
+  }
+  .article-title-green:hover .underline,
+  .article-title-green:focus .underline{
+    background-size:100% .25rem !important;
+  }
+
 }

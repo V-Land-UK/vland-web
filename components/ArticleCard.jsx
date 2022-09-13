@@ -6,51 +6,78 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Moment from "react-moment";
+import React from "react";
+import { stringify } from "qs";
 import Image from "next/image";
 
-const ArticleCard = ({ article, index }) => {
+
+
+
+const ArticleCard =({article, index}) => {
+  
   const { findUserByID, Articles } = useContext(GlobalContext);
   const router = useRouter();
 
+  //HELPER FUNC REMOVING WHITESPACE FROM STRING
+  const rmvWhiteSpace = (str)=>{
+    return str.replace(/\s+/g, '');
+  }
   // ARTICLE INDEX
   const articleIndex = parseInt(index) + 1;
+  
+  //FIND POSTS WITH TITLE LENGTHS > 50 CHARACTERS
+  const checkCharCount = (post) => {
+    const titleChars = rmvWhiteSpace(post);
+    const titleCharsCount = titleChars.split('').length - 1;
 
+    return titleCharsCount > 50;
+  };
   //FIND SPONSORED POSTS
-  // const Sponsored = (post) => {
-  //   const AddClass = post.some((cat) => {
-  //     if (
-  //       cat.attributes.name.toLowerCase() === "sponsored" &&
-  //       articleIndex % 2 !== 0
-  //     ) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   });
+  //const Sponsored = (post) =>{
+    //const AddClass = 0;
+    
 
-  //   if (AddClass) {
-  //     return " col-span-2";
-  //   }
-  // };
+    
+    /*post.some((cat) => {
+     if (
+        cat.attributes.name.toLowerCase() === "culture" 
+        
+      ) {
+       return true;
+      } else {
+       return false;
+     }*/
+   
+
+    /*if (titleCharsCount > 40) {
+      console.log(titleCharsCount);
+      return "col-span-2";
+    }
+    else{
+      
+      return "";
+    }
+  };*/
+  
 
   // className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container ${Sponsored(
   //   article.attributes?.categories?.data
   // )}`}
 
   return (
-    <>
+    
       <motion.div
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`w-full  flex flex-col bg-white  rounded-2xl shadow-md lg:drop-shadow-2xl lg:shadow-lg article-container `}
+        className={`w-full flex flex-col bg-white rounded-2xl shadow-md lg:drop-shadow-lg row-span-2 ${checkCharCount(article.attributes.title)? "card-medium": "col-span-1"} will-change-transform`}
       >
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden img_ctnr">
         
           <Image
             style={{ borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
-            priority={index <= 10 ? true : false}
+            priority= {true}
             src={`${
               article.attributes?.media?.data[0]?.attributes?.formats?.medium
                 ?.url ||
@@ -103,7 +130,8 @@ const ArticleCard = ({ article, index }) => {
             "Food & Drink"
               ? "green-body "
               : ""
-          } px-5 py-3 h-[12rem] lg:h-[18rem] flex flex-col justify-around rounded-b-2xl`}
+          } px-5 py-3 xs:h-[11.0715rem] sm:h-[11.0715rem] md:h-[15.75rem] lg:h-[18rem] flex flex-col justify-around rounded-b-2xl`}
+          
         >
           <div className="article-body">
             <Link
@@ -113,19 +141,21 @@ const ArticleCard = ({ article, index }) => {
             >
               <a>
                 <h1
-                  className={`text-[1.05rem] lg:text-xl  xl:text-3xl  ${
+                  className={` xs:text-[1.4rem] sm:text-[1.5rem] md:text-2xl lg:text-3xl xl:text-3xl border-box xs:pb-[0.16rem] mb-[0.1875rem] sm:pb-[0.08rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
                     article.attributes?.categories?.data[0]?.attributes
-                      ?.name === "Food & Drink"
-                      ? "article-title-green "
-                      : "article-title"
+                        ?.name === "Food & Drink"
+                        ? "article-title-green "
+                        : "article-title"
                   }`}
                 >
-                  {article?.attributes?.title?.length > 65
+                  <span className="underline">{article?.attributes?.title?.length > 65
                     ? article?.attributes?.title.slice(0, 65) + "..."
                     : article?.attributes?.title}
+                  </span>
                 </h1>
               </a>
             </Link>
+            
           </div>
           <div className="my-auto">
             <p className=" lg:text-xs article-desc-home">
@@ -193,7 +223,7 @@ const ArticleCard = ({ article, index }) => {
           </div>
         </div>
       </motion.div>
-    </>
+   
   );
 };
 
