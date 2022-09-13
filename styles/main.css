@@ -46,7 +46,7 @@ a {
 .cardList_ctnr{
   display: grid;
   grid-template-columns: repeat(auto-fit, 16.75rem);
-  gap: 1.25rem;
+  gap: .625rem;
   grid-auto-rows: 16.75rem;
   grid-auto-flow: dense;
   justify-content: center;
@@ -246,7 +246,7 @@ ol,ul {
   display: -webkit-box;
   -webkit-box-orient:vertical;
   overflow:hidden;
-  font-weight: 700 !important;
+  font-weight: 900 !important;
   transition: all 0.75s ease-in-out;
   line-height: 1.12 !important;
   color: var(--primary);
@@ -262,7 +262,7 @@ ol,ul {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-weight: 700 !important;
+  font-weight: 900 !important;
   transition: all 0.75s ease-in-out;
   line-height: 1.12 !important;
   color: white;
@@ -442,13 +442,22 @@ ol,ul {
   }
   .article-title,
   .article-title-green{
-    
+    line-height: 1.18 !important;
     max-height: 13.1rem;
   }
   .card-medium div .article-body .article-title,
   .card-medium div .article-body .article-title-green{
     -webkit-line-clamp:2;
     max-height: 13.1rem;
+  }
+  .underline{
+    background-size: 0% .3rem !important;
+  }
+  .article-title:hover .underline,
+  .article-title:focus .underline,
+  .article-title-green:hover .underline,
+  .article-title-green:focus .underline{
+    background-size: 100% .3rem !important;
   }
 
 }
@@ -483,13 +492,7 @@ ol,ul {
     font-family: "Poppins", "Segoe UI", Tahoma !important;
   }
 
-  .article-title {
-    font-weight: 700 !important;
-    transition: all 0.75s ease-in-out;
-    color: var(--primary);
-    line-height: 1 !important;
-    /* font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important; */
-  }
+  
 
   .article-author {
     width: max-content;
@@ -540,10 +543,22 @@ ol,ul {
   }
   .article-title,
   .article-title-green{
-    
+    font-weight: 700 !important;
     max-height: fit-content;
     
     line-height: 1.23 !important;
     
   }
+  .underline{
+    background-size: 0% .25rem !important;
+  }
+  .article-title:hover .underline,
+  .article-title:focus .underline{
+    background-size:100% .25rem !important;
+  }
+  .article-title-green:hover .underline,
+  .article-title-green:focus .underline{
+    background-size:100% .25rem !important;
+  }
+
 }
