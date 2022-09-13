@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Moment from "react-moment";
+import React from "react";
+import { stringify } from "qs";
 import Image from "next/image";
 import React from "react";
 import { stringify } from "qs";
@@ -66,7 +68,7 @@ const ArticleCard =({article, index}) => {
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-2xl lg:shadow-lg row-span-2 ${checkCharCount(article.attributes.title)? "card-medium": "col-span-1"}`}
+        className={`w-full flex flex-col bg-white rounded-2xl shadow-md lg:drop-shadow-2xl lg:shadow-lg row-span-2 ${checkCharCount(article.attributes.title)? "card-medium": "col-span-1"}`}
       >
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden img_ctnr">
@@ -141,13 +143,13 @@ const ArticleCard =({article, index}) => {
                       ?.name === "Food & Drink"
                       ? "article-title-green "
                       : "article-title"
-                  }`}
-                >
-                  {article?.attributes?.title?.length > 65
-                    ? article?.attributes?.title.slice(0, 65) + "..."
-                    : article?.attributes?.title}
-                </h1>
-              
+                }`}
+              >
+                <span className="underline">{article?.attributes?.title?.length > 65
+                  ? article?.attributes?.title.slice(0, 65) + "..."
+                  : article?.attributes?.title}
+                </span>
+              </h1>
             </Link>
             
           </div>

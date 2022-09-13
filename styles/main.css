@@ -410,6 +410,7 @@ ol,ul {
   }
 }
 
+
 @media screen and (max-width: 1366px){
   .txt{
     font-size: 12.5px;
@@ -434,6 +435,43 @@ ol,ul {
     font-weight: 500;
     font-family: "Poppins", "Segoe UI", Tahoma !important;
   }
+  .article-title,
+  .article-title-green{
+    line-height: 1.18 !important;
+    max-height: 13.1rem;
+  }
+  .card-medium div .article-body .article-title,
+  .card-medium div .article-body .article-title-green{
+    -webkit-line-clamp:2;
+    max-height: 13.1rem;
+  }
+  .underline{
+    background-size: 0% .3rem !important;
+  }
+  .article-title:hover .underline,
+  .article-title:focus .underline,
+  .article-title-green:hover .underline,
+  .article-title-green:focus .underline{
+    background-size: 100% .3rem !important;
+  }
+
+}
+@media screen and (max-width: 768px){
+  .cardList_ctnr{
+    grid-template-columns: repeat(auto-fit, 10.8215rem);
+    gap: .25rem;
+    grid-auto-rows: 10.8215rem;
+    
+    
+  }
+
+  .article-title,
+  .article-title-green{
+    -webkit-line-clamp: 4;
+    max-height: 11.2rem;
+  }
+  
+
   .txt{
     font-size: 12px;
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
