@@ -277,7 +277,7 @@ ol,ul {
 
   /* font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important; */
 }
-.underline{
+.underline__span{
   text-decoration:none;
   background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat;
@@ -289,8 +289,8 @@ ol,ul {
 
 }
 
-.article-title:hover .underline,
-.article-title:focus .underline{
+.article-title:hover .underline__span,
+.article-title:focus .underline__span{
   
   background-size: 100% .4rem !important;
   
@@ -303,8 +303,8 @@ ol,ul {
   transition-duration: 150ms;*/
 }
 
-.article-title-green:hover .underline,
-.article-title-green:focus .underline{
+.article-title-green:hover .underline__span,
+.article-title-green:focus .underline__span{
 
   background-size: 100% .4rem !important;
   /*text-decoration: underline;
@@ -451,13 +451,13 @@ ol,ul {
     -webkit-line-clamp:2;
     max-height: 13.1rem;
   }
-  .underline{
+  .underline__span{
     background-size: 0% .3rem !important;
   }
-  .article-title:hover .underline,
-  .article-title:focus .underline,
-  .article-title-green:hover .underline,
-  .article-title-green:focus .underline{
+  .article-title:hover .underline__span,
+  .article-title:focus .underline__span,
+  .article-title-green:hover .underline__span,
+  .article-title-green:focus .underline__span{
     background-size: 100% .3rem !important;
   }
 
@@ -494,13 +494,13 @@ ol,ul {
     -webkit-line-clamp:2;
     max-height: 13.1rem;
   }
-  .underline{
+  .underline__span{
     background-size: 0% .3rem !important;
   }
-  .article-title:hover .underline,
-  .article-title:focus .underline,
-  .article-title-green:hover .underline,
-  .article-title-green:focus .underline{
+  .article-title:hover .underline__span,
+  .article-title:focus .underline__span,
+  .article-title-green:hover .underline__span,
+  .article-title-green:focus .underline__span{
     background-size: 100% .3rem !important;
   }
 
@@ -593,15 +593,15 @@ ol,ul {
     line-height: 1.23 !important;
     
   }
-  .underline{
+  .underline__span{
     background-size: 0% .25rem !important;
   }
-  .article-title:hover .underline,
-  .article-title:focus .underline{
+  .article-title:hover .underline__span,
+  .article-title:focus .underline__span{
     background-size:100% .25rem !important;
   }
-  .article-title-green:hover .underline,
-  .article-title-green:focus .underline{
+  .article-title-green:hover .underline__span,
+  .article-title-green:focus .underline__span{
     background-size:100% .25rem !important;
   }
 
