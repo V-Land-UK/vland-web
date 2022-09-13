@@ -51,8 +51,7 @@ export default function Home({ articles, meta, ads }) {
       ref.current.style.maxHeight  = `${ref.current.clientHeight*(page)}px`;
     }
     else{
-      ref.current.removeAttribute("maxHeight");
-      ref.current.classList.remove("cardGrid__list");
+      ref.current.classList.remove("hasMore");
     }
     
     Articles.length && articles.push(...Articles);
@@ -90,7 +89,7 @@ export default function Home({ articles, meta, ads }) {
         <>
           
           {/* <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[10px] lg:gap-5 lg:gap-y-6 "> */}
-          <div className="cardList_ctnr relative" ref={ref}>
+          <div className="cardList_ctnr relative hasMore" ref={ref}>
             {articles?.map((article, index) => (
             
                   <Fragment key={index}>

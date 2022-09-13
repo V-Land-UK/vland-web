@@ -46,10 +46,16 @@ a {
 .cardList_ctnr{
   display: grid;
   grid-template-columns: repeat(auto-fit, 16.75rem);
+  padding-top: 0.625rem;
   gap: .625rem;
   grid-auto-rows: 16.75rem;
   grid-auto-flow: dense;
   justify-content: center;
+  overflow-x: visible;
+  
+}
+.hasMore{
+  overflow-y:hidden;
 }
 
 .img-ctnr{
@@ -203,7 +209,7 @@ ol,ul {
     transform: scale(2);
   }
 }
-.cardGrid__list::after{
+.hasMore::after{
   content:'';
   left: 0;
   right:0;

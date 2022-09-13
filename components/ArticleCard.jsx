@@ -9,28 +9,30 @@ import Moment from "react-moment";
 import React from "react";
 import { stringify } from "qs";
 import Image from "next/image";
-import React from "react";
-import { stringify } from "qs";
+
+
 
 
 const ArticleCard =({article, index}) => {
   
   const { findUserByID, Articles } = useContext(GlobalContext);
   const router = useRouter();
+
+  //HELPER FUNC REMOVING WHITESPACE FROM STRING
   const rmvWhiteSpace = (str)=>{
     return str.replace(/\s+/g, '');
   }
   // ARTICLE INDEX
   const articleIndex = parseInt(index) + 1;
   
-  //FIND SPONSORED POSTS
+  //FIND POSTS WITH TITLE LENGTHS > 50 CHARACTERS
   const checkCharCount = (post) => {
     const titleChars = rmvWhiteSpace(post);
     const titleCharsCount = titleChars.split('').length - 1;
 
     return titleCharsCount > 50;
   };
-
+  //FIND SPONSORED POSTS
   //const Sponsored = (post) =>{
     //const AddClass = 0;
     
@@ -68,14 +70,14 @@ const ArticleCard =({article, index}) => {
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`w-full flex flex-col bg-white rounded-2xl shadow-md lg:drop-shadow-2xl lg:shadow-lg row-span-2 ${checkCharCount(article.attributes.title)? "card-medium": "col-span-1"}`}
+        className={`w-full flex flex-col bg-white rounded-2xl shadow-md lg:drop-shadow-lg row-span-2 ${checkCharCount(article.attributes.title)? "card-medium": "col-span-1"} will-change-transform`}
       >
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden img_ctnr">
         
           <Image
             style={{ borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
-            priority={index <= 10 ? true : false}
+            priority= {true}
             src={`${
               article.attributes?.media?.data[0]?.attributes?.formats?.medium
                 ?.url ||
@@ -137,19 +139,21 @@ const ArticleCard =({article, index}) => {
               className="cursor-pointer"
               passHref
             >
-              <h1
-                className={` xs:text-[1.4rem] sm:text-[1.5rem] md:text-2xl lg:text-3xl xl:text-3xl border-box xs:pb-[0.16rem] mb-[0.1875rem] sm:pb-[0.08rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
-                  article.attributes?.categories?.data[0]?.attributes
-                      ?.name === "Food & Drink"
-                      ? "article-title-green "
-                      : "article-title"
-                }`}
-              >
-                <span className="underline">{article?.attributes?.title?.length > 65
-                  ? article?.attributes?.title.slice(0, 65) + "..."
-                  : article?.attributes?.title}
-                </span>
-              </h1>
+              <a>
+                <h1
+                  className={` xs:text-[1.4rem] sm:text-[1.5rem] md:text-2xl lg:text-3xl xl:text-3xl border-box xs:pb-[0.16rem] mb-[0.1875rem] sm:pb-[0.08rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
+                    article.attributes?.categories?.data[0]?.attributes
+                        ?.name === "Food & Drink"
+                        ? "article-title-green "
+                        : "article-title"
+                  }`}
+                >
+                  <span className="underline">{article?.attributes?.title?.length > 65
+                    ? article?.attributes?.title.slice(0, 65) + "..."
+                    : article?.attributes?.title}
+                  </span>
+                </h1>
+              </a>
             </Link>
             
           </div>
