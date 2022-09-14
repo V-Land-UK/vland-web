@@ -587,10 +587,10 @@ ol,ul {
   }
   .article-title,
   .article-title-green{
-    font-weight: 700 !important;
+    font-weight: 900 !important;
     max-height: fit-content;
-    
-    line-height: 1.2 !important;
+    -webkit-line-clamp: 5;
+    line-height: 1.23 !important;
     
   }
   .underline__span{
