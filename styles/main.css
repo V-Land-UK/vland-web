@@ -507,9 +507,9 @@ ol,ul {
 }
 @media screen and (max-width: 768px){
   .cardList_ctnr{
-    grid-template-columns: repeat(auto-fit, 10.8215rem);
-    gap: .25rem;
-    grid-auto-rows: 10.8215rem;
+    grid-template-columns: repeat(auto-fit, 11.8215rem);
+    gap: .65rem;
+    grid-auto-rows: 11.8215rem;
     
     
   }
@@ -590,19 +590,19 @@ ol,ul {
     font-weight: 700 !important;
     max-height: fit-content;
     
-    line-height: 1.23 !important;
+    line-height: 1.2 !important;
     
   }
   .underline__span{
-    background-size: 0% .25rem !important;
+    background-size: 0% .23rem !important;
   }
   .article-title:hover .underline__span,
   .article-title:focus .underline__span{
-    background-size:100% .25rem !important;
+    background-size:100% .23rem !important;
   }
   .article-title-green:hover .underline__span,
   .article-title-green:focus .underline__span{
-    background-size:100% .25rem !important;
+    background-size:100% .23rem !important;
   }
 
 }
