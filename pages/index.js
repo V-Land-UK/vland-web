@@ -95,7 +95,7 @@ export default function Home({ articles, meta, ads }) {
   };
 
   // grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[10px] lg:gap-5 lg:gap-y-6
-  const getAdsIndex = () => {
+  const getAdsIndex = (index) => {
     //return adIndex - 1;
     return (index + 1) / articlesBeforeAd - 1;
   };
