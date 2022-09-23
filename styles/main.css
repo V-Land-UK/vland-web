@@ -302,6 +302,24 @@ ol,ul {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;*/
 }
+.adCard__small{
+  
+  grid-row-start: span 1;
+  grid-row-end: span 1;
+}
+.adCard__medium{
+  grid-row-start: span 2;
+  grid-row-end: span 2;
+}
+
+.adCard__large{
+  grid-column-start: span 2;
+  grid-column-end: span 2;
+
+  grid-row-start: span 2;
+  grid-row-end: span 2;
+
+}
 
 .article-title-green:hover .underline__span,
 .article-title-green:focus .underline__span{
