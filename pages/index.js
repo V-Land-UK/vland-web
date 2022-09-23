@@ -30,7 +30,7 @@ export default function Home({ articles, meta, ads }) {
 
   
   const handleObserver = useCallback((node)=>{
-    if(loading)return;
+    if(loading || error)return;
     
     setPage(prev => prev + 1);
     
@@ -64,23 +64,39 @@ export default function Home({ articles, meta, ads }) {
 
   
 
- 
+ //ads should be placed in specific places rather than every 15; some info needed in the api
+ //to tell us sizing/position ?
 
-  
+ //random
 
-  const articlesBeforeAd = 15;
+  let adIndex = 0;
+  let articlesBeforeAd = Math.floor(Math.random()*(articles.length - 10) + 10);
+
+
 
   const checkAds = (index) => {
-    if (ads[(index + 1) / articlesBeforeAd - 1] !== undefined) {
+    if(ads[adIndex] && (index + 1) % articlesBeforeAd === 0){
+      
+      articlesBeforeAd = Math.floor(Math.random()*(articles.length - (articlesBeforeAd + 5) )+ (articlesBeforeAd + 5));
+      adIndex +=  1;
+      return true;
+    }
+    else{
+      return false;
+    }
+
+
+    /*if (ads[(index + 1) / articlesBeforeAd - 1] !== undefined) {
       return true;
     } else {
       return false;
-    }
+    }*/
   };
 
   // grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[10px] lg:gap-5 lg:gap-y-6
-  const getAdsIndex = (index) => {
-    return (index + 1) / articlesBeforeAd - 1;
+  const getAdsIndex = () => {
+    return adIndex - 1;
+    //return (index + 1) / articlesBeforeAd - 1;
   };
 
   return (
@@ -96,7 +112,9 @@ export default function Home({ articles, meta, ads }) {
                     <ArticleCard article={article} index={index}/>
                     {/* Show Ads */}
                     {ads.length > 0 && checkAds(index) && (
-                      <Ads ad={ads[getAdsIndex(index)]} />
+                      
+                      <Ads ad={ads[getAdsIndex()]} />
+                      
                     )}
                   </Fragment>
             ))}
