@@ -114,7 +114,7 @@ export default function Home({ articles, meta, ads }) {
                     {/* Show Ads */}
                     {ads.length > 0 && checkAds(index) && (
                       
-                      <Ads ad={ads[getAdsIndex()]} />
+                      <Ads ad={ads[getAdsIndex(index)]} />
                       
                     )}
                   </Fragment>
