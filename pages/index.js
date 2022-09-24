@@ -70,7 +70,7 @@ export default function Home({ articles, meta, ads }) {
  //random
 
   //let adIndex = 0;
-  const articlesBeforeAd  = 15;
+  const articlesBeforeAd  = 5;
   //let articlesBeforeAd = Math.floor(Math.random()*(articles.length - 10) + 10);
 
 
