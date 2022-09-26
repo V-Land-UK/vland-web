@@ -292,6 +292,12 @@ const Article = ({ article }) => {
                         >
                           <FaTwitter size={18} />
                         </TwitterShareButton>
+                        <LinkedinShareButton
+                          title={Title}
+                          url={`${SITE_URL}/article/${Slug}`}
+                        >
+                          <FaLinkedin size={18} />
+                        </LinkedinShareButton>
                         <WhatsappShareButton
                           url={`${SITE_URL}/article/${Slug}`}
                           title={Title}
@@ -305,13 +311,6 @@ const Article = ({ article }) => {
                         >
                           <FaTelegramPlane size={18} />
                         </TelegramShareButton>
-
-                        <LinkedinShareButton
-                          title={Title}
-                          url={`${SITE_URL}/article/${Slug}`}
-                        >
-                          <FaLinkedin size={18} />
-                        </LinkedinShareButton>
                       </motion.div>
                     )}
                   </AnimatePresence>
