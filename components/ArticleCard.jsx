@@ -19,19 +19,19 @@ const ArticleCard =({article, index}) => {
   const router = useRouter();
 
   //HELPER FUNC REMOVING WHITESPACE FROM STRING
-  const rmvWhiteSpace = (str)=>{
+  /*const rmvWhiteSpace = (str)=>{
     return str.replace(/\s+/g, '');
-  }
-  // ARTICLE INDEX
-  const articleIndex = parseInt(index) + 1;
+  }*/
+ 
+  
   
   //FIND POSTS WITH TITLE LENGTHS > 50 CHARACTERS
-  const checkCharCount = (post) => {
+  /*const checkCharCount = (post) => {
     const titleChars = rmvWhiteSpace(post);
     const titleCharsCount = titleChars.split('').length - 1;
 
     return titleCharsCount > 50;
-  };
+  };*/
   //FIND SPONSORED POSTS
   //const Sponsored = (post) =>{
     //const AddClass = 0;
@@ -70,7 +70,7 @@ const ArticleCard =({article, index}) => {
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className={`w-full flex flex-col bg-white rounded-2xl shadow-md lg:drop-shadow-lg row-span-2 ${checkCharCount(article.attributes.title)? "card-medium": "col-span-1"} will-change-transform`}
+        className={`w-full flex flex-col bg-white rounded-2xl shadow-md lg:drop-shadow-lg row-span-2 card_${article.attributes?.size} will-change-transform`}
       >
         {/* POST IMAGE */}
         <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden img_ctnr">

@@ -132,7 +132,13 @@ a {
   color: white;
 }
 
-.card-medium{
+.card_medium{
+  grid-column-start: span 2;
+  grid-column-end: span 2;
+
+}
+
+.card_large{
 
   grid-column-start: span 2;
   grid-column-end: span 2;
