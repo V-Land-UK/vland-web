@@ -38,8 +38,6 @@ import Recommendation from "../../components/Recommendation";
 import Slider from "react-slick";
 import request from "../../utils/request.util";
 
-const linkedInShareBaseUrl = `http://www.linkedin.com/shareArticle?mini=true&url=`;
-
 const Article = ({ article }) => {
   const router = useRouter();
 
@@ -310,7 +308,7 @@ const Article = ({ article }) => {
 
                         <LinkedinShareButton
                           title={Title}
-                          url={`${linkedInShareBaseUrl}${SITE_URL}/article/${Slug}`}
+                          url={`${SITE_URL}/article/${Slug}`}
                         >
                           <FaLinkedin size={18} />
                         </LinkedinShareButton>
