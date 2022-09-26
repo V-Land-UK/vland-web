@@ -13,7 +13,7 @@ const Recommendation = ({ article}) => {
   const router = useRouter();
 
   return (
-    <>
+    <div className="rounded-2xl shadow-md lg:drop-shadow-lg">
       {/* POST IMAGE */}
       <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden img_ctnr">
         <Image
@@ -63,12 +63,19 @@ const Recommendation = ({ article}) => {
         className={`flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
-          <Link href={`/article/${article.attributes.slug}`} passHref>
+          <Link
+              href={`/article/${article.attributes.slug}`}
+              className="cursor-pointer"
+              passHref
+          >
             <a>
-              <h1 className="text-[1.05rem] py-1 lg:text-xl  xl:text-3xl lg:pb-3 leading-tight article-title">
-                {article?.attributes?.title?.length > 65
+              <h1
+                className={` xs:text-[1rem] sm:text-[1.5rem] md:text-2xl lg:text-3xl xl:text-3xl border-box xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.08rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title`}
+              >
+                <span className="underline__span">{article?.attributes?.title?.length > 65
                   ? article?.attributes?.title.slice(0, 65) + "..."
                   : article?.attributes?.title}
+                </span>
               </h1>
             </a>
           </Link>
@@ -114,7 +121,7 @@ const Recommendation = ({ article}) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
