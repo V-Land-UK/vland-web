@@ -19,6 +19,7 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
   TelegramShareButton,
+  LinkedinShareButton,
 } from "react-share";
 import {
   FaFacebookF,
@@ -26,6 +27,7 @@ import {
   FaTelegramPlane,
   FaTwitter,
   FaWhatsapp,
+  FaLinkedin,
 } from "react-icons/fa";
 import { RiShareBoxFill } from "react-icons/ri";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
@@ -35,6 +37,8 @@ import CommentsArea from "../../components/CommentsArea";
 import Recommendation from "../../components/Recommendation";
 import Slider from "react-slick";
 import request from "../../utils/request.util";
+
+const linkedInShareBaseUrl = `http://www.linkedin.com/shareArticle?mini=true&url=`;
 
 const Article = ({ article }) => {
   const router = useRouter();
@@ -303,6 +307,13 @@ const Article = ({ article }) => {
                         >
                           <FaTelegramPlane size={18} />
                         </TelegramShareButton>
+
+                        <LinkedinShareButton
+                          title={Title}
+                          url={`${linkedInShareBaseUrl}${SITE_URL}/article/${Slug}`}
+                        >
+                          <FaLinkedin size={18} />
+                        </LinkedinShareButton>
                       </motion.div>
                     )}
                   </AnimatePresence>
