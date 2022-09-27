@@ -100,14 +100,17 @@ const Layout = ({
           `,
           }}
         />
-        <meta charSet="UTF-8"/>
+        <meta charSet="UTF-8" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no"
         />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="google-site-verification" content="nMcgclVIYZbbksryEI2ihhobvvAS4X6FXkHvhY9YYjI" />
-        
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="google-site-verification"
+          content="nMcgclVIYZbbksryEI2ihhobvvAS4X6FXkHvhY9YYjI"
+        />
+
         <meta name="theme-color" content="#FFFFFF" />
         <meta name="keywords" content={keywords} />
         <meta name="description" content={metaDescription || desc} />
@@ -117,22 +120,24 @@ const Layout = ({
         <meta property="og:title" content={metaTitle || title} />
         <meta property="og:description" content={metaDescription || desc} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl || "https://v-landuk.com"} />
+        <meta
+          property="og:url"
+          content={canonicalUrl || "https://v-landuk.com"}
+        />
         <meta property="og:image" content={image} />
 
-        
         <meta property="og:site_name" content="V-Land" />
         <meta property="og:site" content="https://v-landuk.com" />
 
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={canonicalUrl || "https://v-landuk.com"} />
+        <meta
+          property="twitter:url"
+          content={canonicalUrl || "https://v-landuk.com"}
+        />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={desc} />
         <meta property="twitter:image" content={image} />
-        
 
-        
-        
         <title>{title}</title>
       </Head>
 
@@ -141,23 +146,13 @@ const Layout = ({
           <div className="items-center space-x-4 hidden lg:block lg:place-self-start lg:self-center">
             <NavMenu />
           </div>
-          <Link href='/' passHref>
-            <a
-              className=" no-underline block relative h-[8vh] lg:h-[9vh] py-[1.8vh] lg:py-[1.5vh] cursor-pointer"
-              
-            >
-              <img
-                src="/Header.svg" 
-                alt="Header"
-                className="h-full"
-                
-              />
+          <Link href="/" passHref>
+            <a className=" no-underline block relative h-[8vh] lg:h-[9vh] py-[1.8vh] lg:py-[1.5vh] cursor-pointer">
+              <img src="/Header.svg" alt="Header" className="h-full" />
             </a>
           </Link>
           <div className="lg:hidden">
-           
             <Hamburger color="#000" rounded size={30} toggle={toggleDrawer} />
-            
           </div>
           <div className="hidden lg:flex lg:flex-row-reverse w-[22vw] border-[1px] border-neutral-800 justify-between rounded-3xl overflow-hidden px-1 py-1 place-self-end self-center">
             <input
@@ -282,7 +277,16 @@ const Layout = ({
                 </div>
               </Link>
 
-              <div className="flex py-3 space-x-4">
+              <Link href="https://www.v-landeurope.com/">
+                <div className="hover:text-primary hover:translate-x-3 transition-all">
+                  V-Land Europe
+                </div>
+              </Link>
+
+              <br />
+              <h3 className="text-black text-[12px]">Follow us:</h3>
+
+              <div className="flex py-1 space-x-4">
                 <Icon url="http://instagram.com/vlanduk">
                   <FaInstagram size={13} />
                 </Icon>

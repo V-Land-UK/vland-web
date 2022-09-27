@@ -19,6 +19,7 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
   TelegramShareButton,
+  LinkedinShareButton,
 } from "react-share";
 import {
   FaFacebookF,
@@ -26,6 +27,7 @@ import {
   FaTelegramPlane,
   FaTwitter,
   FaWhatsapp,
+  FaLinkedin,
 } from "react-icons/fa";
 import { RiShareBoxFill } from "react-icons/ri";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
@@ -290,6 +292,12 @@ const Article = ({ article }) => {
                         >
                           <FaTwitter size={18} />
                         </TwitterShareButton>
+                        <LinkedinShareButton
+                          title={Title}
+                          url={`${SITE_URL}/article/${Slug}`}
+                        >
+                          <FaLinkedin size={18} />
+                        </LinkedinShareButton>
                         <WhatsappShareButton
                           url={`${SITE_URL}/article/${Slug}`}
                           title={Title}
