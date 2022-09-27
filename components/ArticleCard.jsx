@@ -130,7 +130,7 @@ const ArticleCard =({article, index}) => {
             "Food & Drink"
               ? "green-body "
               : ""
-          } px-5 py-3 xs:h-[12.4715rem] sm:h-[12.4715rem] md:h-[15.75rem] lg:h-[18rem] flex flex-col justify-around rounded-b-2xl`}
+          } px-5 py-3 xxs:h-[8.5715rem] xs:h-[11.6715rem] sm:h-[12.4715rem] md:h-[15.75rem] lg:h-[18rem] flex flex-col justify-around rounded-b-2xl`}
           
         >
           <div className="article-body">
@@ -141,7 +141,7 @@ const ArticleCard =({article, index}) => {
             >
               <a>
                 <h1
-                  className={` xs:text-[1rem] sm:text-[1.5rem] md:text-2xl lg:text-3xl xl:text-3xl border-box xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.08rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
+                  className={` xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.5rem] md:text-2xl lg:text-3xl xl:text-3xl border-box xxs:pb-[0] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.15rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
                     article.attributes?.categories?.data[0]?.attributes
                         ?.name === "Food & Drink"
                         ? "article-title-green "
@@ -166,7 +166,7 @@ const ArticleCard =({article, index}) => {
           </div>
 
           <div className="article-author-home flex lg:space-x-4 ">
-            <div className="relative  w-7 h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9">
+            <div className="relative author_img-ctnr w-7 h-7 xss:w-7 xss:h-7 xs:w-7 xs:h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9">
               <Image
                 src={
                   findUserByID(article?.attributes?.author?.data?.id)
