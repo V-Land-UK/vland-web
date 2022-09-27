@@ -155,7 +155,7 @@ const ArticleCard = ({ article, index }) => {
       </div>
 
       <div className="article-author-home flex lg:space-x-4 ">
-        <div className="relative author_img-ctnr w-7 h-7 xss:w-7 xss:h-7 xs:w-7 xs:h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9">
+        <div className="relative author_img-ctnr xss:w-7 xss:h-7 xs:w-7 xs:h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9">
           <Image
             src={
               findUserByID(article?.attributes?.author?.data?.id)
