@@ -17,6 +17,7 @@ const Recommendation = ({ article}) => {
       {/* POST IMAGE */}
       <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden img_ctnr">
         <Image
+          style={{ borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
           src={`${
             article.attributes?.media?.data[0]?.attributes?.formats?.medium
               ?.url ||

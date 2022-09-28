@@ -8,6 +8,7 @@ import Link from "next/link";
 import Moment from "react-moment";
 import React from "react";
 import { stringify } from "qs";
+
 import Image from "next/image";
 
 const ArticleCard = ({ article, index }) => {
@@ -65,8 +66,9 @@ const ArticleCard = ({ article, index }) => {
     <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden img_ctnr">
     
       <Image
-        style={{ borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
-        priority= {true}
+        style={{ borderTopLeftRadius: 15, borderTopRightRadius: 15,}}
+        blurDataURL="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8e+rUUwAIFQNIlnFEqgAAAABJRU5ErkJggg=="
+        placeholder="blur"
         src={`${
           article.attributes?.media?.data[0]?.attributes?.formats?.medium
             ?.url ||
@@ -86,6 +88,8 @@ const ArticleCard = ({ article, index }) => {
         }`}
         layout="fill"
         objectFit="cover"
+        
+        
       />
 
       <div className="absolute flex flex-wrap gap-2 bottom-3 w-[94%] mx-auto right-0 left-0">
@@ -157,6 +161,7 @@ const ArticleCard = ({ article, index }) => {
       <div className="article-author-home flex lg:space-x-4 ">
         <div className="relative author_img-ctnr xss:w-7 xss:h-7 xs:w-7 xs:h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9">
           <Image
+            blurDataURL={`data:image/jpeg;base64,/iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8e+rUUwAIFQNIlnFEqgAAAABJRU5ErkJggg==`}
             src={
               findUserByID(article?.attributes?.author?.data?.id)
                 ?.attributes?.image?.data?.attributes?.formats?.small
@@ -168,7 +173,9 @@ const ArticleCard = ({ article, index }) => {
             alt="Picture of author"
             layout="fill"
             objectFit="cover"
-            style={{ borderRadius: "50%" }}
+            placeholder="blur"
+           
+            style={{ borderRadius: "50%"}}
           />
         </div>
 
