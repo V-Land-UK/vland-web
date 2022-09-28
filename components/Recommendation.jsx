@@ -60,7 +60,7 @@ const Recommendation = ({ article}) => {
       </div>
       {/* POST BODY */}
       <div
-        className={`flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
+        className={`flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-b-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
           <Link
@@ -70,7 +70,7 @@ const Recommendation = ({ article}) => {
           >
             <a>
               <h1
-                className={` xs:text-[1rem] sm:text-[1.5rem] md:text-2xl lg:text-3xl xl:text-3xl border-box xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.08rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title`}
+                className={`xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.1rem] md:text-[1.3rem] lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.12rem] mb-[0.1875rem] sm:pb-[0.11rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title rec__card`}
               >
                 <span className="underline__span">{article?.attributes?.title?.length > 65
                   ? article?.attributes?.title.slice(0, 65) + "..."
@@ -85,7 +85,7 @@ const Recommendation = ({ article}) => {
             ? article?.attributes?.description.slice(0, 160) + "..."
             : article?.attributes?.description}
         </p>
-        <div className="article-author pb-2 lg:pb-3 ml-5">
+        <div className="article-author ml-2 pb-2 lg:pb-3 ml-5">
           <div className= "relative  w-7 h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9">
               <Image
                 src={
