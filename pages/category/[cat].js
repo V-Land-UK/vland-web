@@ -6,13 +6,16 @@ import Pagination from "../../components/Pagination";
 import { API } from "../../config/api";
 import { PAGINATION_LIMIT } from "../../config/meta";
 import Ads from "../../components/Ads";
-import { Fragment } from "react";
+import { Fragment,useState,useEffect } from "react";
+import useFetch from "../../hooks/useFetch";
 const qs = require("qs");
 
 export default function Categories({ articles, meta, category, ads }) {
   const articlesBeforeAd = 5;
   const checkAd = function(index){
+    
     if(ads[(index + 1)/articlesBeforeAd - 1]!== undefined){
+
       return true;
     }
     else{
@@ -73,14 +76,19 @@ export async function getServerSideProps({ req, res, query, params }) {
     `${API}/categories?filters[slug][$eq]=${cat}&pagination[pageSize]=${PAGINATION_LIMIT}&pagination[page]=${page}&populate=*`
   );
   const data = await response.json();
+  
+ 
 
-  const adsResponse = await fetch(`${API}/ads?populate=*`);
-  const ads = await adsResponse?.json();
+  
+                
+  
+  
 
   //Get data for users
 
   if (data?.data[0]?.attributes?.articles?.data?.length > 0) {
     const articles = [];
+    const ads = [];
 
     // Fetch the articles themselves
     for (var i = 0; i < data.data[0].attributes.articles.data.length; i++) {
@@ -91,6 +99,22 @@ export async function getServerSideProps({ req, res, query, params }) {
       articles.push(article.data);
     }
 
+    if(data?.data[0]?.attributes?.ads?.data.length > 0 ){
+
+      const adsData = await Promise.all(data?.data[0]?.attributes?.ads?.data.map(async (ad) =>{
+            const data = await fetch(`${API}/ads/${ad.id}?populate=*`);
+            return data.json();
+                      
+      }));
+                      
+      adsData.forEach(ad => ads.push(ad.data));
+      
+      
+    }
+    
+
+   
+    
     
 
     //Only show past and current posts
@@ -112,7 +136,7 @@ export async function getServerSideProps({ req, res, query, params }) {
         articles: sorted_articles,
         meta: data?.meta,
         category: data?.data[0]?.attributes?.name || cat,
-        ads: ads?.data
+        ads: ads,
       },
     };
   } else {
@@ -120,6 +144,7 @@ export async function getServerSideProps({ req, res, query, params }) {
       props: {
         article: null,
         meta: null,
+       
         
         
       },
