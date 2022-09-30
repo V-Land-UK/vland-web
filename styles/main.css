@@ -23,6 +23,9 @@ body {
 nav ::-webkit-scrollbar {
   display: none;
 }
+h2{
+  font-size: 1.25rem !important;
+}
 h5 {
   color: black !important;
 }
