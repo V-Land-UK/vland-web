@@ -171,6 +171,7 @@ a {
 .article-preview h2{
   font-size: 1.95rem;
   line-height: calc(1.2*1.95rem);
+  margin-bottom: 0.75rem;
   
 
 }
@@ -495,6 +496,7 @@ ol,ul {
     --font-size:calc((1.95/2.25)*1.5rem);
     font-size: var(--font-size);
     line-height: calc(1.25*var(--font-size));
+    
   }
 
 }
