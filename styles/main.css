@@ -491,6 +491,11 @@ ol,ul {
   .article-title-green:focus .underline__span{
     background-size: 100% .3rem !important;
   }
+  .article-preview h2{
+    --font-size:calc((1.95/2.25)*1.5rem);
+    font-size: var(--font-size);
+    line-height: calc(1.25*var(--font-size));
+  }
 
 }
 @media screen and (max-width: 768px){
@@ -661,6 +666,7 @@ ol,ul {
   .article-title:focus .underline__span{
     background-size:100% .18rem !important;
   }
+ 
 
 }
 
