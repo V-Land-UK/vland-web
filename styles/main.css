@@ -23,9 +23,7 @@ body {
 nav ::-webkit-scrollbar {
   display: none;
 }
-h2{
-  font-size: 1.95rem !important;
-}
+
 h5 {
   color: black !important;
 }
@@ -168,6 +166,12 @@ a {
   line-height: 0.45;
   
   margin: 0.1em 0.1em 0.2em 0;
+
+}
+.article-preview h2{
+  font-size: 1.95rem;
+  line-height: calc(1.2*1.95rem);
+  
 
 }
 ol,ul {
