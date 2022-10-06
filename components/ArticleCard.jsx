@@ -60,7 +60,6 @@ const ArticleCard = ({ article, index }) => {
       initial={{ opacity: 0, y: 80 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      style={{ marginLeft: 0 }}
       className={`w-full flex flex-col bg-white rounded-2xl shadow-md lg:drop-shadow-lg row-span-2 card_${article.attributes?.size} will-change-transform`}
     >
       {/* POST IMAGE */}
@@ -132,7 +131,7 @@ const ArticleCard = ({ article, index }) => {
           >
             <a>
               <h1
-                className={` xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.3rem] md:text-[1.3rem] lg:text-3xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.10rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
+                className={`xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.3rem] md:text-[1.3rem] lg:text-3xl xl:text-3xl border-box  ${
                   article.attributes?.categories?.data[0]?.attributes?.name ===
                   "Food & Drink"
                     ? "article-title-green "
