@@ -668,6 +668,7 @@ ul {
     max-height: 6.25rem !important;
     -webkit-line-clamp: 5;
     line-height: 1.23 !important;
+    padding-bottom: 0.17rem;
   }
   .underline__span {
     background-size: 0% 0.18rem !important;
