@@ -84,6 +84,10 @@ const Footer = () => {
 
           <div className="h-full flex flex-col justify-center gap-2 border-l-2 border-primary text-sm py-2 lg:py-4 px-4 font-bold">
             <div className="hover:text-primary hover:translate-x-1 transition-all">
+              <Link href="/">Home</Link>
+            </div>
+
+            <div className="hover:text-primary hover:translate-x-1 transition-all">
               <Link href="/about">About</Link>
             </div>
 
@@ -93,6 +97,10 @@ const Footer = () => {
 
             <div className="hover:text-primary hover:translate-x-1 transition-all">
               <Link href="/contact">Contact</Link>
+            </div>
+
+            <div className="hover:text-primary hover:translate-x-1 transition-all">
+              <Link href="https://www.v-landeurope.com/">V-Land Europe</Link>
             </div>
           </div>
         </div>
