@@ -489,6 +489,7 @@ ul {
   .article-title-green {
     line-height: 1.18 !important;
     max-height: 13.1rem;
+    
   }
   .card_large div .article-body .article-title,
   .card_large div .article-body .article-title-green {
@@ -530,8 +531,10 @@ ul {
 
   .article-title,
   .article-title-green {
-    -webkit-line-clamp: 4;
-    max-height: 11.2rem;
+    -webkit-line-clamp: 5;
+    max-height: fit-content;
+    line-height: 1.18 !important;
+    padding-bottom: 0.1rem !important;
   }
 
   .txt {
@@ -539,11 +542,7 @@ ul {
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
     font-weight: 600;
   }
-  .article-title,
-  .article-title-green {
-    line-height: 1.18 !important;
-    max-height: 13.1rem;
-  }
+  
   .card_large div.article-body .article-title,
   .card_large div.article-body .article-title-green {
     -webkit-line-clamp: 2;
@@ -669,6 +668,7 @@ ul {
     max-height: 6.25rem !important;
     -webkit-line-clamp: 5;
     line-height: 1.23 !important;
+    padding-bottom: 0.17rem;
   }
   .underline__span {
     background-size: 0% 0.18rem !important;

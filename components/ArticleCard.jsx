@@ -113,6 +113,7 @@ const ArticleCard = ({ article, index }) => {
             ))}
         </div>
       </div>
+<<<<<<< HEAD
       {/* POST BODY */}
       <div
         className={`${
@@ -133,6 +134,30 @@ const ArticleCard = ({ article, index }) => {
                 className={` xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.5rem] md:text-2xl lg:text-3xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.15rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
                   article.attributes?.categories?.data[0]?.attributes?.name ===
                   "Food & Drink"
+=======
+    </div>
+    {/* POST BODY */}
+    <div
+      className={`${
+        article.attributes?.categories?.data[0]?.attributes?.name ===
+        "Food & Drink"
+          ? "green-body "
+          : ""
+      } px-5 py-3 xxs:h-[8.5715rem] xs:h-[11.6715rem] sm:h-[12.4715rem] md:h-[15.75rem] lg:h-[18rem] flex flex-col justify-around rounded-b-2xl`}
+      
+    >
+      <div className="article-body">
+        <Link
+          href={`/article/${article.attributes.slug}`}
+          className="cursor-pointer"
+          passHref
+        >
+          <a>
+            <h1
+              className={` xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.3rem] md:text-[1.3rem] lg:text-3xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.10rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
+                article.attributes?.categories?.data[0]?.attributes
+                    ?.name === "Food & Drink"
+>>>>>>> 078df392a1f22de9f8e1d9a0b163cc70d2ab444a
                     ? "article-title-green "
                     : "article-title"
                 }`}
