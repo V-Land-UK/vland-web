@@ -146,6 +146,17 @@ a {
 
 }
 
+@supports not (aspect-ratio: 1/1){
+  .card_medium .img-ctnr{
+    -webkit-mask-image:  -webkit-radial-gradient(white, black);
+    height: 16.75rem;
+  }
+  .card_large .img-ctnr{
+    -webkit-mask-image:  -webkit-radial-gradient(white, black);
+    height: calc(2*16.75rem);
+  }
+}
+
 .article-preview {
   color: rgba(0, 0, 0);
   max-width: 100%;
@@ -188,10 +199,8 @@ ol,ul {
 
 }
 
-.hv-toggle:hover{
-  border-color: #000000;
-  color: #000000;
-}
+
+
 
 .err_view{
   background-color: #ff4d4d !important;
@@ -204,6 +213,7 @@ ol,ul {
   will-change: transform opacity;
   background-color: #4bac48;
   margin:0 2px;
+  transition: background-color .24s ease-in-out;
   animation: preloader 1.5s infinite ease-out;
 }
 .load_animation_item:nth-child(1){
@@ -215,6 +225,14 @@ ol,ul {
 .load_animation_item:nth-child(3){
   animation-delay: .3s;
 }
+.hv-toggle:hover{
+  border-color: #000000;
+  color: #000000;
+}
+.hv-toggle:hover div .load_animation_item{
+  background-color: #000000;
+}
+
 @keyframes preloader{
   0%,50%,100%{
     transform: scale(1);
@@ -498,6 +516,16 @@ ol,ul {
     line-height: calc(1.25*var(--font-size));
     
   }
+  @supports not (aspect-ratio: 1/1){
+    .card_medium .img-ctnr{
+      -webkit-mask-image:  -webkit-radial-gradient(white, black);
+      height: 15.125rem;
+    }
+    .card_large .img-ctnr{
+      -webkit-mask-image:  -webkit-radial-gradient(white, black);
+      height: calc(2*15.125rem);
+    }
+  }
 
 }
 @media screen and (max-width: 768px){
@@ -543,6 +571,16 @@ ol,ul {
   }
   .article-title.rec__card{
     -webkit-line-clamp: 6;
+  }
+  @supports not (aspect-ratio: 1/1){
+    .card_medium .img-ctnr{
+      
+      height: 10.8215rem;
+    }
+    .card_large .img-ctnr{
+      
+      height: calc(2*10.8215rem);
+    }
   }
 
 }
@@ -668,6 +706,16 @@ ol,ul {
   .article-title:focus .underline__span{
     background-size:100% .18rem !important;
   }
+  @supports not (aspect-ratio: 1/1){
+    .card_medium .img-ctnr{
+      -webkit-mask-image:  -webkit-radial-gradient(white, black);
+      height: 10.1215rem;
+    }
+    .card_large .img-ctnr{
+      -webkit-mask-image:  -webkit-radial-gradient(white, black);
+      height: calc(2*10.1215rem);
+    }
+  }
  
 
 }
@@ -687,6 +735,16 @@ ol,ul {
   .author_img-ctnr{
     width: 20px;
     height: 20px;
+  }
+  @supports not (aspect-ratio: 1/1){
+    .card_medium .img-ctnr{
+      -webkit-mask-image:  -webkit-radial-gradient(white, black);
+      height: 8.1215rem;
+    }
+    .card_large .img-ctnr{
+      -webkit-mask-image:  -webkit-radial-gradient(white, black);
+      height: calc(2*8.1215rem);
+    }
   }
  
 
