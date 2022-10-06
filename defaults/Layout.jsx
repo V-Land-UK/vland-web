@@ -315,5 +315,5 @@ Layout.defaultProps = {
   page: "Home",
   image: "Logo.JPG",
   keywords: "vland, vegan, uk, green, nutritional, v-l, v-land, v",
-  desc: "🇬🇧 Your UK Vegan Magazine ✨ News | Entertainment | And more 📌 ",
+  desc: "🇬🇧 Your UK vegan magazine",
 };
