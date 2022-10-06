@@ -138,7 +138,7 @@ const ArticleCard = ({ article, index }) => {
                     : "article-title"
                 }`}
               >
-                <span>
+                <span className="underline__span">
                   {article?.attributes?.title?.length > 65
                     ? article?.attributes?.title.slice(0, 65) + "..."
                     : article?.attributes?.title}
