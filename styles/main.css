@@ -530,8 +530,9 @@ ul {
 
   .article-title,
   .article-title-green {
-    -webkit-line-clamp: 4;
-    max-height: 11.2rem;
+    -webkit-line-clamp: 5;
+    max-height: fit-content;
+    line-height: 1.18 !important;
   }
 
   .txt {
@@ -539,11 +540,7 @@ ul {
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
     font-weight: 600;
   }
-  .article-title,
-  .article-title-green {
-    line-height: 1.18 !important;
-    max-height: 13.1rem;
-  }
+  
   .card_large div.article-body .article-title,
   .card_large div.article-body .article-title-green {
     -webkit-line-clamp: 2;
