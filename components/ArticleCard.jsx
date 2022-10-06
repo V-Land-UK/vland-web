@@ -131,21 +131,17 @@ const ArticleCard = ({ article, index }) => {
           >
             <a>
               <h1
-                className={`xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.3rem] md:text-[1.3rem] lg:text-3xl xl:text-3xl border-box  ${
+                className={`xxs:text-[.7rem] xs:text-[.9rem] sm:text-[1.2rem] md:text-[1.2rem] lg:text-2xl xl:text-2xl border-box  ${
                   article.attributes?.categories?.data[0]?.attributes?.name ===
                   "Food & Drink"
                     ? "article-title-green "
                     : "article-title"
                 }`}
               >
-                <span
-                  className={
-                    article.attributes?.size === "large"
-                      ? "line-clamp-4"
-                      : "line-clamp-5"
-                  }
-                >
-                  {article?.attributes?.title}
+                <span>
+                  {article?.attributes?.title?.length > 65
+                    ? article?.attributes?.title.slice(0, 65) + "..."
+                    : article?.attributes?.title}
                 </span>
               </h1>
             </a>
