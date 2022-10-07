@@ -487,11 +487,11 @@ ul {
   .article-title,
   .article-title-green {
     line-height: 1.18 !important;
-    max-height: 13.1rem;
+    max-height: fit-content;
   }
   .card_large div .article-body .article-title,
   .card_large div .article-body .article-title-green {
-    max-height: 13.1rem;
+    max-height: fit-content;
   }
   .underline__span {
     background-size: 0% 0.3rem !important;
@@ -540,7 +540,7 @@ ul {
 
   .card_large div.article-body .article-title,
   .card_large div.article-body .article-title-green {
-    max-height: 13.1rem;
+    max-height: fit-content;
   }
   .underline__span {
     background-size: 0% 0.3rem !important;
