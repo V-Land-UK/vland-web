@@ -604,9 +604,9 @@ ul {
     gap: 0.4rem;
     /* padding: 0.3rem 0.4rem 0.3rem 0.4rem; */
     border-radius: 2rem;
-    margin-top: auto !important;
-    /* margin-bottom: 0.5rem;
-  margin-inline: 0.4rem; */
+    
+    margin-bottom: 0.5rem;
+  /*margin-inline: 0.4rem; */
   }
 
   .article-author-home {
@@ -617,7 +617,7 @@ ul {
     gap: 0.4rem;
     padding: 0.3rem 0.4rem 0.3rem 0.4rem;
     border-radius: 2rem;
-    margin-top: auto !important;
+    
     /* margin-bottom: 0.5rem;
   margin-inline: 0.4rem; */
   }
@@ -676,6 +676,7 @@ ul {
   }
   .article-title,
   .article-title-green {
+    font-size: 1rem !important;
     font-weight: 900 !important;
     max-height: fit-content !important;
     line-height: 1.23 !important;
@@ -715,6 +716,10 @@ ul {
     
     height: calc(50% + 0.45rem);
    
+  }
+  .article-title,
+  .article-title-green {
+    font-size: .8rem !important;
   }
   .author_img-ctnr {
     width: 20px;
