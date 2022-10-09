@@ -643,29 +643,16 @@ ul {
     font-family: "Poppins", Arial, Helvetica, sans-serif !important;
     color: rgb(0, 0, 0);
   }
-  .article-title,
-  .article-title-green {
-    font-weight: 900 !important;
-    max-height: fit-content;
-    line-height: 1.23 !important;
-  }
+ 
   .article-title.rec__card {
     -webkit-line-clamp: 6;
   }
-  .underline__span {
-    background-size: 0% 0.23rem !important;
-  }
-  .article-title:hover .underline__span,
-  .article-title:focus .underline__span {
-    background-size: 100% 0.23rem !important;
-  }
+ 
+ 
   .article-title-green:hover .underline__span,
   .article-title-green:focus .underline__span {
     background-size: 100% 0.23rem !important;
   }
-}
-
-@media screen and (max-width: 400px) {
   .cardList_ctnr {
     grid-template-columns: repeat(auto-fit, 10.1215rem);
     gap: 0.45rem;
@@ -705,6 +692,7 @@ ul {
     }
   }
 }
+
 
 @media screen and (max-width: 320px) {
   .cardList_ctnr {
