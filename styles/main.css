@@ -665,7 +665,7 @@ ul {
   }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 400px) {
   .cardList_ctnr {
     grid-template-columns: repeat(auto-fit, 10.1215rem);
     gap: 0.45rem;
