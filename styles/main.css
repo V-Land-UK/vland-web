@@ -49,7 +49,7 @@ a {
   grid-template-columns: repeat(auto-fit, 15.75rem);
   padding-top: 0.625rem;
   gap: 0.625rem;
-  grid-auto-rows: 16.75rem;
+  grid-auto-rows: 15.125rem;
   grid-auto-flow: dense;
   justify-content: center;
   overflow-x: visible;
@@ -78,10 +78,6 @@ a {
   gap: 0.3rem;
   font-family: "Poppins", Arial, Helvetica, sans-serif, "Segoe UI", Tahoma !important;
   cursor: pointer;
-}
-
-.artBody {
-  height: 100%;
 }
 
 .article-desc {
