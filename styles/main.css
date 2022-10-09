@@ -80,6 +80,10 @@ a {
   cursor: pointer;
 }
 
+.artBody {
+  height: 100%;
+}
+
 .article-desc {
   font-size: 15px;
   font-weight: 500;
