@@ -75,7 +75,7 @@ a {
   /* gap: 0.5rem; */
 }
 .article-body {
-  gap: .3rem;
+  gap: .2rem;
   font-family: "Poppins", Arial, Helvetica, sans-serif, "Segoe UI", Tahoma !important;
   cursor: pointer;
   
@@ -392,6 +392,7 @@ ul {
 .tag {
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
   font-weight: 900 !important;
+  z-index: 1;
 }
 .tag:hover {
   transform: translateY(-0.2rem);

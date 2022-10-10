@@ -121,7 +121,7 @@ const ArticleCard = ({ article, index }) => {
           "Food & Drink"
             ? "green-body "
             : ""
-        } aCard__body px-3 py-1 flex flex-col justify-around rounded-b-2xl`}
+        } aCard__body px-3 py-1 flex flex-col justify-between rounded-b-2xl`}
       >
         <div className="article-body">
           <Link
@@ -155,7 +155,7 @@ const ArticleCard = ({ article, index }) => {
           </p>
         </div> */}
 
-        <div className="article-author-home flex lg:space-x-4">
+        <div className="article-author-home flex xs:mb-[.2rem] sm:mb-[.5rem] md:mb-[.5rem] lg:mb-[.5rem] lg:space-x-4">
           <div className="relative author_img-ctnr xss:w-7 xss:h-7 xs:w-7 xs:h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 mr-1">
             <Image
               blurDataURL={`data:image/jpeg;base64,/iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8e+rUUwAIFQNIlnFEqgAAAABJRU5ErkJggg==`}
