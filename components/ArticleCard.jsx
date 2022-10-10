@@ -121,7 +121,7 @@ const ArticleCard = ({ article, index }) => {
           "Food & Drink"
             ? "green-body "
             : ""
-        } aCard__body px-3 py-1 flex flex-col justify-between rounded-b-2xl`}
+        } aCard__body px-3 flex flex-col justify-between rounded-b-2xl`}
       >
         <div className="article-body">
           <Link
