@@ -47,16 +47,24 @@ const Article = ({ article }) => {
   );
 
   const { findUserByID, Articles } = useContext(GlobalContext);
-
+  
   // Share State
   const [ShareState, setShareState] = useState(false);
 
   // Comments
   const [Comments, setComments] = useState([]);
 
+  
   //Other Articles
   const Others = Articles.filter((Article) => Article?.id !== article?.id);
+  
+  //get random chunk of articles
+  const random_index = Math.floor(Math.random()*Others.length);
+  let rec_articles;
+  Others[random_index + 6] ? rec_articles = Others.slice(random_index, random_index + 6): rec_articles = Others.slice(random_index - 6, random_index);
 
+
+  
   //Article Data
   const Title = article?.attributes?.title;
   const Slug = article?.attributes?.slug;
@@ -323,7 +331,7 @@ const Article = ({ article }) => {
               </h1>
               <div className=" grid grid-cols-1 lg:grid-cols-1 mt-4 gap-3 lg:gap-0  px-2 pb-5">
                 <Slider {...settings}>
-                  {Others.slice(0, 6).map((current, index) => (
+                  {rec_articles.map((current, index) => (
                     <Recommendation key={index} article={current} />
                   ))}
                 </Slider>
@@ -381,7 +389,9 @@ export async function getStaticProps({ params, preview = null }) {
   //   },
   // };
 
+
   if (data?.data?.length > 0) {
+
     return {
       props: {
         article: data?.data[0],
