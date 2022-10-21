@@ -23,7 +23,10 @@ body {
 nav ::-webkit-scrollbar {
   display: none;
 }
-
+.article-preview h2,
+.article-preview h2 strong{
+  color: var(--primary) !important;
+}
 h5 {
   color: black !important;
 }
