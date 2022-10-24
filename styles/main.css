@@ -266,7 +266,7 @@ ul {
   font-weight: 500; */
 }
 .article-preview a {
-  color: var(--primary);
+  color: var(--primary) !important;
   font-weight: 700;
 }
 .article-preview b {
