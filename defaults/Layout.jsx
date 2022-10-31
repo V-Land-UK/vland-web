@@ -32,8 +32,8 @@ import SearchCard from "../components/SearchCard";
 import Icon from "../components/Icon";
 const qs = require("qs");
 import { GlobalContext } from "../context/GlobalContext";
-import { attributesToProps } from "html-react-parser";
-import Image from "next/image";
+
+
 
 const Layout = ({
   children,
@@ -84,7 +84,7 @@ const Layout = ({
   return (
     <>
       <Head>
-        <script
+        {/*<script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
         />
@@ -99,7 +99,7 @@ const Layout = ({
             });
           `,
           }}
-        />
+        />*/}
         <meta charSet="UTF-8" />
         <meta
           name="viewport"
@@ -281,11 +281,11 @@ const Layout = ({
                 </div>
               </Link>
 
-              <Link href="https://www.v-landeurope.com/">
+              {/*<Link href="https://www.v-landeurope.com/">
                 <div className="hover:text-primary hover:translate-x-3 transition-all">
                   V-Land Europe
                 </div>
-              </Link>
+              </Link>*/}
 
               <br />
               <h3 className="text-black text-[12px]">Follow us:</h3>
