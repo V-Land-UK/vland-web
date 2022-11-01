@@ -16,7 +16,7 @@ const About = ({ about }) => {
       <Back />
       <main className="w-[95%] lg:w-4/5 mx-auto mt-3">
         <h1 className="text-3xl lg:text-3xl text-primary font-bold mt-4 lg:mt-7">
-          About V-Land-UK
+          About V-Land UK
         </h1>
         <div className="text-[16px] pt-3 lg:text-lg text-black tracking-wide leading-relaxed poppins my-2 whitespace-pre-line about">
           {parse(about)}

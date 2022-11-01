@@ -61,11 +61,11 @@ const NavMenu = () => {
                 </div>
               </Link>
 
-              <Link href="https://www.v-landeurope.com/">
+              {/* <Link href="https://www.v-landeurope.com/">
                 <div className="hover:text-primary hover:translate-x-3  text-2xl cursor-pointer transition-all">
                   V-Land Europe
                 </div>
-              </Link>
+              </Link> */}
 
               <br />
               <h3 className="font-medium">Follow us:</h3>
