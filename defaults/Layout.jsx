@@ -33,8 +33,6 @@ import Icon from "../components/Icon";
 const qs = require("qs");
 import { GlobalContext } from "../context/GlobalContext";
 
-
-
 const Layout = ({
   children,
   title,
@@ -115,11 +113,30 @@ const Layout = ({
         <meta name="keywords" content={keywords} />
         <meta name="description" content={metaDescription || desc} />
         <link rel="shortcut icon" href="favicon.ico" />
-        <link rel="apple-touch-icon" type="image/png" href="touch-icon-iphone.png"/>
-        <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="touch-icon-ipad.png"/>
-        <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="touch-icon-iphone-retina.png"/>
-        <link rel="apple-touch-icon" type="image/png" sizes="152x152" href="touch-icon-ipad-retina.png"/>
-        
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          href="touch-icon-iphone.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="76x76"
+          href="touch-icon-ipad.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="120x120"
+          href="touch-icon-iphone-retina.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="152x152"
+          href="touch-icon-ipad-retina.png"
+        />
+
         <meta property="og:locale" content="en_US" />
         <meta property="og:title" content={metaTitle || title} />
         <meta property="og:description" content={metaDescription || desc} />
@@ -281,11 +298,11 @@ const Layout = ({
                 </div>
               </Link>
 
-              {/*<Link href="https://www.v-landeurope.com/">
+              {/* <Link href="https://www.v-landeurope.com/">
                 <div className="hover:text-primary hover:translate-x-3 transition-all">
                   V-Land Europe
                 </div>
-              </Link>*/}
+              </Link> */}
 
               <br />
               <h3 className="text-black text-[12px]">Follow us:</h3>

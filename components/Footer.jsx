@@ -110,7 +110,7 @@ const Footer = () => {
           <h2 className="text-4xl lg:text-4xl font-[800] text-center lg:text-left mb-1 px-1 lg:px-2">
             Newsletter
           </h2>
-          <h4 className="w-[95%] mx-auto text-neutral-800 text-opacity-80 text-[11px] lg:text-xs font-normal tracking-wider text-center lg:text-left my-5">
+          <h4 className="w-[95%] mx-auto text-black  text-[11px] lg:text-xs font-normal tracking-wider text-center lg:text-left my-5">
             {/* We’ll keep you updated on new information, upcoming events, and the
             best deals in your area. */}
             Never miss out on exclusive articles, deals, and giveaways.
