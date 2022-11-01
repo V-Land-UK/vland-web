@@ -318,6 +318,6 @@ Layout.defaultProps = {
   title: "V-Land UK",
   page: "Home",
   image: "Logo.JPG",
-  keywords: "vland, vegan, uk, green, nutritional, v-l, v-land, v",
+  keywords: "vegan magazine, vegan magazine UK, vegan articles, veganism UK, veganism in the UK, rise of veganism UK, best vegan magazine UK, UK vegan magazine, v-land UK, v land uk, vland uk, vland, v-land",
   desc: "🇬🇧 Your UK vegan magazine",
 };
