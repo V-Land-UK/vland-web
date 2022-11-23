@@ -10,7 +10,7 @@ const Contact = () => {
         <h1 className="text-3xl lg:text-3xl text-primary font-bold mt-4 lg:mt-7">
           Contact
         </h1>
-        <h1 className="text-2xl lg:text-3xl text-primary font-bold mt-4 lg:mt-7 mb-1">
+        <h1 className="text-2xl lg:text-2xl text-primary font-bold mt-4 lg:mt-7 mb-1">
           Editorial
         </h1>
         If you are a business, event, public relations, or organization you can
@@ -20,7 +20,7 @@ const Contact = () => {
           press@v-landmagazine.com
         </a>
         .
-        <h1 className="text-2xl lg:text-3xl text-primary font-bold mt-4 lg:mt-7 mb-1">
+        <h1 className="text-2xl lg:text-2xl text-primary font-bold mt-4 lg:mt-7 mb-1">
           Advertising
         </h1>
         For more information about advertising on our website and our social
@@ -29,7 +29,7 @@ const Contact = () => {
           advertising@v-landmagazine.com
         </a>
         .
-        <h1 className="text-2xl lg:text-3xl text-primary font-bold mt-4 lg:mt-7 mb-1">
+        <h1 className="text-2xl lg:text-2xl text-primary font-bold mt-4 lg:mt-7 mb-1">
           General comments and questions
         </h1>
         Comments and questions? Send an email to{" "}

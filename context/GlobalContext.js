@@ -19,6 +19,19 @@ const GlobalProvider = ({ children }) => {
 
   //Get Articles again
   useEffect(() => {
+    if (Categories.length < 1) {
+      axios
+        .get(`${API}/categories`)
+        .then(({ data }) => {
+          setCategories(data?.data);
+        })
+        .catch((err) => {
+          setStatus((prev) => {
+            return { ...prev, error: true };
+          });
+        });
+    }
+
     if (Articles.length < 1) {
       const filters = qs.stringify({
         populate: "*",
@@ -30,30 +43,15 @@ const GlobalProvider = ({ children }) => {
       axios
         .get(`${API}/articles?${filters}`)
         .then(({ data }) => {
-          const visible_articles = data?.data.filter((article)=>{
-            
+          const visible_articles = data?.data.filter((article) => {
             const article_date = new Date(article?.attributes?.PublishDate);
             const curr_date = new Date();
 
             return article_date <= curr_date;
           });
-          
+
           setArticles(visible_articles);
           //console.log(res);
-        })
-        .catch((err) => {
-          setStatus((prev) => {
-            return { ...prev, error: true };
-          });
-        });
-
-    }
-
-    if (Categories.length < 1) {
-      axios
-        .get(`${API}/categories?populate=*`)
-        .then(({ data }) => {
-          setCategories(data?.data);
         })
         .catch((err) => {
           setStatus((prev) => {
