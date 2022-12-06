@@ -145,7 +145,8 @@ const ArticleCard = ({ article, index, cat=null }) => {
         className={`${
           cat ===
           "Food & Drink"
-            ? "green-body"
+            ? "green-body": article.attributes?.categories?.data[0]?.attributes?.name  === "Food & Drink" ?
+            "green-body"
             : ""
         } aCard__body px-3 py-1 flex flex-col justify-between rounded-b-2xl`}
       >
@@ -160,7 +161,8 @@ const ArticleCard = ({ article, index, cat=null }) => {
                 className={` xxs:text-[.8rem] xs:text-[1.3rem] sm:text-[1.5rem] md:text-2xl lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.15rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
                   cat ===
                   "Food & Drink"
-                    ? "article-title-green "
+                    ? "article-title-green ": article.attributes?.categories?.data[0]?.attributes?.name  === "Food & Drink"  ?
+                    "article-title-green"
                     : "article-title"
                 }`}
               >
@@ -215,10 +217,12 @@ const ArticleCard = ({ article, index, cat=null }) => {
           <div className={"article-author-data"}>
             <p
               className={`txt ${
-                article.attributes?.categories?.data[0]?.attributes?.name ===
+                cat ===
                 "Food & Drink"
-                  ? " text-white"
-                  : " text-primary"
+                  ? "text-white"
+                  : article.attributes?.categories?.data[0]?.attributes?.name  === "Food & Drink" ?
+                  "text-white"
+                  :"text-primary"
               }`}
             >
               {findUserByID(article?.attributes?.author?.data?.id)?.attributes
@@ -228,10 +232,11 @@ const ArticleCard = ({ article, index, cat=null }) => {
             <Moment
               format="MMM Do YYYY"
               className={`${
-                article.attributes?.categories?.data[0]?.attributes?.name ===
+                cat ===
                 "Food & Drink"
-                  ? "article-date-green"
-                  : "article-date"
+                  ? "article-date-green" : article.attributes?.categories?.data[0]?.attributes?.name  === "Food & Drink" ?
+                  "article-date-green"
+                  :"article-date"
               }`}
             >
               {article?.attributes?.PublishDate}
