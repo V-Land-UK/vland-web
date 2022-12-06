@@ -37,7 +37,7 @@ export default function Categories({ articles, meta, category, ads }) {
           <div className="cardList_ctnr relative">
             {articles.map((article, index) => (
               <Fragment key={index}>
-                <ArticleCard article={article} key={index} />
+                <ArticleCard article={article} key={index} cat={category} />
                 
                 {ads.length > 0 && checkAd(index) && (
                   <Ads ad={ads[getAdIndex(index)]} />

@@ -10,10 +10,12 @@ import React from "react";
 import { stringify } from "qs";
 
 import Image from "next/image";
+import { getLocationOrigin } from "next/dist/shared/lib/utils";
 
-const ArticleCard = ({ article, index }) => {
+const ArticleCard = ({ article, index, cat=null }) => {
   const { findUserByID, Articles } = useContext(GlobalContext);
   const router = useRouter();
+
 
   //HELPER FUNC REMOVING WHITESPACE FROM STRING
   /*const rmvWhiteSpace = (str)=>{
@@ -93,10 +95,34 @@ const ArticleCard = ({ article, index }) => {
           {/* TAGS/CATEGORIES */}
           {article.attributes?.categories?.data.length > 0 &&
             article.attributes.categories.data.map((category, current) => (
+
+              category.attributes.name === cat ? (
+                
+                <Link
+                key={current}
+                href={`/category/${category.attributes.slug}`}
+                passHref
+                
+                
+                >
+                <a className="no-underline order-first">
+                  <p
+                    className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
+                      category.attributes.name.toLowerCase() === "sponsored"
+                        ? "text-white bg-green-800 hover:bg-white hover:text-primary"
+                        : "text-white bg-primary hover:bg-white hover:text-primary"
+                    }`}
+                  >
+                   {category.attributes.name}
+                  </p>
+                </a>
+              </Link>
+              ):
               <Link
                 key={current}
                 href={`/category/${category.attributes.slug}`}
                 passHref
+                
               >
                 <a className="no-underline">
                   <p
@@ -117,9 +143,9 @@ const ArticleCard = ({ article, index }) => {
       {/* POST BODY */}
       <div
         className={`${
-          article.attributes?.categories?.data[0]?.attributes?.name ===
+          cat ===
           "Food & Drink"
-            ? "green-body "
+            ? "green-body"
             : ""
         } aCard__body px-3 py-1 flex flex-col justify-between rounded-b-2xl`}
       >
@@ -132,7 +158,7 @@ const ArticleCard = ({ article, index }) => {
             <a>
               <h1
                 className={` xxs:text-[.8rem] xs:text-[1.3rem] sm:text-[1.5rem] md:text-2xl lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.15rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
-                  article.attributes?.categories?.data[0]?.attributes?.name ===
+                  cat ===
                   "Food & Drink"
                     ? "article-title-green "
                     : "article-title"
