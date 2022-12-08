@@ -139,7 +139,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center text-[10px] font-medium lg:font-medium poppins mt-10 lg:mt-12">
-        &copy;{year} V-Land UK. All rights reserved.{" "}
+        &copy;{year} V-Land Magazine Ltd. All rights reserved.{" "}
         {/* <a
           href="https://twitter.com/trulyao"
           target="_blank"
