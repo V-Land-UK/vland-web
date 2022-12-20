@@ -145,7 +145,7 @@ const PrivacyPolicy = ()=>
                                          schedules or appendices of this privacy policy;</p>
                                     </li>
                                     <li className="mb-3"><p className="ml-2">a reference to a person includes firms, companies, government entities, trusts and partnerships</p></li>
-                                    <li className="mb-3"><p className="ml-2">"including" is understood to mean "including without limitation";</p></li>
+                                    <li className="mb-3"><p className="ml-2">&quot;including&quot; is understood to mean &quot;including without limitation&quot;</p></li>
                                     <li className="mb-3"><p className="ml-2">reference to any statutory provision includes any modification or amendment of it;</p></li>
                                     <li className="mb-3"><p className="ml-2">the headings and sub-headings do not form part of this privacy policy.</p></li>
 
@@ -161,7 +161,7 @@ const PrivacyPolicy = ()=>
                             It does not extend to any websites that can be accessed from this
                             Website including, but not limited to, any links we may provide to social media websites.</p>
                             </li>
-                            <li className="mt-3"><p className="ml-2">For purposes of the applicable Data Protection Laws, is the "data controller".
+                            <li className="mt-3"><p className="ml-2">For purposes of the applicable Data Protection Laws, is the &quot;data controller&quot;.
                              This means that V-Land Magazine Limited determines the purposes for which, and the manner in which, your Data is processed.</p>
                             </li>
                         </ol>
@@ -230,17 +230,17 @@ which you access the Website and the way you use and interact with its content.<
                                 <p className="ml-2 mt-3">in each case, in accordance with this privacy policy.</p>
                             </li>
                             <li><p className=" mt-3 ml-2">We may use your Data for the above purposes if we deem it necessary to do so for our legitimate interests. If you are
-                            not satisfied with this, you have the right to object in certain circumstances (see the section headed "Your rights"
+                            not satisfied with this, you have the right to object in certain circumstances (see the section headed &quot;Your rights&quot;
                             below).</p></li>
-                            <li className="mt-3"><p className="ml-2">For the delivery of direct marketing to you via e-mail, we'll need your consent, whether via an opt-in or soft-opt-in:</p>
+                            <li className="mt-3"><p className="ml-2">For the delivery of direct marketing to you via e-mail, we&apos;ll need your consent, whether via an opt-in or soft-opt-in:</p>
                                 <ol className="list-[lower-alpha] list-outside mt-3 ml-10">
                                     <li className="mb-3"><p className="ml-2">soft opt-in consent is a specific type of consent which applies when you have previously engaged with us (for
                                     example, you contact us to ask us for more details about a particular product/service, and we are marketing similar
-                                    products/services). Under "soft opt-in" consent, we will take your consent as given unless you opt-out.</p></li>
+                                    products/services). Under &quot;soft opt-in&quot; consent, we will take your consent as given unless you opt-out.</p></li>
                                     <li className="mb-3"><p className="ml-2">for other types of e-marketing, we are required to obtain your explicit consent; that is, you need to take positive
-                                    and affirmative action when consenting by, for example, checking a tick box that we'll provide.</p></li>
+                                    and affirmative action when consenting by, for example, checking a tick box that we&apos;ll provide.</p></li>
                                     <li className="mb-3"><p className="ml-2">if you are not satisfied with our approach to marketing, you have the right to withdraw consent at any time. To
-                                    find out how to withdraw your consent, see the section headed "Your rights" below.</p></li>
+                                    find out how to withdraw your consent, see the section headed &quot;Your rights&quot; below.</p></li>
                                 </ol>
                             </li>
 
@@ -281,11 +281,11 @@ which you access the Website and the way you use and interact with its content.<
                                 <ol className="list-[lower-alpha] list-outside ml-10 mt-3">
                                     <li><p className="ml-2"><span className="font-bold">Right to access{" "}</span> - the right to request (i) copies of the information we hold about you at any time, or (ii) that we
                                     modify, update or delete such information. If we provide you with access to the information we hold about you,
-                                    we will not charge you for this, unless your request is "manifestly unfounded or excessive." Where we are legally
+                                    we will not charge you for this, unless your request is &quot;manifestly unfounded or excessive.&quot; Where we are legally
                                     permitted to do so, we may refuse your request. If we refuse your request, we will tell you the reasons why.</p></li>
                                     <li><p className="ml-2"><span className="font-bold">Right to correct{" "}</span>- the right to have your Data rectified if it is inaccurate or incomplete.</p></li>
                                     <li><p className="ml-2"><span className="font-bold">Right to erase{" "}</span>the right to request that we delete or remove your Data from our systems.</p></li>
-                                    <li><p className="ml-2"><span className="font-bold">Right to restrict our use of your data{" "}</span> - the right to "block" us from using your Data or limit the way in which
+                                    <li><p className="ml-2"><span className="font-bold">Right to restrict our use of your data{" "}</span> - the right to &quot;block&quot; us from using your Data or limit the way in which
                                         we can use it.</p></li>
                                     <li><p className="ml-2"><span className="font-bold">Right to data portability{" "}</span> - the right to request that we move, copy or transfer your Data.</p></li>
                                     <li><p className="ml-2"><span className="font-bold">Right to object{" "}</span> - the right to object to our use of your Data including where we use it for our legitimate interests.</p></li>
@@ -294,8 +294,8 @@ which you access the Website and the way you use and interact with its content.<
                             <li className="mt-3"><p className="ml-2">To make enquiries, exercise any of your rights set out above, or withdraw your consent to the processing of your Data
                             (where consent is our, legal basis for processing your Data), please contact us via this e-mail address:{" "}<a href="mailto:contact@v-landmagazine.com" className="underline">contact@v-landmagazine.com.</a></p></li>
                             <li className="mt-3"><p className="ml-2">If you are not satisfied with the way a complaint you make in relation to your Data is handled by us, you may be able
-                            to refer your complaint to the relevant data protection authority. For the UK, this is the Information Commissioner's
-                            Office (ICO). The ICO's contact details can be found on their website at https://ico.org.uk/.</p></li>
+                            to refer your complaint to the relevant data protection authority. For the UK, this is the Information Commissioner&apos;s
+                            Office (ICO). The ICO&apos;s contact details can be found on their website at https://ico.org.uk/.</p></li>
                             <li className="mt-3"><p className="ml-2">It is important that the Data we hold about you is accurate and current. Please keep us informed if your Data changes
                             during the period for which we hold it.</p></li>
                         </ol>
@@ -378,56 +378,55 @@ which you access the Website and the way you use and interact with its content.<
                     <section aria-label="contents" className="mt-7">
                         
                         <DropDown title="Definitions and interpretation">
-                            <ol className="ml-5 mt-3 list-decimal list-outside">
-                                    <li><p className="ml-2">In this privacy policy, the following definitions are used:</p>
-                                        <table className="mt-5 border-2 border-black-500 text-sm">
-                                            <tbody>
-                                                <tr>
-                                                    <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2 bg-[#F8F8F8]">Data</th>
-                                                    <td className="align-center w-fit border-box border-b-2 border-black-500 px-2 bg-[#F8F8F8]">collectively all information that you submit to via the Website. This definition incorporates, where applicable, the definitions provided in the Data Protection Laws;</td>
-                                                </tr>
-                                                <tr>
-                                                    <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2 ">Data Protection Laws</th>
-                                                    <td className="align-center w-fit border-box border-b-2 border-black-500 px-2">any applicable law relating to the processing of personal Data, including but not limited to the GDPR,
-                and any national implementing and supplementary laws, regulations and secondary legislation;</td>
-                                                </tr>
-                                                <tr>
-                                                    <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2 bg-[#F8F8F8]">GDPR</th>
-                                                    <td className="align-center w-fit border-box border-b-2 border-black-500 px-2 bg-[#F8F8F8]">the UK General Data Protection Regulation;</td>
-                                                </tr>
-                                                <tr>
-                                                    <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2">V-Land Magazine Limited, we {" "}<span className="font-normal">or</span>{" "} us</th>
-                                                    <td className="align-center w-fit border-box border-b-2 border-black-500 px-2">V-Land Magazine Limited, a company incorporated in England and Wales with registered number 14199544 whose registered office is at 16 Roberts Road, Hertfordshire, WD18 0AY;</td>
-                                                </tr>
-                                                <tr>
-                                                    <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2 bg-[#F8F8F8]">User{" "}<span className="font-normal">or</span>{" "}you</th>
-                                                    <td className="align-center w-fit border-box border-b-2 border-black-500 px-2 bg-[#F8F8F8]">any third party that accesses the Website and is not either (i) employed by V-Land Magazine Limited
-                and acting in the course of their employment or (ii) engaged as a consultant or otherwise providing
-                services to and accessing the Website in connection with the provision of such services;</td>
-                                                </tr>
-                                                <tr>
-                                                    <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2">Website</th>
-                                                    <td className="align-center w-fit border-box border-b-2 border-black-500 px-2">the website that you are currently using, and any sub-domains of this site unless www.v-landuk.com
-                expressly excluded by their own terms and conditions.</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </li>
-                                    <li className="mt-7">
-                                        <span className="ml-2 block">In this privacy policy, unless the context requires a different interpretation:
-                                            <ol className="list-[lower-alpha] ml-10 pl-5 mt-3 list-outside">
-                                                <li className="mb-3"><p className="ml-2">the singular includes the plural and vice versa;</p></li>
-                                                <li className="mb-3"><p className="ml-2">references to sub-clauses, clauses, schedules or appendices are to sub-clauses, clauses,
-                                                    schedules or appendices of this privacy policy;</p>
-                                                </li>
-                                                <li className="mb-3"><p className="ml-2">a reference to a person includes firms, companies, government entities, trusts and partnerships</p></li>
-                                                <li className="mb-3"><p className="ml-2">"including" is understood to mean "including without limitation";</p></li>
-                                                <li className="mb-3"><p className="ml-2">reference to any statutory provision includes any modification or amendment of it;</p></li>
-                                                <li className="mb-3"><p className="ml-2">the headings and sub-headings do not form part of this privacy policy.</p></li>
+                            <ol className=" ml-5 mt-3 list-decimal list-outside">
+                                <li><p className="ml-2">In this privacy policy, the following definitions are used:</p>
+                                    <table className="mt-5 border-2 border-black-500">
+                                        <tbody>
+                                            <tr>
+                                                <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2 bg-[#F8F8F8]">Data</th>
+                                                <td className="align-center w-fit border-box border-b-2 border-black-500 px-2 bg-[#F8F8F8]">collectively all information that you submit to via the Website. This definition incorporates, where applicable, the definitions provided in the Data Protection Laws;</td>
+                                            </tr>
+                                            <tr>
+                                                <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2 ">Data Protection Laws</th>
+                                                <td className="align-center w-fit border-box border-b-2 border-black-500 px-2">any applicable law relating to the processing of personal Data, including but not limited to the GDPR,
+            and any national implementing and supplementary laws, regulations and secondary legislation;</td>
+                                            </tr>
+                                            <tr>
+                                                <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2 bg-[#F8F8F8]">GDPR</th>
+                                                <td className="align-center w-fit border-box border-b-2 border-black-500 px-2 bg-[#F8F8F8]">the UK General Data Protection Regulation;</td>
+                                            </tr>
+                                            <tr>
+                                                <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2">V-Land Magazine Limited, we {" "}<span className="font-normal">or</span>{" "} us</th>
+                                                <td className="align-center w-fit border-box border-b-2 border-black-500 px-2">V-Land Magazine Limited, a company incorporated in England and Wales with registered number 14199544 whose registered office is at 16 Roberts Road, Hertfordshire, WD18 0AY;</td>
+                                            </tr>
+                                            <tr>
+                                                <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2 bg-[#F8F8F8]">User{" "}<span className="font-normal">or</span>{" "}you</th>
+                                                <td className="align-center w-fit border-box border-b-2 border-black-500 px-2 bg-[#F8F8F8]">any third party that accesses the Website and is not either (i) employed by V-Land Magazine Limited
+            and acting in the course of their employment or (ii) engaged as a consultant or otherwise providing
+            services to and accessing the Website in connection with the provision of such services;</td>
+                                            </tr>
+                                            <tr>
+                                                <th className="align-center w-fit border-box border-r-2 border-b-2 border-black-500 px-2">Website</th>
+                                                <td className="align-center w-fit border-box border-b-2 border-black-500 px-2">the website that you are currently using, and any sub-domains of this site unless www.v-landuk.com
+            expressly excluded by their own terms and conditions.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                                <li className="mt-7">
+                                    <p className="ml-2">In this privacy policy, unless the context requires a different interpretation:</p>
+                                    <ol className="list-[lower-alpha] ml-10 pl-5 mt-3 list-outside">
+                                        <li className="mb-3"><p className="ml-2">the singular includes the plural and vice versa;</p></li>
+                                        <li className="mb-3"><p className="ml-2">references to sub-clauses, clauses, schedules or appendices are to sub-clauses, clauses,
+                                            schedules or appendices of this privacy policy;</p>
+                                        </li>
+                                        <li className="mb-3"><p className="ml-2">a reference to a person includes firms, companies, government entities, trusts and partnerships</p></li>
+                                        <li className="mb-3"><p className="ml-2">&quot;including&quot; is understood to mean &quot;including without limitation&quot;</p></li>
+                                        <li className="mb-3"><p className="ml-2">reference to any statutory provision includes any modification or amendment of it;</p></li>
+                                        <li className="mb-3"><p className="ml-2">the headings and sub-headings do not form part of this privacy policy.</p></li>
 
-                                            </ol>
-                                        </span>
-                                    </li>
+                                    </ol>
+                                </li>
                             </ol>
                         </DropDown>
                         <DropDown title="Scope of this privacy policy">
@@ -436,7 +435,7 @@ which you access the Website and the way you use and interact with its content.<
                                 It does not extend to any websites that can be accessed from this
                                 Website including, but not limited to, any links we may provide to social media websites.</p>
                                 </li>
-                                <li className="mt-3"><p className="ml-2">For purposes of the applicable Data Protection Laws, is the "data controller".
+                                <li className="mt-3"><p className="ml-2">For purposes of the applicable Data Protection Laws, is the &quot;data controller&quot;.
                                 This means that V-Land Magazine Limited determines the purposes for which, and the manner in which, your Data is processed.</p>
                                 </li>
                             </ol>
@@ -503,19 +502,19 @@ which you access the Website and the way you use and interact with its content.<
                                     <p className="ml-2 mt-3">in each case, in accordance with this privacy policy.</p>
                                 </li>
                                 <li><p className=" mt-3 ml-2">We may use your Data for the above purposes if we deem it necessary to do so for our legitimate interests. If you are
-                                not satisfied with this, you have the right to object in certain circumstances (see the section headed "Your rights"
+                                not satisfied with this, you have the right to object in certain circumstances (see the section headed &quot;Your rights&quot;
                                 below).</p></li>
-                                <li className="mt-3"><span className="ml-2 block">For the delivery of direct marketing to you via e-mail, we'll need your consent, whether via an opt-in or soft-opt-in:
+                                <li className="mt-3"><p className="ml-2">For the delivery of direct marketing to you via e-mail, we&apos;ll need your consent, whether via an opt-in or soft-opt-in:</p>
                                     <ol className="list-[lower-alpha] list-outside mt-3 ml-10">
                                         <li className="mb-3"><p className="ml-2">soft opt-in consent is a specific type of consent which applies when you have previously engaged with us (for
                                         example, you contact us to ask us for more details about a particular product/service, and we are marketing similar
-                                        products/services). Under "soft opt-in" consent, we will take your consent as given unless you opt-out.</p></li>
+                                        products/services). Under &quot;soft opt-in&quot; consent, we will take your consent as given unless you opt-out.</p></li>
                                         <li className="mb-3"><p className="ml-2">for other types of e-marketing, we are required to obtain your explicit consent; that is, you need to take positive
-                                        and affirmative action when consenting by, for example, checking a tick box that we'll provide.</p></li>
+                                        and affirmative action when consenting by, for example, checking a tick box that we&apos;ll provide.</p></li>
                                         <li className="mb-3"><p className="ml-2">if you are not satisfied with our approach to marketing, you have the right to withdraw consent at any time. To
-                                        find out how to withdraw your consent, see the section headed "Your rights" below.</p></li>
+                                        find out how to withdraw your consent, see the section headed &quot;Your rights&quot; below.</p></li>
                                     </ol>
-                                </span></li>
+                                </li>
 
                             </ol>
 
@@ -552,11 +551,11 @@ which you access the Website and the way you use and interact with its content.<
                                     <ol className="list-[lower-alpha] list-outside ml-10 mt-3">
                                         <li><p className="ml-2"><span className="font-bold">Right to access{" "}</span> - the right to request (i) copies of the information we hold about you at any time, or (ii) that we
                                         modify, update or delete such information. If we provide you with access to the information we hold about you,
-                                        we will not charge you for this, unless your request is "manifestly unfounded or excessive." Where we are legally
+                                        we will not charge you for this, unless your request is &quot;manifestly unfounded or excessive.&quot; Where we are legally
                                         permitted to do so, we may refuse your request. If we refuse your request, we will tell you the reasons why.</p></li>
                                         <li><p className="ml-2"><span className="font-bold">Right to correct{" "}</span>- the right to have your Data rectified if it is inaccurate or incomplete.</p></li>
                                         <li><p className="ml-2"><span className="font-bold">Right to erase{" "}</span>the right to request that we delete or remove your Data from our systems.</p></li>
-                                        <li><p className="ml-2"><span className="font-bold">Right to restrict our use of your data{" "}</span> - the right to "block" us from using your Data or limit the way in which
+                                        <li><p className="ml-2"><span className="font-bold">Right to restrict our use of your data{" "}</span> - the right to &quot;block&quot; us from using your Data or limit the way in which
                                             we can use it.</p></li>
                                         <li><p className="ml-2"><span className="font-bold">Right to data portability{" "}</span> - the right to request that we move, copy or transfer your Data.</p></li>
                                         <li><p className="ml-2"><span className="font-bold">Right to object{" "}</span> - the right to object to our use of your Data including where we use it for our legitimate interests.</p></li>
@@ -565,8 +564,8 @@ which you access the Website and the way you use and interact with its content.<
                                 <li className="mt-3"><p className="ml-2">To make enquiries, exercise any of your rights set out above, or withdraw your consent to the processing of your Data
                                 (where consent is our, legal basis for processing your Data), please contact us via this e-mail address:{" "}<a href="mailto:contact@v-landmagazine.com" className="underline">contact@v-landmagazine.com.</a></p></li>
                                 <li className="mt-3"><p className="ml-2">If you are not satisfied with the way a complaint you make in relation to your Data is handled by us, you may be able
-                                to refer your complaint to the relevant data protection authority. For the UK, this is the Information Commissioner's
-                                Office (ICO). The ICO's contact details can be found on their website at https://ico.org.uk/.</p></li>
+                                to refer your complaint to the relevant data protection authority. For the UK, this is the Information Commissioner&apos;s
+                                Office (ICO). The ICO&apos;s contact details can be found on their website at https://ico.org.uk/.</p></li>
                                 <li className="mt-3"><p className="ml-2">It is important that the Data we hold about you is accurate and current. Please keep us informed if your Data changes
                                 during the period for which we hold it.</p></li>
                             </ol>
