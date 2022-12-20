@@ -138,16 +138,22 @@ const Footer = () => {
           </form>
         </div>
       </div>
-      <div className="text-center text-[10px] font-medium lg:font-medium poppins mt-10 lg:mt-12">
-        &copy;{year} V-Land Magazine Ltd. All rights reserved.{" "}
-        {/* <a
-          href="https://twitter.com/trulyao"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-primary hover:text-primary hover:underline font-semibold"
-        >
-          Ayodeji
-        </a> */}
+      <div className="text-[10px] text-center font-medium lg:font-medium poppins mt-10 lg:mt-12">
+       
+        <div className="inline-block w-[50%] text-center m-auto">
+          &copy;{year} V-Land Magazine Ltd. All rights reserved.{" "}
+          {/* <a
+            href="https://twitter.com/trulyao"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary hover:underline font-semibold"
+          >
+            Ayodeji
+          </a> */}
+        </div>
+        <div className="absolute inline-block w-[25%] ml-3/4 text-center">
+          <Link href="/privacy-policy">Privacy Policy</Link>
+        </div>
       </div>
       <ToastContainer />
     </footer>
