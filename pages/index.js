@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import {useEffect, useState, useRef, useCallback, Fragment } from "react";
+import { useContext, useEffect, useState, useRef, useCallback, Fragment } from "react";
 import Layout from "../defaults/Layout";
 import ArticleCard from "../components/ArticleCard";
 import Pagination from "../components/Pagination";
