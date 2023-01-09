@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, Fragment } from "react";
 import Head from "next/head";
 import { Fade as Hamburger } from "hamburger-react";
 import debounce from "lodash.debounce";
@@ -32,6 +32,7 @@ import SearchCard from "../components/SearchCard";
 import Icon from "../components/Icon";
 const qs = require("qs");
 import { GlobalContext } from "../context/GlobalContext";
+//import CookieSetupPrompt from "../components/CookieSetupPrompt";
 
 const Layout = ({
   children,
@@ -56,6 +57,11 @@ const Layout = ({
   const toggleDrawer = () => {
     onOpen();
   };
+  //Ads event listener
+  useEffect(()=>{
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+
+  },[])
 
   //Event listener for the links
   useEffect(() => {
@@ -82,6 +88,8 @@ const Layout = ({
   return (
     <>
       <Head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9166716457553506"
+        crossOrigin="anonymous"></script>
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
@@ -161,7 +169,7 @@ const Layout = ({
 
         <title>{title}</title>
       </Head>
-
+      
       <nav className="bg-transparent w-screen h-auto fixed top-0 drop-shadow-md z-[999]">
         <div className="relative bg-white flex lg:grid lg:grid-cols-3 lg:justify-items-center justify-between items-center py-1 px-5 lg:px-8 z-[999]">
           <div className="items-center space-x-4 hidden lg:block lg:place-self-start lg:self-center">
@@ -234,10 +242,20 @@ const Layout = ({
           )}
         </AnimatePresence>
       </nav>
-
-      <main className="w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[17vh] lg:mt-[18vh]">
+      <div className="relative w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[19vh] lg:mt-[20vh] h-fit">
+           
+        
+        <ins className="adsbygoogle block mx-auto w-[300px]  lg:w-[728px] h-[50px] lg:h-[90px]"
+        data-ad-client="ca-pub-9166716457553506"
+        data-ad-slot="6593416244"
+        data-ad-format="rectangle horizontal"
+        data-full-width-responsive="true"></ins>
+          
+      </div>
+      <main className="w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[3vh] lg:mt-[4vh]">
         {children}
       </main>
+      
       <Footer />
 
       {/* NAVIGATION DRAWER */}
