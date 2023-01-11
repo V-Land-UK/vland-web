@@ -18,14 +18,9 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider>
       <GlobalProvider>
         <Script
-          id="Adsense-id"
-          async
-          onError={(err) => {
-            console.error("Script failed to load", err);
-          }}
-          strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9166716457553506"
-          crossorigin="anonymous"
+         async 
+         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9166716457553506"
+         crossOrigin="anonymous"
         ></Script>
         <Component {...pageProps} />
       </GlobalProvider>
