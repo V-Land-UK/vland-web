@@ -337,9 +337,7 @@ const Article = ({ article }) => {
                 </Slider>
               </div>
 
-              <div style={{ display: "flex" }}>
-                <AdUnit />
-              </div>
+              <div style={{ display: "flex" }}>{/* <AdUnit /> */}</div>
             </section>
           </main>
         ) : (
