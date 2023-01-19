@@ -337,7 +337,7 @@ const Article = ({ article }) => {
                 </Slider>
               </div>
 
-              <div style={{ height: 200 }}>
+              <div className="relative w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-8 lg:mt-[20vh] h-fit">
                 <AdUnit />
               </div>
             </section>
