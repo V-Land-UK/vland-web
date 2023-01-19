@@ -1,21 +1,51 @@
-import {useEffect, useCallback, useState, useRef} from "react";
-import { fa } from "@fortawesome/free-solid-svg-icons";
+import {useEffect, useCallback, useState, useRef,useContext} from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { GlobalContext } from "../context/GlobalContext";
+import { useControllableProp } from "@chakra-ui/react";
+import DropDown from "./DropDown";
+
 
 
 const CookieSetupPrompt = (bool=true)=>{
-    const [ECtoggleActive,ECsetToggleActive] = useState(false);
+    const [ECtoggleActive,setECtoggleActive] = useState(false);
+    const {Cookies} = useContext(GlobalContext);
+    const contentRef = useRef(null);
+    const [content, setContent] = useState({});
+   
+    useEffect(()=>{
+        
+        if(Object.keys(Cookies).length){
+            setContent(contentRef.current ? {...contentRef.current,vendors:(contentRef.current.vendors === "null"? null:contentRef.current.vendors)}: ({
+                title: Cookies?.cookieTypes["functionality-cookies"].title,
+                body: Cookies?.cookieTypes["functionality-cookies"].body,
+                vendors: (Cookies?.cookieTypes["functionality-cookies"].vendors === "null"? null:Cookies?.cookieTypes["functionality-cookies"].vendors)
+            }
+            ));
+        }
+    },[Object.keys(Cookies).length])
+    const contentToggle = (contentObj) =>
+    {
+        contentRef.current = contentObj;
+        setContent({...contentRef.current,vendors:(contentRef.current.vendors === "null"? null:contentRef.current.vendors)});
+    }
+
+
+    
+   
 
     const toggleEC = ()=>{
-        ECsetToggleActive(() => {return ECtoggleActive ? false:true});
+        setECtoggleActive(() => {return ECtoggleActive ? false:true});
     };
+    
 
     return(
 
         <div className="fixed w-screen h-screen bg-black/75 z-[9999] top-0">
             <div className="relative border-box pt-8 rounded-[6px] bg-white m-auto h-[90vw] w-[90%] lg:h-[50vw] max-h-[500px] max-w-[500px] lg:w-[50%] top-[15%] xl:w-[35%] xl:h-[35vw] lg:max-h-[550px] lg:max-w-[550px] lg:top-[10%]" role="alertdialog" aria-describedby="trust-policy-text" aria-label="We care about your privacy">
                 <div className="relative w-[100%] max-h-[80%] overflow-scroll scroll-py-0">
-                    <div className="relative w-[85%] lg:w-[80%] mx-auto">
-                        <h3 className="font-semibold text-primary mx-auto text-center text-sm">We care about your privacy</h3>
+                    <div className="relative w-[85%] lg:w-[80%] mt-8 mx-auto">
+                        <h3 className="font-semibold text-primary mx-auto text-center text-md">We care about your privacy</h3>
                         <p className="text-xs mt-2">We and our partners store and/or access information on your device to help:</p>
                         <ul className="ml-5 list-outside mt-2 text-xs">
                             <li className="ml-2 mt-3">Provide you with the best possible service and experience when using our website</li>
@@ -34,7 +64,7 @@ const CookieSetupPrompt = (bool=true)=>{
                             <div className="relative text-end w-[100%] mt-2">
                                 
                                 <p className="text-start w-[90%] inline-block align-top font-semibold" style={{marginBlockEnd:"0"}}>More information</p>
-                               
+                            
                                 
                                 <button className={`w-[10%] text-center`} onClick={()=>{toggleEC()}}>
                                     <i className={`inline-block w-[12px] h-[12px] origin-center  border-black border-r-[2.5px] border-b-[2.5px] ${ECtoggleActive ? "rotate-[-135deg]": "rotate-45"}`}></i>
@@ -62,7 +92,7 @@ const CookieSetupPrompt = (bool=true)=>{
                         <div className="border-box pb-3 border-b-[1.25px] mt-2 border-gray-400 text-xs">
                             <p>In some cases, this website uses cookies provided by trusted third parties that serve content or
                             render advertising and analytics services on this website.</p>
-                            <p className="underline font-semibold mt-3">Manage cookies</p>
+                            <p className="underline font-semibold cursor-pointer mt-3">Manage cookies</p>
                         </div>
                         
                     </div>
@@ -74,8 +104,209 @@ const CookieSetupPrompt = (bool=true)=>{
                     </div>
                 </div>
             </div>
+            <div className="absolute left-[50%] translate-x-[-50%] border-box pt-3 rounded-[6px] bg-white m-auto top-[18%] w-[90%] max-w-[600px] lg:w-[60%] xl:w-[45%] xl:max-w-[650px] lg:top-[12%]">
+                <div className="relative border-black-400 border-b-[1.25px] border-box pb-2 rounded-t-[6px]">
+                    <div className="relative inline-block w-[80%] xs:w-[90%]">
+
+                        <img className="inline-block relative ml-3 mr-8 h-auto w-[6rem]" src="/Header.svg"/>
+                    </div>
+                    <button className="relative align-bottom w-[24px] h-[24px] rounded-[50%] border-black-300 border-[2px]">
+                            <FontAwesomeIcon icon={faXmark} className="w-[16px] h-[16px] m-auto"></FontAwesomeIcon>
+                    </button>
+                    
+
+                </div>
+                
+                {Object.keys(Cookies).length && (
+                    <div className="relative">
+                        <div className="hidden sm:inline-block w-fit">
+                            
+                            <ul className="p-0 list-none bg-white font-semibold text-xs">
+                                <li className="border-box py-2 pr-3 border-black-300 border-b-[.8px]" onClick={()=>{contentToggle(Cookies?.cookieTypes["functionality-cookies"])}}><p className="ml-3">{Cookies?.cookieTypes["functionality-cookies"].title}</p></li>
+                                <li className="border-box py-2 pr-3 border-black-300 border-b-[.8px]"onClick={()=>{contentToggle(Cookies?.cookieTypes["analytical-cookies"])}}><p className="ml-3">{Cookies?.cookieTypes["analytical-cookies"].title}</p></li>
+                                <li className="border-box py-2 pr-3 border-black-300 border-b-[.8px]"onClick={()=>{contentToggle(Cookies?.cookieTypes["targeting-cookies"])}}><p className="ml-3">{Cookies?.cookieTypes["targeting-cookies"].title}</p></li>
+                            </ul>
+                        
+
+                        </div>
+                        <div className="block sm:hidden w-[80%] mx-auto mt-10  h-[250px] overflow-y-scroll max-h-[500px]">
+                            <DropDown title={`${Cookies?.cookieTypes["functionality-cookies"].title}`} className="relative text-black font-semiBold text-xs border-box cursor-pointer py-[10px] mb-3 bg-gray-50">
+                                <h3 className="mt-3 font-semibold text-sm">{Cookies?.cookieTypes["functionality-cookies"].title}</h3>
+                                <p className="mt-3 text-xs">{Cookies?.cookieTypes["functionality-cookies"].body}</p>
+
+                                
+                                {Cookies?.cookieTypes["functionality-cookies"].vendors !== "null" && (
+                                    <div className="mt-8">
+                                        <h4 className="font-semibold text-sm">Vendor list</h4>
+                                        <div className="relative mt-2">
+
+                                            {Cookies?.cookieTypes["functionality-cookies"].vendors.map((vendor,index) =>(
+                                                
+                                                <DropDown key={index} title={`${vendor.title}`} className="relative  text-black font-semibold text-xs border-box border-gray-400 border-b-[1.25px] py-[10px] cursor-pointer">
+                                                    <div className="text-xs">
+                                                        <h5 className="mt-2">Parent Company</h5>
+                                                        <p className="mt-2 font-normal text-xxs">{vendor.parent}</p>
+                                                        <h5 className="mt-2">Default category</h5>
+                                                        <p className="mt-2 font-normal text-xxs">{vendor.defaultCategory}</p>
+                                                        {vendor.privacyPolicy &&(
+                                                            <div className="mt-2">
+                                                                <h5>Privacy policy</h5>
+                                                                <a className="mt-2 underline-none font-normal text-xxs">{vendor.privacyPolicy}</a>
+                                                            </div>
+                                                        )}
+                                                        {vendor.cookiePolicy &&(
+                                                            <div className="mt-2">
+                                                                <h5 className="mt-2">Cookie policy</h5>
+                                                                <a  className="mt-2  underline-none font-normal text-xxs">{vendor.cookiePolicy}</a>
+                                                            </div>
+                                                        )}
+
+                                                    </div>
+                                                </DropDown>
+                                            ))}
+                                        </div>
+                                        
+                                    </div>
+                                )}
+                    
+                            </DropDown>
+                            <DropDown title={`${Cookies?.cookieTypes["analytical-cookies"].title}`} className="relative text-black font-semiBold text-xs border-box cursor-pointer py-[10px] mb-3 bg-gray-50">
+                                <h3 className="mt-3 font-semibold text-sm">{Cookies?.cookieTypes["analytical-cookies"].title}</h3>
+                                <p className="mt-3 text-xs">{Cookies?.cookieTypes["analytical-cookies"].body}</p>
+
+                                
+                                {Cookies?.cookieTypes["analytical-cookies"].vendors !== "null" && (
+                                    <div className="mt-8">
+                                        <h4 className="font-semibold text-sm">Vendor list</h4>
+                                        <div className="relative mt-2">
+
+                                            {Cookies?.cookieTypes["analytical-cookies"].vendors.map((vendor,index) =>(
+                                                
+                                                <DropDown key={index} title={`${vendor.title}`} className="relative  text-black font-semibold text-xs border-box border-gray-400 border-b-[1.25px] py-[10px] cursor-pointer">
+                                                    <div className="text-xs">
+                                                        <h5 className="mt-2">Parent Company</h5>
+                                                        <p className="mt-2 font-normal text-xxs">{vendor.parent}</p>
+                                                        <h5 className="mt-2">Default category</h5>
+                                                        <p className="mt-2 font-normal text-xxs">{vendor.defaultCategory}</p>
+                                                        {vendor.privacyPolicy &&(
+                                                            <div className="mt-2">
+                                                                <h5>Privacy policy</h5>
+                                                                <a className="mt-2 underline-none font-normal text-xxs">{vendor.privacyPolicy}</a>
+                                                            </div>
+                                                        )}
+                                                        {vendor.cookiePolicy &&(
+                                                            <div className="mt-2">
+                                                                <h5 className="mt-2">Cookie policy</h5>
+                                                                <a  className="mt-2  underline-none font-normal text-xxs">{vendor.cookiePolicy}</a>
+                                                            </div>
+                                                        )}
+
+                                                    </div>
+                                                </DropDown>
+                                            ))}
+                                        </div>
+                                        
+                                    </div>
+                                )}
+                    
+                            </DropDown>
+                            <DropDown title={`${Cookies?.cookieTypes["targeting-cookies"].title}`} className="relative text-black font-semiBold text-xs border-box cursor-pointer py-[10px] mb-3 bg-gray-50">
+                                <h3 className="mt-3 font-semibold text-sm">{Cookies?.cookieTypes["targeting-cookies"].title}</h3>
+                                <p className="mt-3 text-xs">{Cookies?.cookieTypes["targeting-cookies"].body}</p>
+
+                                
+                                {Cookies?.cookieTypes["targeting-cookies"].vendors !== "null" && (
+                                    <div className="mt-8">
+                                        <h4 className="font-semibold text-sm">Vendor list</h4>
+                                        <div className="relative mt-2">
+
+                                            {Cookies?.cookieTypes["targeting-cookies"]?.vendors.map((vendor,index) =>(
+                                                
+                                                <DropDown key={index} title={`${vendor.title}`} className="relative  text-black font-semibold text-xs border-box border-gray-400 border-b-[1.25px] py-[10px] cursor-pointer">
+                                                    <div className="text-xs">
+                                                        <h5 className="mt-2">Parent Company</h5>
+                                                        <p className="mt-2 font-normal text-xxs">{vendor.parent}</p>
+                                                        <h5 className="mt-2">Default category</h5>
+                                                        <p className="mt-2 font-normal text-xxs">{vendor.defaultCategory}</p>
+                                                        {vendor.privacyPolicy &&(
+                                                            <div className="mt-2">
+                                                                <h5>Privacy policy</h5>
+                                                                <a className="mt-2 underline-none font-normal text-xxs">{vendor.privacyPolicy}</a>
+                                                            </div>
+                                                        )}
+                                                        {vendor.cookiePolicy &&(
+                                                            <div className="mt-2">
+                                                                <h5 className="mt-2">Cookie policy</h5>
+                                                                <a  className="mt-2  underline-none font-normal text-xxs">{vendor.cookiePolicy}</a>
+                                                            </div>
+                                                        )}
+
+                                                    </div>
+                                                </DropDown>
+                                            ))}
+                                        </div>
+                                        
+                                    </div>
+                                )}
+                    
+                            </DropDown>
+                        </div>
+                
+                        <div className="hidden sm:inline-block border-box pr-[5%] align-top ml-5 relative h-[350px] max-h-[500px] overflow-y-scroll w-[70%]">
+                            <h3 className="mt-3 font-semibold text-sm">{content.title}</h3>
+                            <p className="mt-3 text-xs">{content.body}</p>
+
+                            
+                            {content.vendors && (
+                                <div className="mt-8">
+                                    <h4 className="font-semibold text-sm">Vendor list</h4>
+                                    <div className="relative mt-2">
+
+                                        {content.vendors.map((vendor,index) =>(
+                                            
+                                            <DropDown key={index} title={`${vendor.title}`} className="relative  text-black font-semibold text-xs border-box border-gray-400 border-b-[1.25px] py-[10px] cursor-pointer">
+                                                <div className="text-xs">
+                                                    <h5 className="mt-2">Parent Company</h5>
+                                                    <p className="mt-2 font-normal text-xxs">{vendor.parent}</p>
+                                                    <h5 className="mt-2">Default category</h5>
+                                                    <p className="mt-2 font-normal text-xxs">{vendor.defaultCategory}</p>
+                                                    {vendor.privacyPolicy &&(
+                                                        <div className="mt-2">
+                                                            <h5>Privacy policy</h5>
+                                                            <a className="mt-2 underline-none font-normal text-xxs">{vendor.privacyPolicy}</a>
+                                                        </div>
+                                                    )}
+                                                    {vendor.cookiePolicy &&(
+                                                        <div className="mt-2">
+                                                            <h5 className="mt-2">Cookie policy</h5>
+                                                            <a  className="mt-2  underline-none font-normal text-xxs">{vendor.cookiePolicy}</a>
+                                                        </div>
+                                                    )}
+
+                                                </div>
+                                            </DropDown>
+                                        ))}
+                                    </div>
+                                    
+                                </div>
+                            )}
+                    
+                        </div>
+                
+                    </div>
+                )}
+                
+                
+                <div className="relative bg-white rounded-b-[6px] border-t-[1.25px] border-black-300 border-box py-5 text-end">
+                    <button className="border-box py-3 bg-primary w-[8rem] text-white mr-8 text-xs text-center rounded-[2px]">save preferences</button>
+
+                </div>
+
+            </div>
         </div>
-    )
+    );
+    
+    
 
 }
 

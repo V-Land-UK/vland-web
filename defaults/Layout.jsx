@@ -57,12 +57,7 @@ const Layout = ({
   const toggleDrawer = () => {
     onOpen();
   };
-  //Ads event listener
-  useEffect(()=>{
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-
-  },[])
-
+  
   //Event listener for ads
   useEffect(()=>{
     (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -93,8 +88,7 @@ const Layout = ({
   return (
     <>
       <Head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9166716457553506"
-        crossOrigin="anonymous"></script>
+        
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
@@ -249,8 +243,6 @@ const Layout = ({
       </nav>
       <CookieSetupPrompt/>
       <div className="relative w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[19vh] lg:mt-[20vh] h-fit">
-
-        
         <ins className="adsbygoogle block mx-auto w-[300px]  lg:w-[728px] h-[50px] lg:h-[90px]"
         data-ad-client="ca-pub-9166716457553506"
         data-ad-slot="6593416244"

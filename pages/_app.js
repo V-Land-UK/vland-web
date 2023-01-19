@@ -17,11 +17,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider>
       <GlobalProvider>
-        <Script
-         async 
+        <Script async 
          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9166716457553506"
-         crossOrigin="anonymous"
-        ></Script>
+         crossOrigin="anonymous">
+        </Script>
+        
         <Component {...pageProps} />
       </GlobalProvider>
     </ChakraProvider>
