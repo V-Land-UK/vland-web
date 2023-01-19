@@ -13,6 +13,7 @@ import Back from "../../components/Back";
 import ArticleCard from "../../components/ArticleCard";
 const qs = require("qs");
 const parse = require("html-react-parser");
+import AdUnit from "../../components/AdUnit";
 
 import {
   FacebookShareButton,
@@ -47,24 +48,23 @@ const Article = ({ article }) => {
   );
 
   const { findUserByID, Articles } = useContext(GlobalContext);
-  
+
   // Share State
   const [ShareState, setShareState] = useState(false);
 
   // Comments
   const [Comments, setComments] = useState([]);
 
-  
   //Other Articles
   const Others = Articles.filter((Article) => Article?.id !== article?.id);
-  
+
   //get random chunk of articles
-  const random_index = Math.floor(Math.random()*Others.length);
+  const random_index = Math.floor(Math.random() * Others.length);
   let rec_articles;
-  Others[random_index + 6] ? rec_articles = Others.slice(random_index, random_index + 6): rec_articles = Others.slice(random_index - 6, random_index);
+  Others[random_index + 6]
+    ? (rec_articles = Others.slice(random_index, random_index + 6))
+    : (rec_articles = Others.slice(random_index - 6, random_index));
 
-
-  
   //Article Data
   const Title = article?.attributes?.title;
   const Slug = article?.attributes?.slug;
@@ -336,6 +336,10 @@ const Article = ({ article }) => {
                   ))}
                 </Slider>
               </div>
+
+              <div style={{ height: 200 }}>
+                <AdUnit />
+              </div>
             </section>
           </main>
         ) : (
@@ -389,9 +393,7 @@ export async function getStaticProps({ params, preview = null }) {
   //   },
   // };
 
-
   if (data?.data?.length > 0) {
-
     return {
       props: {
         article: data?.data[0],
