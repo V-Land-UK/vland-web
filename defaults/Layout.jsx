@@ -56,7 +56,7 @@ const Layout = ({
   const toggleDrawer = () => {
     onOpen();
   };
-
+ 
   //Event listener for the links
   useEffect(() => {
     if (!isScrolling && scrollY < 150) {
@@ -234,7 +234,7 @@ const Layout = ({
           )}
         </AnimatePresence>
       </nav>
-
+    
       <main className="w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[17vh] lg:mt-[18vh]">
         {children}
       </main>
