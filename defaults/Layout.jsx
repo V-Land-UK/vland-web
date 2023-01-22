@@ -32,6 +32,8 @@ import SearchCard from "../components/SearchCard";
 import Icon from "../components/Icon";
 const qs = require("qs");
 import { GlobalContext } from "../context/GlobalContext";
+import CookieSetupPrompt from "../components/CookieSetupPrompt";
+import { getCookie } from "../lib/utils";
 
 const Layout = ({
   children,
@@ -51,12 +53,17 @@ const Layout = ({
   const [Nav, setNav] = useState(true);
   const [Query, setQuery] = useState("");
   const [MobileQuery, setMobileQuery] = useState("");
-
+  const [preferences_set,setPreferences_set] = useState(true);
   //Function to toggle drawer
   const toggleDrawer = () => {
     onOpen();
   };
- 
+  
+  //check whether cookies preferences have been set by user
+  useEffect(()=>{
+    getCookie("preferences-set") ? setPreferences_set(true):setPreferences_set(false);
+  },[]);
+
   //Event listener for the links
   useEffect(() => {
     if (!isScrolling && scrollY < 150) {
@@ -234,7 +241,10 @@ const Layout = ({
           )}
         </AnimatePresence>
       </nav>
-    
+      {preferences_set || (
+        <CookieSetupPrompt/>
+      )}
+      
       <main className="w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[17vh] lg:mt-[18vh]">
         {children}
       </main>
