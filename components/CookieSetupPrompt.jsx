@@ -4,6 +4,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import DropDown from "./DropDown";
 import { GlobalContext } from "../context/GlobalContext";
 import { getCookie,setCookie,deleteCookie } from "../lib/utils";
+import Link from "next/link";
 
 
 
@@ -125,7 +126,7 @@ const CookieSetupPrompt = ({bool=true})=>{
                             <li className="ml-2 mt-3">Personalise content and ads</li>
                         </ul>
                         <p className="text-xs mt-5">Cookies and similar technologies are used by us and selected companies strictly for this reason.</p>
-                        <p className="text-xs mt-3">You may accept or make granular choices, including exercising your right to object to companies processing personal data based on legitimate interest instead of consent.These choices will be signaled to our partners and will not affect browsing data. {" "} <a href="/privacy-policy" className="underline font-semibold">More Information</a></p>
+                        <p className="text-xs mt-3">You may accept or make granular choices, including exercising your right to object to companies processing personal data based on legitimate interest instead of consent.These choices will be signaled to our partners and will not affect browsing data. {" "} <Link href="/privacy-policy" className="underline font-semibold">More Information</Link></p>
                         
                         <h4 className="font-semibold text-sm mt-3">Essential cookies</h4>
                         <div className="border-box pb-3 border-b-[1.25px] mt-2 border-gray-400 text-xs">
