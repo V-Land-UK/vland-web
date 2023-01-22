@@ -33,6 +33,7 @@ import Icon from "../components/Icon";
 const qs = require("qs");
 import { GlobalContext } from "../context/GlobalContext";
 import CookieSetupPrompt from "../components/CookieSetupPrompt";
+import { getCookie } from "../lib/utils";
 
 const Layout = ({
   children,
@@ -52,16 +53,16 @@ const Layout = ({
   const [Nav, setNav] = useState(true);
   const [Query, setQuery] = useState("");
   const [MobileQuery, setMobileQuery] = useState("");
-
+  const [preferences_set,setPreferences_set] = useState(true);
   //Function to toggle drawer
   const toggleDrawer = () => {
     onOpen();
   };
   
-  //Event listener for ads
+  //check whether cookies preferences have been set by user
   useEffect(()=>{
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-  }, [])
+    getCookie("preferences-set") ? setPreferences_set(true):setPreferences_set(false);
+  },[]);
 
   //Event listener for the links
   useEffect(() => {
@@ -241,15 +242,10 @@ const Layout = ({
           )}
         </AnimatePresence>
       </nav>
-      <CookieSetupPrompt/>
-      <div className="relative w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[19vh] lg:mt-[20vh] h-fit">
-        <ins className="adsbygoogle block mx-auto w-[300px]  lg:w-[728px] h-[50px] lg:h-[90px]"
-        data-ad-client="ca-pub-9166716457553506"
-        data-ad-slot="6593416244"
-        data-ad-format="rectangle horizontal"
-        data-full-width-responsive="true"></ins>
-
-      </div>
+      {preferences_set || (
+        <CookieSetupPrompt/>
+      )}
+      
       <main className="w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[17vh] lg:mt-[18vh]">
         {children}
       </main>
