@@ -53,7 +53,7 @@ const CookieSetupPrompt = ({bool=true})=>{
     const [preferencesSet, setPreferencesSet] = useState(true);
     const [settingsOpen, setSettingsOpen] = useState(false);
     const [content, setContent] = useState({});
-
+    
     const convertToSlug = (title)=>{
         const strList = title.split(' ');
         const slug = strList.join('-').toLowerCase();
@@ -196,7 +196,7 @@ const CookieSetupPrompt = ({bool=true})=>{
                             <ul className="p-0 list-none bg-white font-semibold text-xs">
                                 {Cookies?.cookieTypes["optional-cookies"].length && (
                                     Cookies?.cookieTypes["optional-cookies"].map((cookieType,index)=>(
-                                        <li key={index} className="border-box py-2 pr-3 border-black-300 border-b-[.8px]" onClick={()=>{contentToggle(cookieType)}}><p className="ml-3">{cookieType.title}</p></li>
+                                        <li key={index} className="border-box cursor-pointer py-2 pr-3 border-black-300 border-b-[.8px]" onClick={()=>{contentToggle(cookieType)}}><p className="ml-3">{cookieType.title}</p></li>
                                      
                                     ))
                                 )}
