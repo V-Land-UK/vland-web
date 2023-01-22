@@ -1,7 +1,8 @@
 import axios from "axios";
 const qs = require("qs");
 import { createContext, useEffect, useState } from "react";
-import { API } from "../config/api";
+import { BiJoystickButton } from "react-icons/bi";
+import { API, BASE_URL } from "../config/api";
 import { PAGINATION_LIMIT } from "../config/meta";
 const GlobalContext = createContext(null);
 const { Provider } = GlobalContext;
@@ -10,8 +11,9 @@ const GlobalProvider = ({ children }) => {
   const [Authors, setAuthors] = useState([]);
   const [Categories, setCategories] = useState([]);
   const [Articles, setArticles] = useState([]);
+  const [Cookies, setCookies] = useState({});
   const [Status, setStatus] = useState({
-    loading: false,
+    loading: true,
     success: false,
     error: false,
     text: "",
@@ -61,6 +63,8 @@ const GlobalProvider = ({ children }) => {
     }
   }, [Categories.length, Categories, Articles.length, Articles]);
 
+  
+
   //Get all authors
   useEffect(() => {
     if (Authors.length < 1) {
@@ -76,6 +80,39 @@ const GlobalProvider = ({ children }) => {
         });
     }
   }, [Authors.length, Authors]);
+  
+  //get cookie types
+  useEffect(()=>{
+    
+    if(!Object.keys(Cookies).length){
+      const query = `{cookiePolicy{data{attributes{StatementInParts}}}}`;
+      axios
+        .post(`${BASE_URL}/graphql`,{
+        
+            query:query,
+            headers:{
+              "Content-Type":"application/json"
+            },
+          
+        })
+        .then((response)=>{
+          
+          setCookies(response?.data?.data?.cookiePolicy?.data?.attributes?.StatementInParts);
+
+        })
+        .catch((err)=>{
+        
+          setStatus((prev)=>{
+            return{...prev,error: true};
+        });
+        })
+    }
+    else{
+
+      setStatus((prev)=>{return {...prev, loading:false}});
+    }
+
+  },[Object.keys(Cookies).length, Cookies])
 
   //Find a user by ID
   const findUserByID = (id) => {
@@ -92,6 +129,8 @@ const GlobalProvider = ({ children }) => {
         Categories,
         Status,
         Articles,
+        Cookies,
+        setCookies,
         setArticles,
         setStatus,
         setAuthors,

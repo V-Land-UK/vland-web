@@ -13,7 +13,9 @@ import Image from "next/image";
 import { getLocationOrigin } from "next/dist/shared/lib/utils";
 
 const ArticleCard = ({ article, index, cat=null }) => {
+  
   const { findUserByID, Articles } = useContext(GlobalContext);
+  
   const router = useRouter();
 
 
