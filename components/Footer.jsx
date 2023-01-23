@@ -139,9 +139,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-[10px] text-center font-medium lg:font-medium poppins mt-10 lg:mt-12">
-       
         <div className="inline-block w-[50%] text-center m-auto">
-          &copy;{year} V-Land Magazine Ltd. All rights reserved.{" "}
+          {/* {year} */}
+          V-Land Magazine Ltd. &copy; All rights reserved.{" "}
           {/* <a
             href="https://twitter.com/trulyao"
             target="_blank"
@@ -150,8 +150,6 @@ const Footer = () => {
           >
             Ayodeji
           </a> */}
-        </div>
-        <div className="absolute inline-block w-[25%] ml-3/4 text-center">
           <Link href="/privacy-policy">Privacy Policy</Link>
         </div>
       </div>
