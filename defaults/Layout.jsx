@@ -209,7 +209,7 @@ const Layout = ({
                 {/* <NavLink link="/">Home</NavLink> */}
                 {Categories.filter(
                   (category) =>
-                    category?.attributes?.name.toLowerCase() != "sponsored"
+                    category?.attributes?.name.toLowerCase() != "sponsored" &&  category?.attributes?.name !== "Ad Feature"
                 ).map((category, index) => (
                   <NavLink
                     key={index}
