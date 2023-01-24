@@ -141,7 +141,7 @@ const Footer = () => {
       <div className="text-[10px] text-center font-medium lg:font-medium poppins mt-10 lg:mt-12">
         <div className="inline-block w-[50%] text-center m-auto">
           {/* {year} */}
-          V-Land Magazine Ltda &copy; All Rights Reserved.{" "}
+          V-Land Magazine Limited &copy; All Rights Reserved.{" "}
           {/* <a
             href="https://twitter.com/trulyao"
             target="_blank"
