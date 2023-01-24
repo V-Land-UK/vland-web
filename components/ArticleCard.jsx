@@ -12,12 +12,24 @@ import { stringify } from "qs";
 import Image from "next/image";
 import { getLocationOrigin } from "next/dist/shared/lib/utils";
 
-const ArticleCard = ({ article, index, cat=null }) => {
-  
-  const { findUserByID, Articles } = useContext(GlobalContext);
-  
-  const router = useRouter();
+const ArticleCard = ({ article, index, cat = null }) => {
+  //move "Ad Feature" tag to end
+  article.attributes.categories.data.map((item, idx) => {
+    if (article.attributes.categories.data.length > 1) {
+      var obj = article.attributes.categories.data;
+      obj.forEach(function (item, idx) {
+        if (item.attributes.name == "Ad Feature") {
+          obj.push(obj[idx]); //push the object to the last position
+          obj.splice(idx, 1); //remove the object from the current position
+        }
+      });
+      article.attributes.categories.data = obj;
+    }
+  });
 
+  const { findUserByID, Articles } = useContext(GlobalContext);
+
+  const router = useRouter();
 
   //HELPER FUNC REMOVING WHITESPACE FROM STRING
   /*const rmvWhiteSpace = (str)=>{
@@ -96,61 +108,60 @@ const ArticleCard = ({ article, index, cat=null }) => {
         <div className="absolute flex flex-wrap gap-2 bottom-3 w-[94%] mx-auto right-0 left-0">
           {/* TAGS/CATEGORIES */}
           {article.attributes?.categories?.data.length > 0 &&
-            article.attributes.categories.data.map((category, current) => (
-
+            article.attributes.categories.data.map((category, current) =>
               category.attributes.name === cat ? (
-                
                 <Link
-                key={current}
-                href={`/category/${category.attributes.slug}`}
-                passHref
-                
-                
+                  key={current}
+                  href={`/category/${category.attributes.slug}`}
+                  passHref
                 >
-                <a className="no-underline order-first">
-                  <p
-                    className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
-                      category.attributes.name.toLowerCase() === "sponsored"
-                        ? "text-white bg-green-800 hover:bg-white hover:text-primary"
-                        : category.attributes.name === "Ad Feature" ? "text-white bg-green-800 hover:bg-white hover:text-primary"
-                        : "text-white bg-primary hover:bg-white hover:text-primary"
-                    }`}
-                  >
-                   {category.attributes.name}
-                  </p>
-                </a>
-              </Link>
-              ):
-              <Link
-                key={current}
-                href={`/category/${category.attributes.slug}`}
-                passHref
-                
-              >
-                <a className="no-underline">
-                  <p
-                    className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
-                      category.attributes.name.toLowerCase() === "sponsored"
-                        ? "text-white bg-green-800 hover:bg-white hover:text-primary"
-                        : category.attributes.name === "Ad Feature" ? "text-white bg-green-800 hover:bg-white hover:text-primary"
-                        : "text-white bg-primary hover:bg-white hover:text-primary"
-                    }`}
-                  >
-                    {category.attributes.name}
-                  </p>
-                </a>
-              </Link>
-            ))}
+                  <a className="no-underline order-first">
+                    <p
+                      className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
+                        category.attributes.name.toLowerCase() === "sponsored"
+                          ? "text-white bg-green-800 hover:bg-white hover:text-primary"
+                          : category.attributes.name === "Ad Feature"
+                          ? "text-white bg-green-800 hover:bg-white hover:text-primary"
+                          : "text-white bg-primary hover:bg-white hover:text-primary"
+                      }`}
+                    >
+                      {category.attributes.name}
+                    </p>
+                  </a>
+                </Link>
+              ) : (
+                <Link
+                  key={current}
+                  href={`/category/${category.attributes.slug}`}
+                  passHref
+                >
+                  <a className="no-underline">
+                    <p
+                      className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
+                        category.attributes.name.toLowerCase() === "sponsored"
+                          ? "text-white bg-green-800 hover:bg-white hover:text-primary"
+                          : category.attributes.name === "Ad Feature"
+                          ? "text-white bg-green-800 hover:bg-white hover:text-primary"
+                          : "text-white bg-primary hover:bg-white hover:text-primary"
+                      }`}
+                    >
+                      {category.attributes.name}
+                    </p>
+                  </a>
+                </Link>
+              )
+            )}
         </div>
       </div>
 
       {/* POST BODY */}
       <div
         className={`${
-          cat ===
-          "Food & Drink"
-            ? "green-body": article.attributes?.categories?.data[0]?.attributes?.name  === "Food & Drink" ?
-            "green-body"
+          cat === "Food & Drink"
+            ? "green-body"
+            : article.attributes?.categories?.data[0]?.attributes?.name ===
+              "Food & Drink"
+            ? "green-body"
             : ""
         } aCard__body px-3 py-1 flex flex-col justify-between rounded-b-2xl`}
       >
@@ -163,10 +174,11 @@ const ArticleCard = ({ article, index, cat=null }) => {
             <a>
               <h1
                 className={` xxs:text-[.8rem] xs:text-[1.3rem] sm:text-[1.5rem] md:text-2xl lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.15rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
-                  cat ===
-                  "Food & Drink"
-                    ? "article-title-green ": article.attributes?.categories?.data[0]?.attributes?.name  === "Food & Drink"  ?
-                    "article-title-green"
+                  cat === "Food & Drink"
+                    ? "article-title-green "
+                    : article.attributes?.categories?.data[0]?.attributes
+                        ?.name === "Food & Drink"
+                    ? "article-title-green"
                     : "article-title"
                 }`}
               >
@@ -221,12 +233,12 @@ const ArticleCard = ({ article, index, cat=null }) => {
           <div className={"article-author-data"}>
             <p
               className={`txt ${
-                cat ===
-                "Food & Drink"
+                cat === "Food & Drink"
                   ? "text-white"
-                  : article.attributes?.categories?.data[0]?.attributes?.name  === "Food & Drink" ?
-                  "text-white"
-                  :"text-primary"
+                  : article.attributes?.categories?.data[0]?.attributes
+                      ?.name === "Food & Drink"
+                  ? "text-white"
+                  : "text-primary"
               }`}
             >
               {findUserByID(article?.attributes?.author?.data?.id)?.attributes
@@ -236,11 +248,12 @@ const ArticleCard = ({ article, index, cat=null }) => {
             <Moment
               format="MMM Do YYYY"
               className={`${
-                cat ===
-                "Food & Drink"
-                  ? "article-date-green" : article.attributes?.categories?.data[0]?.attributes?.name  === "Food & Drink" ?
-                  "article-date-green"
-                  :"article-date"
+                cat === "Food & Drink"
+                  ? "article-date-green"
+                  : article.attributes?.categories?.data[0]?.attributes
+                      ?.name === "Food & Drink"
+                  ? "article-date-green"
+                  : "article-date"
               }`}
             >
               {article?.attributes?.PublishDate}
