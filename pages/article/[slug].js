@@ -171,6 +171,7 @@ const Article = ({ article }) => {
                             category.attributes.name.toLowerCase() ===
                             "sponsored"
                               ? "text-white  bg-green-800"
+                              : category.attributes.name === "Ad Feature" ? "text-white  bg-green-800"
                               : "text-white bg-primary"
                           }`}
                           onClick={() =>
