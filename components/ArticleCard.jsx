@@ -10,66 +10,16 @@ import React from "react";
 import { stringify } from "qs";
 
 import Image from "next/image";
-import { getLocationOrigin } from "next/dist/shared/lib/utils";
+
 
 const ArticleCard = ({ article, index, cat = null }) => {
-  //move "Ad Feature" tag to end
-  article.attributes.categories.data.map((item, idx) => {
-    if (article.attributes.categories.data.length > 1) {
-      var obj = article.attributes.categories.data;
-      obj.forEach(function (item, idx) {
-        if (item.attributes.name == "Ad Feature") {
-          obj.push(obj[idx]); //push the object to the last position
-          obj.splice(idx, 1); //remove the object from the current position
-        }
-      });
-      article.attributes.categories.data = obj;
-    }
-  });
+ 
 
   const { findUserByID, Articles } = useContext(GlobalContext);
 
   const router = useRouter();
 
-  //HELPER FUNC REMOVING WHITESPACE FROM STRING
-  /*const rmvWhiteSpace = (str)=>{
-    return str.replace(/\s+/g, '');
-  }*/
-
-  //FIND POSTS WITH TITLE LENGTHS > 50 CHARACTERS
-  /*const checkCharCount = (post) => {
-    const titleChars = rmvWhiteSpace(post);
-    const titleCharsCount = titleChars.split('').length - 1;
-
-    return titleCharsCount > 50;
-  };*/
-  //FIND SPONSORED POSTS
-  //const Sponsored = (post) =>{
-  //const AddClass = 0;
-
-  /*post.some((cat) => {
-     if (
-        cat.attributes.name.toLowerCase() === "culture" 
-        
-      ) {
-       return true;
-      } else {
-       return false;
-     }*/
-
-  /*if (titleCharsCount > 40) {
-      console.log(titleCharsCount);
-      return "col-span-2";
-    }
-    else{
-      
-      return "";
-    }
-  };*/
-
-  // className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container ${Sponsored(
-  //   article.attributes?.categories?.data
-  // )}`}
+ 
 
   return (
     <motion.div
@@ -109,47 +59,29 @@ const ArticleCard = ({ article, index, cat = null }) => {
           {/* TAGS/CATEGORIES */}
           {article.attributes?.categories?.data.length > 0 &&
             article.attributes.categories.data.map((category, current) =>
-              category.attributes.name === cat ? (
-                <Link
-                  key={current}
-                  href={`/category/${category.attributes.slug}`}
-                  passHref
-                >
-                  <a className="no-underline order-first">
-                    <p
-                      className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
-                        category.attributes.name.toLowerCase() === "sponsored"
-                          ? "text-white bg-green-800 hover:bg-white hover:text-primary"
-                          : category.attributes.name === "Ad Feature"
-                          ? "text-white bg-green-800 hover:bg-white hover:text-primary"
-                          : "text-white bg-primary hover:bg-white hover:text-primary"
-                      }`}
-                    >
-                      {category.attributes.name}
-                    </p>
-                  </a>
-                </Link>
-              ) : (
-                <Link
-                  key={current}
-                  href={`/category/${category.attributes.slug}`}
-                  passHref
-                >
-                  <a className="no-underline">
-                    <p
-                      className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
-                        category.attributes.name.toLowerCase() === "sponsored"
-                          ? "text-white bg-green-800 hover:bg-white hover:text-primary"
-                          : category.attributes.name === "Ad Feature"
-                          ? "text-white bg-green-800 hover:bg-white hover:text-primary"
-                          : "text-white bg-primary hover:bg-white hover:text-primary"
-                      }`}
-                    >
-                      {category.attributes.name}
-                    </p>
-                  </a>
-                </Link>
-              )
+              
+              <Link
+                key={current}
+                href={`/category/${category.attributes.slug}`}
+                passHref
+              >
+                <a className={`no-underline ${category.attributes.name === cat ? "order-first"
+                :category.attributes.name === "Ad Feature" ? "order-last"
+                : ""}`}>
+                  <p
+                    className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
+                      category.attributes.name.toLowerCase() === "sponsored"
+                        ? "text-white bg-green-800 hover:bg-white hover:text-primary"
+                        : category.attributes.name === "Ad Feature"
+                        ? "text-white bg-green-800 hover:bg-white hover:text-primary"
+                        : "text-white bg-primary hover:bg-white hover:text-primary"
+                    }`}
+                  >
+                    {category.attributes.name}
+                  </p>
+                </a>
+              </Link>
+              
             )}
         </div>
       </div>
