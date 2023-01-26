@@ -19,7 +19,7 @@ const PreferenceToggle = ({cookieType})=>{
     useEffect(()=>{
         if(didMount.current){
             if(preferenceState){
-                setCookie(cookieType,`${Date.now()}`, {'max-age':182});
+                setCookie(cookieType,`${Date.now()}`, {'max-age':2592000});
             }
             else{
                 deleteCookie(cookieType);
@@ -89,7 +89,7 @@ const CookieSetupPrompt = ({bool=true})=>{
         for(var i =0; i < Cookies?.cookieTypes["optional-cookies"].length; i++){
             if(getCookie(convertToSlug(`${Cookies?.cookieTypes["optional-cookies"][i].title}`))) deleteCookie(convertToSlug(`${Cookies?.cookieTypes["optional-cookies"][i].title}`));
         }
-        setCookie("preferences-set",`${Date.now()}`, {"max-age":182});
+        setCookie("preferences-set",`${Date.now()}`, {"max-age":2592000});
         setPreferencesSet(true);
 
     }
@@ -100,7 +100,7 @@ const CookieSetupPrompt = ({bool=true})=>{
         setSettingsOpen(false);
     }
     const savePreferences = ()=>{
-        setCookie("preferences-set",`${Date.now()}`, {"max-age":182});
+        setCookie("preferences-set",`${Date.now()}`, {"max-age":2592000});
         setPreferencesSet(true);
     }
     
