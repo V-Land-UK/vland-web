@@ -119,7 +119,7 @@ export default function Home({ articles, meta, ads }) {
               <Fragment key={index}>
                 <ArticleCard article={article} index={index} />
                 {/* Show Ads */}
-                {ads.length > 0 && checkAds(index) && (
+                {ads.length > 0 && checkAds(index) && ads[getAdsIndex(index)].attributes.homeView && (
                   <Ads ad={ads[getAdsIndex(index)]} />
                 )}
               </Fragment>
