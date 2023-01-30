@@ -53,16 +53,18 @@ const Layout = ({
   const [Nav, setNav] = useState(true);
   const [Query, setQuery] = useState("");
   const [MobileQuery, setMobileQuery] = useState("");
-  const [preferences_set,setPreferences_set] = useState(true);
+  const [preferences_set, setPreferences_set] = useState(true);
   //Function to toggle drawer
   const toggleDrawer = () => {
     onOpen();
   };
-  
+
   //check whether cookies preferences have been set by user
-  useEffect(()=>{
-    getCookie("preferences-set") ? setPreferences_set(true):setPreferences_set(false);
-  },[]);
+  useEffect(() => {
+    getCookie("preferences-set")
+      ? setPreferences_set(true)
+      : setPreferences_set(false);
+  }, []);
 
   //Event listener for the links
   useEffect(() => {
@@ -209,7 +211,8 @@ const Layout = ({
                 {/* <NavLink link="/">Home</NavLink> */}
                 {Categories.filter(
                   (category) =>
-                    category?.attributes?.name.toLowerCase() != "sponsored" &&  category?.attributes?.name !== "Ad Feature"
+                    category?.attributes?.name.toLowerCase() != "sponsored" &&
+                    category?.attributes?.name !== "Ad Feature"
                 ).map((category, index) => (
                   <NavLink
                     key={index}
@@ -241,10 +244,8 @@ const Layout = ({
           )}
         </AnimatePresence>
       </nav>
-      {preferences_set || (
-        <CookieSetupPrompt/>
-      )}
-      
+      {preferences_set || <CookieSetupPrompt />}
+
       <main className="w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[17vh] lg:mt-[18vh]">
         {children}
       </main>
@@ -347,5 +348,5 @@ Layout.defaultProps = {
   image: "Logo.JPG",
   keywords:
     "vegan magazine, vegan magazine UK, vegan articles, veganism UK, veganism in the UK, rise of veganism UK, best vegan magazine UK, UK vegan magazine, v-land UK, v land uk, vland uk, vland, v-land",
-  desc: "🇬🇧 Your UK vegan magazine",
+  desc: "Your trusted UK vegan magazine",
 };
