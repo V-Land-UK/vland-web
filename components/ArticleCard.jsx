@@ -11,15 +11,10 @@ import { stringify } from "qs";
 
 import Image from "next/image";
 
-
 const ArticleCard = ({ article, index, cat = null }) => {
- 
-
   const { findUserByID, Articles } = useContext(GlobalContext);
 
   const router = useRouter();
-
- 
 
   return (
     <motion.div
@@ -58,16 +53,21 @@ const ArticleCard = ({ article, index, cat = null }) => {
         <div className="absolute flex flex-wrap gap-2 bottom-3 w-[94%] mx-auto right-0 left-0">
           {/* TAGS/CATEGORIES */}
           {article.attributes?.categories?.data.length > 0 &&
-            article.attributes.categories.data.map((category, current) =>
-              
+            article.attributes.categories.data.map((category, current) => (
               <Link
                 key={current}
                 href={`/category/${category.attributes.slug}`}
                 passHref
               >
-                <a className={`no-underline ${category.attributes.name === cat ? "order-first"
-                :category.attributes.name === "Ad Feature" ? "order-last"
-                : ""}`}>
+                <a
+                  className={`no-underline ${
+                    category.attributes.name === cat
+                      ? "order-first"
+                      : category.attributes.name === "Ad Feature"
+                      ? "order-last"
+                      : ""
+                  }`}
+                >
                   <p
                     className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
                       category.attributes.name.toLowerCase() === "sponsored"
@@ -81,8 +81,7 @@ const ArticleCard = ({ article, index, cat = null }) => {
                   </p>
                 </a>
               </Link>
-              
-            )}
+            ))}
         </div>
       </div>
 
@@ -105,7 +104,7 @@ const ArticleCard = ({ article, index, cat = null }) => {
           >
             <a>
               <h1
-                className={` xxs:text-[.8rem] xs:text-[1.3rem] sm:text-[1.5rem] md:text-2xl lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.15rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
+                className={` xxs:text-[.8rem] xs:text-[1.3rem] sm:text-[1.5rem] md:text-[1.4rem] lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.15rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
                   cat === "Food & Drink"
                     ? "article-title-green "
                     : article.attributes?.categories?.data[0]?.attributes
