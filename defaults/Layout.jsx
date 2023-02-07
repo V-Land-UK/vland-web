@@ -34,6 +34,7 @@ const qs = require("qs");
 import { GlobalContext } from "../context/GlobalContext";
 import CookieSetupPrompt from "../components/CookieSetupPrompt";
 import { getCookie } from "../lib/utils";
+import AdUnit from "../components/AdUnit";
 
 const Layout = ({
   children,
@@ -248,6 +249,9 @@ const Layout = ({
 
       <main className="w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[17vh] lg:mt-[18vh]">
         {children}
+        {/* <div className="adUnit">
+          <AdUnit />
+        </div> */}
       </main>
       <Footer />
 
