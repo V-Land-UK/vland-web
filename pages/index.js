@@ -159,7 +159,7 @@ export default function Home({ articles, meta, ads }) {
           No Articles Yet.
         </div>
       )}
-      <div cclassName="adUnit md:h-[90px] sm:h-[60px] xxs:h-[60px] lg:h-[90px]">
+      <div className="adUnit md:h-[90px] sm:h-[60px] xxs:h-[60px] lg:h-[90px]">
         <AdUnit />
       </div>
     </Layout>

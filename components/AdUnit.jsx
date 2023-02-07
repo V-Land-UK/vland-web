@@ -17,7 +17,7 @@ function AdUnit() {
         style={{ display: "block" }}
         data-ad-client="ca-pub-9166716457553506"
         data-ad-slot="6593416244"
-        // data-ad-format="auto"
+        data-ad-format="rectangle horizontal"
         data-full-width-responsive="true"
       ></ins>
     </div>
