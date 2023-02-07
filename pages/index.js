@@ -159,9 +159,9 @@ export default function Home({ articles, meta, ads }) {
           No Articles Yet.
         </div>
       )}
-      {/* <div className="adUnit">
+      <div className="adUnit">
         <AdUnit />
-      </div> */}
+      </div>
     </Layout>
   );
 }
