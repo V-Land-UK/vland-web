@@ -19,6 +19,7 @@ import Preloader from "../components/Preloader";
 import { data } from "autoprefixer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import AdUnit from "../components/AdUnit";
 import axios from "axios";
 
 const qs = require("qs");
@@ -119,9 +120,11 @@ export default function Home({ articles, meta, ads }) {
               <Fragment key={index}>
                 <ArticleCard article={article} index={index} />
                 {/* Show Ads */}
-                {ads.length > 0 && checkAds(index) && ads[getAdsIndex(index)].attributes.homeView && (
-                  <Ads ad={ads[getAdsIndex(index)]} />
-                )}
+                {ads.length > 0 &&
+                  checkAds(index) &&
+                  ads[getAdsIndex(index)].attributes.homeView && (
+                    <Ads ad={ads[getAdsIndex(index)]} />
+                  )}
               </Fragment>
             ))}
           </div>
@@ -156,6 +159,9 @@ export default function Home({ articles, meta, ads }) {
           No Articles Yet.
         </div>
       )}
+      <div className="adUnit">
+        <AdUnit />
+      </div>
     </Layout>
   );
 }
