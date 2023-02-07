@@ -6,25 +6,23 @@ import Pagination from "../../components/Pagination";
 import { API } from "../../config/api";
 import { PAGINATION_LIMIT } from "../../config/meta";
 import Ads from "../../components/Ads";
-import { Fragment,useState,useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 const qs = require("qs");
+import AdUnit from "../../components/AdUnit";
 
 export default function Categories({ articles, meta, category, ads }) {
   const articlesBeforeAd = 5;
-  const checkAd = function(index){
-    
-    if(ads[(index + 1)/articlesBeforeAd - 1]!== undefined){
-
+  const checkAd = function (index) {
+    if (ads[(index + 1) / articlesBeforeAd - 1] !== undefined) {
       return true;
-    }
-    else{
+    } else {
       return false;
     }
-  }
-  const getAdIndex = function(index){
-    return (index + 1)/articlesBeforeAd - 1;
-  }
+  };
+  const getAdIndex = function (index) {
+    return (index + 1) / articlesBeforeAd - 1;
+  };
   const Title =
     category?.charAt(0).toUpperCase() + category?.slice(1) ||
     "Category Not Found";
@@ -38,7 +36,7 @@ export default function Categories({ articles, meta, category, ads }) {
             {articles.map((article, index) => (
               <Fragment key={index}>
                 <ArticleCard article={article} key={index} cat={category} />
-                
+
                 {ads.length > 0 && checkAd(index) && (
                   <Ads ad={ads[getAdIndex(index)]} />
                 )}
@@ -59,6 +57,9 @@ export default function Categories({ articles, meta, category, ads }) {
           </h2>
         </div>
       )}
+      <div className="adUnit">
+        <AdUnit />
+      </div>
     </Layout>
   );
 }
@@ -76,13 +77,6 @@ export async function getServerSideProps({ req, res, query, params }) {
     `${API}/categories?filters[slug][$eq]=${cat}&pagination[pageSize]=${PAGINATION_LIMIT}&pagination[page]=${page}&populate=*`
   );
   const data = await response.json();
-  
- 
-
-  
-                
-  
-  
 
   //Get data for users
 
@@ -99,23 +93,16 @@ export async function getServerSideProps({ req, res, query, params }) {
       articles.push(article.data);
     }
 
-    if(data?.data[0]?.attributes?.ads?.data.length > 0 ){
+    if (data?.data[0]?.attributes?.ads?.data.length > 0) {
+      const adsData = await Promise.all(
+        data?.data[0]?.attributes?.ads?.data.map(async (ad) => {
+          const data = await fetch(`${API}/ads/${ad.id}?populate=*`);
+          return data.json();
+        })
+      );
 
-      const adsData = await Promise.all(data?.data[0]?.attributes?.ads?.data.map(async (ad) =>{
-            const data = await fetch(`${API}/ads/${ad.id}?populate=*`);
-            return data.json();
-                      
-      }));
-                      
-      adsData.forEach(ad => ads.push(ad.data));
-      
-      
+      adsData.forEach((ad) => ads.push(ad.data));
     }
-    
-
-   
-    
-    
 
     //Only show past and current posts
     const visible_articles = articles.filter((article) => {
@@ -144,9 +131,6 @@ export async function getServerSideProps({ req, res, query, params }) {
       props: {
         article: null,
         meta: null,
-       
-        
-        
       },
     };
   }
