@@ -57,9 +57,9 @@ export default function Categories({ articles, meta, category, ads }) {
           </h2>
         </div>
       )}
-      {/* <div className="adUnit">
+      <div className="adUnit">
         <AdUnit />
-      </div> */}
+      </div>
     </Layout>
   );
 }

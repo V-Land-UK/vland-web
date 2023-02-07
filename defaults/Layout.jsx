@@ -249,9 +249,6 @@ const Layout = ({
 
       <main className="w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[17vh] lg:mt-[18vh]">
         {children}
-        {/* <div className="adUnit">
-          <AdUnit />
-        </div> */}
       </main>
       <Footer />
 

@@ -2,8 +2,11 @@ import { useEffect } from "react";
 
 function AdUnit() {
   useEffect(() => {
-    // <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>;
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
