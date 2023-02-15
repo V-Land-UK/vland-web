@@ -46,10 +46,13 @@ const Recommendation = ({ article }) => {
                 href={`/category/${category.attributes.slug}`}
                 passHref
               >
-                <a className="no-underline">
+                <a className={`no-underline ${category.attributes.name === "Ad Feature" ? "order-last"
+                : ""}`}>
                   <p
-                    className={`text-[5px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
+                    className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
                       category.attributes.name.toLowerCase() === "sponsored"
+                        ? "text-white bg-green-800 hover:bg-white hover:text-primary"
+                        : category.attributes.name === "Ad Feature"
                         ? "text-white bg-green-800 hover:bg-white hover:text-primary"
                         : "text-white bg-primary hover:bg-white hover:text-primary"
                     }`}
