@@ -93,13 +93,6 @@ a {
   font-family: "Poppins", "Segoe UI", Tahoma !important;
 }
 
-.adUnit {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 100;
-  width: 100%;
-}
 
 /* .article-poppins {
   font-family: "Poppins", Arial, Helvetica, sans-serif, "Segoe UI", Tahoma !important;

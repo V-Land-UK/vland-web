@@ -250,7 +250,13 @@ const Layout = ({
       <main className="w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-[17vh] lg:mt-[18vh]">
         {children}
       </main>
+
       <Footer />
+      {preferences_set && (
+        
+        <AdUnit />
+        
+      )}
 
       {/* NAVIGATION DRAWER */}
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
