@@ -679,6 +679,16 @@ ul {
       height: calc(2 * 10.1215rem);
     }
   }
+  .extAd{
+    display: none !important;
+  }
+  
+  .extContainer{
+    display: block !important;
+  }
+  .adsContainer{
+    background-color: white;
+  }
 }
 
 @media screen and (max-width: 320px) {
