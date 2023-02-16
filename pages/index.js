@@ -18,23 +18,26 @@ import { min } from "moment";
 import Preloader from "../components/Preloader";
 import { data } from "autoprefixer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
-import AdUnit from "../components/AdUnit";
+import { faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
+
 import axios from "axios";
+import { getCookie } from "../lib/utils";
 
 const qs = require("qs");
 
 export default function Home({ articles, meta, ads }) {
   const page = useRef(meta.pagination.page);
+  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  
   const [hasMore, setHasMore] = useState(
     meta.pagination.pageCount > meta.pagination.page
   );
   const [queriesSent, setQueriesSent] = useState(0);
-
+  
   const ref = useRef();
-
+ 
   const handleClick = useCallback(async () => {
     if (loading || error) return;
 
@@ -159,10 +162,10 @@ export default function Home({ articles, meta, ads }) {
           No Articles Yet.
         </div>
       )}
-      <div className="adUnit md:h-[90px] sm:h-[60px] xxs:h-[60px] lg:h-[90px]">
-        <AdUnit />
-      </div>
+      
+      
     </Layout>
+   
   );
 }
 

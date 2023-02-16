@@ -13,7 +13,7 @@ import Back from "../../components/Back";
 import ArticleCard from "../../components/ArticleCard";
 const qs = require("qs");
 const parse = require("html-react-parser");
-import AdUnit from "../../components/AdUnit";
+
 
 import {
   FacebookShareButton,
@@ -339,12 +339,7 @@ const Article = ({ article }) => {
                 </Slider>
               </div>
 
-              <div
-                className="adUnit md:h-[90px] sm:h-[60px] xxs:h-[60px] lg:h-[90px]"
-                // className="relative w-[94%] lg:w-[98%] 2xl:w-11/12 mx-auto mt-8 lg:mt-[20vh] h-fit"
-              >
-                <AdUnit />
-              </div>
+              
             </section>
           </main>
         ) : (

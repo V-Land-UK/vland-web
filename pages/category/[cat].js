@@ -57,9 +57,7 @@ export default function Categories({ articles, meta, category, ads }) {
           </h2>
         </div>
       )}
-      <div className="adUnit md:h-[90px] sm:h-[60px] xxs:h-[60px] lg:h-[90px]">
-        <AdUnit />
-      </div>
+     
     </Layout>
   );
 }
