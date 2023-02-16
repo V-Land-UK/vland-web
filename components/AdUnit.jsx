@@ -22,7 +22,7 @@ function AdUnit() {
         <div className="w-fit text-center mx-auto ">
             <ins
               //className="adsbygoogle block mx-auto w-[300px]  lg:w-[728px] h-[50px] lg:h-[90px]"
-              className="adsbygoogle mx-auto w-[300px]  lg:w-[728px] h-[50px] lg:h-[90px]"
+              className="adsbygoogle mx-auto w-[320px] h-[50px] lg:w-[728px]  lg:h-[90px]"
               style={{ display: "block" }}
               data-ad-client="ca-pub-9166716457553506"
               data-ad-slot="6593416244"
