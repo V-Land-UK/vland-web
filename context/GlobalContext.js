@@ -25,7 +25,9 @@ const GlobalProvider = ({ children }) => {
       axios
         .get(`${API}/categories`)
         .then(({ data }) => {
-          setCategories(data?.data);
+          var catgs = data.data;
+          catgs.forEach(reorder);
+          setCategories(catgs);
         })
         .catch((err) => {
           setStatus((prev) => {
@@ -63,7 +65,24 @@ const GlobalProvider = ({ children }) => {
     }
   }, [Categories.length, Categories, Articles.length, Articles]);
 
-  
+  //reorder Categories
+  const reorder = (item, pos, arr) => {
+    if (item?.attributes?.name == "Food & Drink") {
+      var temp = arr[0];
+      arr[0] = item;
+      arr[pos] = temp;
+    }
+    if (item?.attributes?.name == "Interviews") {
+      var temp = arr[1];
+      arr[1] = item;
+      arr[pos] = temp;
+    }
+    if (item?.attributes?.name == "Lifestyle") {
+      var temp = arr[2];
+      arr[2] = item;
+      arr[pos] = temp;
+    }
+  };
 
   //Get all authors
   useEffect(() => {
@@ -80,39 +99,35 @@ const GlobalProvider = ({ children }) => {
         });
     }
   }, [Authors.length, Authors]);
-  
+
   //get cookie types
-  useEffect(()=>{
-    
-    if(!Object.keys(Cookies).length){
+  useEffect(() => {
+    if (!Object.keys(Cookies).length) {
       const query = `{cookiePolicy{data{attributes{StatementInParts}}}}`;
       axios
-        .post(`${BASE_URL}/graphql`,{
-        
-            query:query,
-            headers:{
-              "Content-Type":"application/json"
-            },
-          
+        .post(`${BASE_URL}/graphql`, {
+          query: query,
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
-        .then((response)=>{
-          
-          setCookies(response?.data?.data?.cookiePolicy?.data?.attributes?.StatementInParts);
-
+        .then((response) => {
+          setCookies(
+            response?.data?.data?.cookiePolicy?.data?.attributes
+              ?.StatementInParts
+          );
         })
-        .catch((err)=>{
-        
-          setStatus((prev)=>{
-            return{...prev,error: true};
+        .catch((err) => {
+          setStatus((prev) => {
+            return { ...prev, error: true };
+          });
         });
-        })
+    } else {
+      setStatus((prev) => {
+        return { ...prev, loading: false };
+      });
     }
-    else{
-
-      setStatus((prev)=>{return {...prev, loading:false}});
-    }
-
-  },[ Object.keys(Cookies).length, Cookies])
+  }, [Object.keys(Cookies).length, Cookies]);
 
   //Find a user by ID
   const findUserByID = (id) => {
