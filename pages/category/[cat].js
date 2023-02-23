@@ -9,7 +9,6 @@ import Ads from "../../components/Ads";
 import { Fragment, useState, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 const qs = require("qs");
-import AdUnit from "../../components/AdUnit";
 
 export default function Categories({ articles, meta, category, ads }) {
   const articlesBeforeAd = 5;
@@ -57,7 +56,6 @@ export default function Categories({ articles, meta, category, ads }) {
           </h2>
         </div>
       )}
-     
     </Layout>
   );
 }
