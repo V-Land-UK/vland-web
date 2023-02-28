@@ -90,8 +90,9 @@ const ArticleCard = ({ article, index, cat = null }) => {
         className={`${
           cat === "Food & Drink"
             ? "green-body"
-            : article.attributes?.categories?.data?.filter(cat => cat?.attributes?.name === "Food & Drink")?.length 
-             
+            : article.attributes?.categories?.data?.filter(
+                (cat) => cat?.attributes?.name === "Food & Drink"
+              )?.length
             ? "green-body"
             : ""
         } aCard__body px-3 py-1 flex flex-col justify-between rounded-b-2xl`}
@@ -104,10 +105,13 @@ const ArticleCard = ({ article, index, cat = null }) => {
           >
             <a>
               <h1
-                className={` xxs:text-[.8rem] xs:text-[1.3rem] sm:text-[1.5rem] md:text-[1.4rem] lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.15rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
+                className={` xxs:text-[.8rem] xs:text-[1.3rem] sm:text-[1.5rem] md:text-[1.4rem] lg:text-2xl xl:text-[1.8rem] 
+                border-box xxs:pb-[0.12rem] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.15rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
                   cat === "Food & Drink"
                     ? "article-title-green "
-                    : article.attributes?.categories?.data?.filter(cat => cat?.attributes?.name === "Food & Drink")?.length 
+                    : article.attributes?.categories?.data?.filter(
+                        (cat) => cat?.attributes?.name === "Food & Drink"
+                      )?.length
                     ? "article-title-green"
                     : "article-title"
                 }`}
@@ -165,7 +169,9 @@ const ArticleCard = ({ article, index, cat = null }) => {
               className={`txt ${
                 cat === "Food & Drink"
                   ? "text-white"
-                  : article.attributes?.categories?.data?.filter(cat => cat?.attributes?.name === "Food & Drink")?.length 
+                  : article.attributes?.categories?.data?.filter(
+                      (cat) => cat?.attributes?.name === "Food & Drink"
+                    )?.length
                   ? "text-white"
                   : "text-primary"
               }`}
@@ -179,7 +185,9 @@ const ArticleCard = ({ article, index, cat = null }) => {
               className={`${
                 cat === "Food & Drink"
                   ? "article-date-green"
-                  : article.attributes?.categories?.data?.filter(cat => cat?.attributes?.name === "Food & Drink")?.length 
+                  : article.attributes?.categories?.data?.filter(
+                      (cat) => cat?.attributes?.name === "Food & Drink"
+                    )?.length
                   ? "article-date-green"
                   : "article-date"
               }`}
