@@ -19,7 +19,7 @@ import Preloader from "../components/Preloader";
 import { data } from "autoprefixer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
-
+import NewsLetterPrompt from "../components/NewsLetterPrompt";
 import axios from "axios";
 import { getCookie } from "../lib/utils";
 
@@ -27,17 +27,41 @@ const qs = require("qs");
 
 export default function Home({ articles, meta, ads }) {
   const page = useRef(meta.pagination.page);
-  
+  const scrollY = useRef(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  
+  const [showNLPrompt, setShowNLPrompt] = useState(false);
+  const [userKnown, setUserKnown] = useState(false);
   const [hasMore, setHasMore] = useState(
     meta.pagination.pageCount > meta.pagination.page
   );
   const [queriesSent, setQueriesSent] = useState(0);
   
   const ref = useRef();
- 
+  
+  
+  useEffect(()=>{
+    if(document){
+      setUserKnown(getCookie("user-type") ? true:false);
+    }
+  },[])
+
+  useEffect(()=>{
+    const handleScroll = ()=>{
+
+      if(scrollY.current < 400){
+        
+        scrollY.current = window.scrollY;
+      }
+      else{
+        
+        setShowNLPrompt(true);
+       
+      }
+    }
+    window.addEventListener("scroll", handleScroll, {passive:true})
+    return ()=> window.removeEventListener("scroll",handleScroll);
+  }, [])
   const handleClick = useCallback(async () => {
     if (loading || error) return;
 
@@ -162,6 +186,7 @@ export default function Home({ articles, meta, ads }) {
           No Articles Yet.
         </div>
       )}
+      {showNLPrompt && (userKnown || <NewsLetterPrompt/>)}
       
       
     </Layout>
