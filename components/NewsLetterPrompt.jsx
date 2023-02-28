@@ -52,7 +52,7 @@ const NewsLetterPrompt = ()=>
     };
 
     return(
-        <div className={`${validExit ? "hidden":"fixed"} left-[50%] translate-x-[-50%] z-101 top-[20%] w-[90%] max-w-[480px] text-center border-box py-5 bg-primary`}>
+        <div className={`${validExit ? "hidden":"fixed"} left-[50%] translate-x-[-50%] z-999 top-[20%] w-[90%] max-w-[480px] text-center border-box py-5 bg-primary`}>
             <div className="w-[95%] text-end mx-auto">
                 <button className="w-[35px] h-[35px] bg-[#2F6B2D] text-white text-center" onClick={()=>{handleExitNLPrompt();}}>
                     <FontAwesomeIcon icon={faXmark} className="w-[16px] h-[16px] m-auto"></FontAwesomeIcon>
