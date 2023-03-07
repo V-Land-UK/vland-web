@@ -536,6 +536,15 @@ ul {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .carousel-btns--ctnr div button{
+    opacity:0;
+    transform: scale(.5);
+    transition: all .4s ease-out;
+  }
+  .carousel-ctnr:hover .carousel-btns--ctnr div button{
+    opacity:1;
+    transform: scale(1);
+  }
   
 
   .cardList_ctnr {
