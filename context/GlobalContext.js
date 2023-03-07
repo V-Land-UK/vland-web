@@ -112,7 +112,7 @@ const GlobalProvider = ({ children }) => {
       setStatus((prev)=>{return {...prev, loading:false}});
     }
 
-  },[Object.keys(Cookies).length, Cookies])
+  },[ Object.keys(Cookies).length, Cookies])
 
   //Find a user by ID
   const findUserByID = (id) => {
@@ -121,6 +121,13 @@ const GlobalProvider = ({ children }) => {
     );
     return author[0];
   };
+
+  const findArticleByID = (id)=>{
+    const article = Articles?.filter(
+      (article) => parseInt(article?.id) === parseInt(id)
+    );
+    return article[0];
+  }
 
   return (
     <Provider
@@ -136,6 +143,7 @@ const GlobalProvider = ({ children }) => {
         setAuthors,
         setCategories,
         findUserByID,
+        findArticleByID,
       }}
     >
       {children}
