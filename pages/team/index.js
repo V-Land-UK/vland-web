@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Back from "../components/Back";
-import { API } from "../config/api";
-import Layout from "../defaults/Layout";
+import Back from "../../components/Back";
+import { API } from "../../config/api";
+import Layout from "../../defaults/Layout";
 const qs = require("qs");
-import Icon from "../components/Icon";
+import Icon from "../../components/Icon";
 import {
   FaFacebookF,
   FaInstagram,
@@ -56,7 +56,8 @@ const Team = ({ excerpt, team }) => {
                   <div className="flex items-center space-x-10 px-3 lg:px-7 py-5 ">
                     <div className="w-[50%] ">
                       <img
-                        src={
+                        src={`${
+                         
                           staff?.attributes?.image?.data?.attributes?.formats
                             ?.small?.url ||
                           staff?.attributes?.image?.data?.attributes?.formats
@@ -66,7 +67,7 @@ const Team = ({ excerpt, team }) => {
                           staff?.attributes?.image?.data?.attributes?.formats
                             ?.thumbnail?.url ||
                           "Placeholder.png"
-                        }
+                        }`}
                         alt={staff?.attributes?.name || "Staff"}
                         className="w-full h-full aspect-square rounded-full object-cover"
                       />
