@@ -70,7 +70,7 @@ const Member = ({member,categories}) =>{
                                 ?.large?.url ||
                               member?.attributes?.image?.data?.attributes?.formats
                                 ?.thumbnail?.url ||
-                              "Placeholder.png"
+                              "/Placeholder.png"
                             }`}
                             alt={member?.attributes?.name || "member"}
                             className="w-full h-full aspect-square rounded-full object-cover"
@@ -151,7 +151,7 @@ const Member = ({member,categories}) =>{
                                 ?.large?.url ||
                               member?.attributes?.image?.data?.attributes?.formats
                                 ?.thumbnail?.url ||
-                              "Placeholder.png"
+                              "/Placeholder.png"
                             }`}
                             alt={member?.attributes?.name || "member"}
                             className="w-9/12 aspect-square rounded-full object-cover"
@@ -225,7 +225,7 @@ const Member = ({member,categories}) =>{
 export async function getStaticPaths()
 {
     const {data} = await request.get(`/teams`);
-    const paths = data.data.map((current)=> ({
+    const paths = data?.data?.map((current)=> ({
         params: {_member: current.attributes.name}
     }));
 
