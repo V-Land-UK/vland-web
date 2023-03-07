@@ -342,7 +342,12 @@ ul {
   grid-row-start: span 2;
   grid-row-end: span 2;
 }
-
+.toAuthorArticles--container{
+  transition: transform ease-in-out .5s;
+}
+.toAuthorArticles--container > a{
+  transition: opacity ease-in-out .5s;
+}
 .article-title-green:hover .underline__span,
 .article-title-green:focus .underline__span {
   background-size: 100% 0.4rem !important;
@@ -484,6 +489,15 @@ ul {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .carousel-btns--ctnr div button{
+    opacity:0;
+    transform: scale(.5);
+    transition: all .4s ease-out;
+  }
+  .carousel-ctnr:hover .carousel-btns--ctnr div button{
+    opacity:1;
+    transform: scale(1);
   }
 
   .cardList_ctnr {
