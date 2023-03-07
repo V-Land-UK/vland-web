@@ -19,19 +19,21 @@ const Recommendation = ({ article }) => {
         <Image
           style={{ borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
           src={`${
-            article.attributes?.media?.data[0]?.attributes?.formats?.medium
-              ?.url ||
-            article.attributes?.media?.data[0]?.attributes?.formats?.large
-              ?.url ||
-            article.attributes?.media?.data[0]?.attributes?.formats?.small
-              ?.url ||
-            article.attributes?.media?.data[0]?.attributes?.formats?.thumbnail
-              ?.url ||
+            
+            article?.attributes?.media?.data[0]?.attributes?.formats?.medium
+              ?.url||
+            article?.attributes?.media?.data[0]?.attributes?.formats?.large
+              ?.url||
+            article?.attributes?.media?.data[0]?.attributes?.formats?.small
+              ?.url||
+            article?.attributes?.media?.data[0]?.attributes?.formats?.thumbnail
+              ?.url||
+            
             "/Placeholder.png"
           }`}
           layout="fill"
           alt={`${
-            article.attributes?.media?.data[0]?.attributes?.alternativeText ||
+            article?.attributes?.media?.data[0]?.attributes?.alternativeText ||
             article?.attributes?.title ||
             ""
           }`}
@@ -39,8 +41,8 @@ const Recommendation = ({ article }) => {
         />
         <div className="absolute flex flex-wrap gap-2 bottom-3 w-[94%] mx-auto right-0 left-0">
           {/* TAGS/CATEGORIES */}
-          {article.attributes?.categories?.data.length > 0 &&
-            article.attributes.categories.data.map((category, current) => (
+          {article?.attributes?.categories?.data.length > 0 &&
+            article?.attributes.categories.data.map((category, current) => (
               <Link
                 key={current}
                 href={`/category/${category.attributes.slug}`}
@@ -70,7 +72,7 @@ const Recommendation = ({ article }) => {
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
           <Link
-            href={`/article/${article.attributes.slug}`}
+            href={`/article/${article?.attributes.slug}`}
             className="cursor-pointer"
             passHref
           >
@@ -95,13 +97,15 @@ const Recommendation = ({ article }) => {
         <div className="article-author ml-1 pb-2 lg:pb-3">
           <div className="relative  w-7 h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9">
             <Image
-              src={
+              src={`${
                 findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                  ?.image?.data?.attributes?.formats?.small?.url ||
+                  ?.image?.data?.attributes?.url||
                 findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                  ?.image?.data?.attributes?.url ||
+                  ?.image?.data?.attributes?.formats?.small?.url||
+                
+              
                 "/User.svg"
-              }
+              }`}
               alt="Picture of author"
               layout="fill"
               objectFit="cover"
@@ -114,7 +118,7 @@ const Recommendation = ({ article }) => {
               {findUserByID(article?.attributes?.author?.data?.id)?.attributes
                 ?.fullname || "V-Land UK"}
             </p>
-            <Moment format="MMM Do YYYY" className="article-date">
+            <Moment format="MMM DD YYYY" className="article-date">
               {article?.attributes?.PublishDate ||
                 article?.attributes?.publishedAt ||
                 article?.attributes?.createdAt}
