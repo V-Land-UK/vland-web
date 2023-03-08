@@ -70,8 +70,8 @@ const Carousel = ({
     
     const handleRightScroll = ()=>{
         
-        const minTranslateVar = Math.min((sliderRef.current.clientWidth/cat?.attributes?.articles?.data.length), widthDifference);
-        if(widthDifference < (sliderRef.current.clientWidth/cat?.attributes?.articles?.data.length)) setFinalScrollVal(widthDifference);
+        const minTranslateVar = Math.min(sliderRef.current.clientWidth/8, widthDifference);
+        if(widthDifference < sliderRef.current.clientWidth/8) setFinalScrollVal(widthDifference);
         setTranslateVar(prev => prev - minTranslateVar);
         
        
@@ -88,7 +88,7 @@ const Carousel = ({
 
         }
         else{
-            minTranslateVar = (sliderRef.current.clientWidth/cat?.attributes?.articles?.data.length);
+            minTranslateVar = (sliderRef.current.clientWidth/8);
         }
         
         setTranslateVar(prev => prev + minTranslateVar);
