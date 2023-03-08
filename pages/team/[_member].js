@@ -1,6 +1,6 @@
 import axios from "axios";
 import request from "../../utils/request.util";
-import { API, SITE_URL } from "../../config/api";
+import { API, BASE_URL, SITE_URL } from "../../config/api";
 import { GlobalContext } from "../../context/GlobalContext";
 import { useState, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
@@ -244,28 +244,76 @@ export async function getStaticProps({params})
         },
         populate:"*"
     });
-    const category_search_filters = qs.stringify({
-        filters:{
-            articles:{
-                author:{
-                    fullname:{
-                        $eq:_member
-                    }
-                }
+    const category_query = `query ArticlesViaCategories($filtervarOne: CategoryFiltersInput, $filtervarTwo: ArticleFiltersInput){
+                                  categories(filters:$filtervarOne){
+                                    data{
+                                      
+                                      attributes{
+                                        name
+                                        articles(filters:$filtervarTwo){
+                                          data{
+                                            id
+                                           
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+    }`;
+    const currentDate = new Date().toISOString();
+    const category_query_variables = {
+      filtervarOne:{
+        articles:{
+          author:{
+            fullname:{
+              eq:_member
             }
+          }
+         
+
+          
+
         },
-        populate:"*"
-        
-    });
+        and:{
+          articles:{
+            PublishDate:{
+              lt: currentDate
+            }
+          }
+        }
+       
+      },
+      filtervarTwo:{
+        author:{
+          fullname:{
+            eq:_member
+          }
+        }
+      }
+
+    }
+    
 
     const {data} = await request.get(`/teams?${filter}`);
     
-    const auxiliaryData = await request.get(`/categories?${category_search_filters}`);
+    const auxiliaryData = await axios.post(`${BASE_URL}/graphql`,{
+      query:category_query,
+      variables: JSON.stringify(category_query_variables),
+      headers:{
+        "Content-Type":"application/json"
+      }
+      
 
+    });
+    
+    
+
+   
+   
     return{
         props:{
             member:data?.data[0],
-            categories: auxiliaryData?.data?.data 
+            categories: auxiliaryData?.data?.data?.categories?.data,
         }
         
 
