@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 import { motion } from "framer-motion";
 import Back from "../../components/Back";
 import { API } from "../../config/api";
@@ -12,6 +13,10 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
 const parse = require("html-react-parser");
 
 const Team = ({ excerpt, team }) => {
@@ -20,6 +25,7 @@ const Team = ({ excerpt, team }) => {
   const facebook = "https://facebook.com";
   const linkedin = "https://www.linkedin.com/in";
   const [mobileView, setMobileView] = useState(false);
+  const {isMemberAuthor} = useContext(GlobalContext);
   useEffect(() => {
     if (window.screen.availWidth < 500) {
       setMobileView(true);
@@ -115,6 +121,14 @@ const Team = ({ excerpt, team }) => {
                           </Icon>
                         )}
                       </div>
+                      {isMemberAuthor(staff?.attributes?.name) && (
+                        <Link href={`/team/${staff?.attributes?.name}`} passHref>
+                          <a className="hover:underline text-primary text-xs mt-8">
+                            View articles
+                            <FontAwesomeIcon className="text-primary w-[8px] h-[8px] font-semiBold inline-block" icon={faChevronRight}/>
+                          </a>
+                        </Link>
+                      )}
                     </div>
                   </div>
                   <div className=" bg-neutral-400 bg-opacity-[0.03] text-neutral-800 font-medium poppins text-sm lg:text-lg leading-relaxed px-4  lg:px-0 py-5">
@@ -197,6 +211,15 @@ const Team = ({ excerpt, team }) => {
                             </Icon>
                           )}
                         </div>
+                        {isMemberAuthor(staff?.attributes?.name) && (
+                          <Link href={`/team/${staff?.attributes?.name}`} passHref>
+                            <a className="hover:underline text-primary font-bold text-sm lg:text-xl ml-1 mt-3 poppins">
+                              View articles
+                              <FontAwesomeIcon className="text-primary w-[10px] lg:w-[14px] h-[10px] lg:h-[14px] font-bold inline-block" icon={faChevronRight}/>
+                            </a>
+                          </Link>
+                        )}
+
                       </div>
                     </div>
                   </div>
