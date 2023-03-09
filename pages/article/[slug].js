@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useState } from "react";
+import { useContext, useState} from "react";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -38,16 +38,18 @@ import CommentsArea from "../../components/CommentsArea";
 import Recommendation from "../../components/Recommendation";
 import Slider from "react-slick";
 import request from "../../utils/request.util";
+import Link from "next/link";
+
 
 const Article = ({ article }) => {
   const router = useRouter();
-
+  const { findUserByID, Articles } = useContext(GlobalContext);
+  
   const imageInText = article?.attributes?.content.replace(
     "<img",
     "<img  style={{ borderRadius: '16px !important' }} "
   );
 
-  const { findUserByID, Articles } = useContext(GlobalContext);
 
   // Share State
   const [ShareState, setShareState] = useState(false);
@@ -211,10 +213,11 @@ const Article = ({ article }) => {
                   loading="lazy"
                 />
                 <div className="flex flex-col gap-y-[1px]">
-                  <p className="text-sm font-semibold">
-                    {findUserByID(article?.attributes?.author?.data?.id)
-                      ?.attributes?.fullname || "V-Land UK"}
-                  </p>
+                  <Link href={`/team/${findUserByID(article.attributes?.author?.data?.id)?.attributes?.fullname}`} passHref>
+                    <a className="hover:underline text-sm font-semibold">
+                      {findUserByID(article.attributes?.author?.data?.id)?.attributes?.fullname}
+                    </a>
+                  </Link>
                   {article?.attributes?.publishedAt && (
                     <Moment
                       format="MMM Do YYYY"
