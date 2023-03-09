@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-import { useContext } from "react";
+import { useContext,useEffect,useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { GlobalContext } from "../context/GlobalContext";
 import { useRouter } from "next/router";
@@ -7,10 +6,22 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Moment from "react-moment";
 import Image from "next/image";
+import axios from "axios";
+import { API } from "../config/api";
 
-const Recommendation = ({ article }) => {
+const CarouselArticleCard = ({articleID}) => {
   const { findUserByID } = useContext(GlobalContext);
-  
+  const [article,setArticle] = useState({});
+  useEffect(()=>{
+    if(!article.length){
+        axios
+        .get(`${API}/articles/${articleID}?populate=*`)
+        .then(({data})=>{
+            setArticle(data?.data)
+        })
+        
+    }
+  },[])
   const router = useRouter();
 
   return (
@@ -131,4 +142,4 @@ const Recommendation = ({ article }) => {
   );
 };
 
-export default Recommendation;
+export default CarouselArticleCard;
