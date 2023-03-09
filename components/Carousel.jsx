@@ -1,6 +1,6 @@
 import { GlobalContext } from "../context/GlobalContext";
 import AnimatedLink from "./AnimatedLink";
-import Recommendation from "./Recommendation";
+import CarouselArticleCard from "./CarouselArticleCard";
 import { useRef, useState, useContext, useEffect } from "react";
 import { SITE_URL,API } from "../config/api";
 
@@ -12,7 +12,7 @@ const Carousel = ({
 
 })=>
 {
-    const {findArticleByID} = useContext(GlobalContext);
+    
     const [hasMoreRight, setHasMoreRight] = useState(false);
     const [hasMoreLeft, setHasMoreLeft] = useState(false);
     const trackSize = useRef(null);
@@ -23,7 +23,7 @@ const Carousel = ({
     const [finalScrollVal, setFinalScrollVal] = useState(0);
     const [translateVar,setTranslateVar] = useState(0);
    
-   
+  
 
     
     useEffect(()=>{
@@ -103,7 +103,8 @@ const Carousel = ({
             <AnimatedLink href={`${SITE_URL}/?author=${member?.attributes?.name}`}/>
             <div className={`grid grid-flow-col auto-cols-[12.125rem] md:auto-cols-[14.125rem] lg:auto-cols-[15.125rem] transition-transform duration-700 ease-linear mt-5 w-fit ml-3 gap-3`} style={{transform:`translateX(${translateVar}px)`}} ref={sliderRef}>
                 {cat?.attributes?.articles?.data?.slice(0,9).map((article,index)=>(
-                    <Recommendation key={index} article={findArticleByID(article?.id)}></Recommendation>
+                    
+                    <CarouselArticleCard key={index} articleID={article?.id}></CarouselArticleCard>
                 ))}
             </div>
             <div className={`carousel-btns--ctnr absolute z-2 w-full top-[50%] translate-y-[-50%]`}>

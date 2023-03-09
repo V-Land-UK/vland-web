@@ -212,8 +212,11 @@ const Member = ({member,categories}) =>{
             {isAuthor ?(
                 <section className={`${mobileView ? "w-full": "w-[80%] mx-auto"} mt-8`}>
                     <h1 className="text-center font-bold text-[1.953rem] md:text-[2.441rem] tracking-[-0.0009em]">All articles by {member?.attributes?.name?.split(' ').length ? member?.attributes?.name?.split(' ')[0]: member?.attributes?.name}</h1>
-                    {categories?.map((cat,index)=>(
-                        <Carousel key={index} member={member} cat={cat}></Carousel>
+                    {categories?.filter((cat)=>
+                      cat?.attributes?.name !== "Ad Feature" || cat?.attributes?.name !== "sponsored"
+                    )?.map((cat,index)=>(
+                      <Carousel key={index} member={member} cat={cat}></Carousel>
+                      
                     ))}
                 </section>
             ):""}
