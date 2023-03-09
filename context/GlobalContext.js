@@ -137,13 +137,7 @@ const GlobalProvider = ({ children }) => {
     return author[0];
   };
 
-  const findArticleByID = (id)=>{
-    const article = Articles?.filter(
-      (article) => parseInt(article?.id) === parseInt(id)
-    );
-    return article[0];
-  }
-
+  
   return (
     <Provider
       value={{
@@ -158,7 +152,7 @@ const GlobalProvider = ({ children }) => {
         setAuthors,
         setCategories,
         findUserByID,
-        findArticleByID,
+        
       }}
     >
       {children}
