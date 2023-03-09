@@ -138,6 +138,17 @@ const GlobalProvider = ({ children }) => {
     return author[0];
   };
 
+  const isMemberAuthor = (member)=>
+  {
+    let isAuthor = false;
+    const author = Authors?.filter(
+      (user) => user?.attributes?.fullname === member
+    );
+    if(author?.length) isAuthor = true;
+
+    return isAuthor;
+  }
+
   
   return (
     <Provider
@@ -153,6 +164,7 @@ const GlobalProvider = ({ children }) => {
         setAuthors,
         setCategories,
         findUserByID,
+        isMemberAuthor
         
       }}
     >
