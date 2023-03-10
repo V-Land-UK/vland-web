@@ -6,6 +6,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { API } from "../config/api";
 import Loader from "./Loader";
 import { setCookie } from "../lib/utils";
+import {subscribeUser} from "@strapi-newsletter/react";
 
 
 const NewsLetterPrompt = ()=>
@@ -26,30 +27,23 @@ const NewsLetterPrompt = ()=>
         setValidExit(true);
         setCookie("user-type", `guest_${Date.now()}`, {"max-age":2592000})
     }
-    const submitEmail = (e) => {
+    const submitEmail = async(e) => {
         e.preventDefault();
         setIsLoading(true);
-        const url = `${API}/subscriptions`;
-        const data = {
-          data: {
-            email: Email.toLowerCase(),
-          },
-        };
-    
-        axios
-          .post(url, data)
+        const url = `${BASE_URL}`;
+        const email = Email.toLowerCase();
+      
+        subscribeUser(email,url)
           .then((res) => {
             setEmail("");
             setIsLoading(false);
-            setValidExit(true);
-            setCookie("user-type", "nl-member", {"max-age":2592000})
             toast.success("Welcome aboard! 🎉", options);
           })
           .catch((err) => {
             setIsLoading(false);
             toast.error("Something went wrong, please try again 🥲", options);
           });
-    };
+    }
 
     return(
         <div className={`${validExit ? "hidden":"fixed"} left-[50%] translate-x-[-50%] z-[999] top-[20%] w-[90%] max-w-[480px] text-center border-box py-5 bg-primary`}>
