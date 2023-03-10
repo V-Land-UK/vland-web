@@ -100,7 +100,7 @@ const Carousel = ({
        
         <section className="carousel-ctnr relative w-full mt-8 border-box pl-3 py-3 bg-neutral-50 rounded-xl overflow-x-hidden" ref={containerRef}>
             <h2 className="font-bold inline-block text-[1.563rem] md:text-[1.953rem] tracking-[-0.0009em] ml-3">{cat?.attributes?.name}</h2>
-            <AnimatedLink href={`${SITE_URL}/?author=${member?.attributes?.name}`}/>
+            <AnimatedLink href={`/category/${cat?.attributes?.name}`}/>
             <div className={`grid grid-flow-col auto-cols-[12.125rem] md:auto-cols-[14.125rem] lg:auto-cols-[15.125rem] transition-transform duration-700 ease-linear mt-5 w-fit ml-3 gap-3`} style={{transform:`translateX(${translateVar}px)`}} ref={sliderRef}>
                 {cat?.attributes?.articles?.data?.slice(0,9).map((article,index)=>(
                     
