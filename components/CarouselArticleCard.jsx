@@ -1,4 +1,4 @@
-import { useContext,useEffect,useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { GlobalContext } from "../context/GlobalContext";
 import { useRouter } from "next/router";
@@ -9,19 +9,16 @@ import Image from "next/image";
 import axios from "axios";
 import { API } from "../config/api";
 
-const CarouselArticleCard = ({articleID}) => {
+const CarouselArticleCard = ({ articleID }) => {
   const { findUserByID } = useContext(GlobalContext);
-  const [article,setArticle] = useState({});
-  useEffect(()=>{
-    if(!article.length){
-        axios
-        .get(`${API}/articles/${articleID}?populate=*`)
-        .then(({data})=>{
-            setArticle(data?.data)
-        })
-        
+  const [article, setArticle] = useState({});
+  useEffect(() => {
+    if (!article.length) {
+      axios.get(`${API}/articles/${articleID}?populate=*`).then(({ data }) => {
+        setArticle(data?.data);
+      });
     }
-  },[])
+  }, []);
   const router = useRouter();
 
   return (
@@ -31,16 +28,14 @@ const CarouselArticleCard = ({articleID}) => {
         <Image
           style={{ borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
           src={`${
-            
             article?.attributes?.media?.data[0]?.attributes?.formats?.medium
-              ?.url||
+              ?.url ||
             article?.attributes?.media?.data[0]?.attributes?.formats?.large
-              ?.url||
+              ?.url ||
             article?.attributes?.media?.data[0]?.attributes?.formats?.small
-              ?.url||
+              ?.url ||
             article?.attributes?.media?.data[0]?.attributes?.formats?.thumbnail
-              ?.url||
-            
+              ?.url ||
             "/Placeholder.png"
           }`}
           layout="fill"
@@ -60,8 +55,13 @@ const CarouselArticleCard = ({articleID}) => {
                 href={`/category/${category.attributes.slug}`}
                 passHref
               >
-                <a className={`no-underline ${category.attributes.name === "Ad Feature" ? "order-last"
-                : ""}`}>
+                <a
+                  className={`no-underline ${
+                    category.attributes.name === "Ad Feature"
+                      ? "order-last"
+                      : ""
+                  }`}
+                >
                   <p
                     className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
                       category.attributes.name.toLowerCase() === "sponsored"
@@ -90,7 +90,8 @@ const CarouselArticleCard = ({articleID}) => {
           >
             <a>
               <h1
-                className={`xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.1rem] md:text-[1.3rem] lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.12rem] mb-[0.1875rem] sm:pb-[0.11rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title rec__card`}
+                // className={`xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.1rem] md:text-[1.3rem] lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.12rem] mb-[0.1875rem] sm:pb-[0.11rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title rec__card`}
+                className={`xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.1rem] md:text-[1.3rem] lg:text-2xl xl:text-[1.8rem] border-box xxs:pb-[0.12rem] xs:pb-[0.12rem] mb-[0.1875rem] sm:pb-[0.11rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title rec__card`}
               >
                 <span className="underline__span">
                   {article?.attributes?.title?.length > 65
@@ -111,11 +112,9 @@ const CarouselArticleCard = ({articleID}) => {
             <Image
               src={`${
                 findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                  ?.image?.data?.attributes?.url||
+                  ?.image?.data?.attributes?.url ||
                 findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                  ?.image?.data?.attributes?.formats?.small?.url||
-                
-              
+                  ?.image?.data?.attributes?.formats?.small?.url ||
                 "/User.svg"
               }`}
               alt="Picture of author"
