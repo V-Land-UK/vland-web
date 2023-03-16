@@ -91,7 +91,7 @@ const CarouselArticleCard = ({ articleID }) => {
             <a>
               <h1
                 // className={`xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.1rem] md:text-[1.3rem] lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.12rem] mb-[0.1875rem] sm:pb-[0.11rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title rec__card`}
-                className={`xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.1rem] md:text-[1.3rem] lg:text-2xl xl:text-[1.8rem] border-box xxs:pb-[0.12rem] xs:pb-[0.12rem] mb-[0.1875rem] sm:pb-[0.11rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title rec__card`}
+                className={`xxs:text-[.8rem] xs:text-[.9rem] sm:text-[.9rem] md:text-[1rem] lg:text-[1.3] xl:text-[1.5rem] border-box xxs:pb-[0.12rem] xs:pb-[0.12rem] mb-[0.1875rem] sm:pb-[0.11rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title rec__card`}
               >
                 <span className="underline__span">
                   {article?.attributes?.title?.length > 65
