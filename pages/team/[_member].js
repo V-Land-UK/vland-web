@@ -263,6 +263,7 @@ export async function getStaticProps({params})
                                     }
                                   }
     }`;
+ 
     const currentDate = new Date().toISOString();
     const category_query_variables = {
       filtervarOne:{
