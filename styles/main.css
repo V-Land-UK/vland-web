@@ -46,7 +46,19 @@ a {
   animation: 600ms FadeOutUp ease-out forwards;
   display: block;
 }
-
+.payment-interface--ws::before{
+  content:"";
+  position:fixed;
+  height:100%;
+  right:0;
+  top:0;
+  transform-origin:right;
+  width:50%;
+  
+  
+  
+  
+}
 .cardList_ctnr {
   display: grid;
   grid-template-columns: repeat(auto-fit, 16.75rem);
@@ -544,8 +556,14 @@ ul {
       height: calc(2 * 15.125rem);
     }
   }
+  
+  
 }
-
+@media screen and (min-width: 1024px){
+  .payment-interface--ws::before{
+    box-shadow: 15px 0 30px 0 rgba(0,0,0,.18);
+  }
+}
 @media screen and (max-width: 768px) {
   .cardList_ctnr {
     grid-template-columns: repeat(auto-fit, 13.8215rem);

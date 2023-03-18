@@ -72,17 +72,17 @@ const Donate = ()=>
             desc="support the V-Land team and keep us creating and curating vegan content for you with a donation of any amount."
         >
             <div className="w-full text-center">
-                <h1 className="text-primary text-[3.052rem] font-bold">Support us</h1>
+                <h1 className=" text-[3.052rem] font-bold">Support us</h1>
                 <h2 className="text-[1.953rem] font-semiBold mt-5">A token of your appreciation</h2>
             </div>
-            <div className="relative mx-auto w-[80%] rounded-[12px] md:w-[450px] border-box mt-5 py-8 bg-[#44b882] text-center">
-                <form method="get" className="relative w-[80%] mx-auto text-white">
-                    <div className="rounded-[12px] w-[90%] mx-auto">
+            <div className="relative mx-auto w-[80%] rounded-[12px] md:w-[450px] border-box mt-5 pt-12 pb-4 bg-[#44b882] text-center">
+                <form method="get" action="/checkout" className="relative w-[80%] mx-auto text-white">
+                    {/*<div className="rounded-[12px] w-[90%] mx-auto">
                         <button type="button" className={`${singleActive ? "bg-primary border-r-[1.2px]":""} w-[50%] border-box py-4 border-white border-t-[1.2px] border-l-[1.2px] border-b-[1.2px] rounded-tl-[12px] rounded-bl-[12px]`} onClick={()=>{toggleSingleActive()}}>Single</button>
                         <button type="button" className={`${singleActive ? "":"bg-primary border-l-[1.2px]"} w-[50%] border-box py-4 border-white border-t-[1.2px] border-r-[1.2px] border-b-[1.2px] rounded-tr-[12px] rounded-br-[12px]`} onClick={()=>{toggleSingleActive()}}>Monthly</button>
-                    </div>
-                    <h3 className="mt-5 mx-auto">Choose an amount to donate</h3>
-                    <div className="mt-5 w-[80%] mx-auto grid grid-cols-5">
+                    </div>*/}
+                    <h3 className="mt-3 mx-auto">Choose an amount to donate</h3>
+                    <div className="mt-3 w-[80%] mx-auto grid grid-cols-5">
                         {singleActive ? (
                             <Fragment>
                                 <button type="button" className={`${activePrice/1 === 1 && inputValue?.split('')?.length < 1 ? "bg-primary": ""} border-box border-white rounded-[6px] border-[1.2px] py-3 cursor-pointer`} onClick={()=>{toggleActivePrice(1,25)}}>£25</button>
@@ -97,14 +97,14 @@ const Donate = ()=>
                             </Fragment>
                         )}
                     </div>
-                    <div className="relative mt-4 w-[80%] mx-auto bg-[#49c488] border-box py-3 rounded-[6px]">
+                    <div className="relative mt-3 w-[80%] mx-auto bg-[#49c488] border-box py-3 rounded-[6px]">
                         <div className="inline-block w-[10%]">£</div>
-                        <input type="text" pattern="\d*\.?\d*" className="w-[90%] mx-auto bg-[#49c488] outline-none focus:outline-none" value={inputValue} name="amount" onChange={e => handleInput(e)}/>
+                        <input type="text" pattern="\d*(\.?\d{0,2})?" className="w-[90%] mx-auto bg-[#49c488] outline-none focus:outline-none" value={inputValue} onChange={e => handleInput(e)}/>
                     </div>
                     {(activePrice || inputValue?.split('').length) ? (
-                        <button className={`bg-primary mt-4 rounded-[12px] border-white border-[1.2px] w-[80%] mx-auto border-box py-4`}>Support</button>
+                        <button className={`bg-primary mt-3 rounded-[12px] border-white border-[1.2px] w-[80%] mx-auto border-box py-4`}>Support</button>
                     ):(
-                        <button className={`mt-4 rounded-[12px] border-white border-[1.2px] w-[80%] mx-auto border-box py-4`} disabled>Support</button>
+                        <button className={`mt-3 rounded-[12px] border-white border-[1.2px] w-[80%] mx-auto border-box py-4`} disabled>Support</button>
 
 
                     )}
