@@ -21,7 +21,7 @@ const Checkout = ({amt, frq}) =>
       fetch("/api/create_payment_intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items: [{ id: `${frq}_pledge`, amount:amt }] }),
+        body: JSON.stringify({ items: [{ id: `${frq}_pledge`, amount:amt}] }),
       })
         .then((res) => res.json())
         .then((data) => setClientSecret(data.clientSecret));
@@ -96,8 +96,9 @@ const Checkout = ({amt, frq}) =>
 
 export async function getServerSideProps({req, res, query})
 {
-    
+    console.log(req.form);
     const {amount, frequency} = query;
+    
     
     if(!parseFloat(amount) || parseFloat(amount) < 0 || frequency !== "single"){
       return{

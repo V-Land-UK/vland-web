@@ -15,15 +15,38 @@ export default async function handler(req, res) {
   const { items } = req.body;
   
   // Create a PaymentIntent with the order amount and currency
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: calculateOrderAmount(items),
-    currency: "gbp",
-    automatic_payment_methods: {
-      enabled: true,
-    },
-  });
+  if(items.frequency === "monthly"){
+    try{
+      const subscription = await stripe.subscription.create({
+        customer:"user",
+        items:[{
+          price:priceId,
+        }],
+        payment_behavior: 'default_incomplete',
+        payment_settings: { save_default_payment_method: 'on_subscription' },
+        expand: ['latest_invoice.payment_intent']
+      })
+      res.send({
+        subscriptionId: subscription.id,
+        clientSecret: subscription.latest_invoice.payment_intent.client_secret,
+      });
+    }
+    catch(error){
+      return res.status(400).send({ error: { message: error.message } });
 
-  res.send({
-    clientSecret: paymentIntent.client_secret,
-  });
+    }
+  }
+  else{
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: calculateOrderAmount(items),
+      currency: "gbp",
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  }
 };
