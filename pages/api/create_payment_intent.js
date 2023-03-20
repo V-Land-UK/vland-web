@@ -24,7 +24,10 @@ export default async function handler(req, res) {
     },
   });
 
+    
+
   res.send({
     clientSecret: paymentIntent.client_secret,
   });
+  
 };
