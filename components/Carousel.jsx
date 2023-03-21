@@ -79,8 +79,8 @@ const Carousel = ({
 
     };
     const convert2slug = (str)=>{
-       
-        return str.toLowerCase().replace(/(?<=\s+)\&/g, "and").split(" ").join("-");
+        
+        return str.toLowerCase().replace(/&/g, "and").split(" ").join("-");
     }
     const handleLeftScroll = ()=>{
         let minTranslateVar;
