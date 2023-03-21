@@ -11,7 +11,8 @@ const Donate = ()=>
     const [inputValue, setInputValue] = useState("");
     const [selectionPrice, setSelectionPrice] = useState("");
     const [Email, setEmail] = useState("");
-    
+    const [index, setIndex] = useState(0);
+    const emotions_list = ["inspired", "happy", "empowered", "excited", "informed" ]; 
 
     const handleInput = (e)=>{
         if(e.target.validity.valid){
@@ -80,7 +81,7 @@ const Donate = ()=>
         >
             <div className="w-full text-center">
                 <h1 className=" text-[3.052rem] font-bold">Support us</h1>
-                <h2 className="text-[1.953rem] font-semiBold mt-5">Short</h2>
+                <h2 className="text-[1.953rem] font-semiBold mt-5">If our content made you</h2>
             </div>
             <div className="relative mx-auto w-[80%] rounded-[12px] md:w-[450px] border-box mt-5 pt-12 pb-4 bg-[#44b882] text-center">
                 <form method="POST" action="/checkout" className="relative w-[80%] mx-auto text-white">
