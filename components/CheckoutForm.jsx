@@ -95,10 +95,12 @@ export default function CheckoutForm({amt,frq}) {
       
         <form id="payment-form" onSubmit={handleSubmit}>
           
-          <LinkAuthenticationElement
-            id="link-authentication-element"
-            onChange={(e) => handleInput(e)}
-          />
+          {frq === "single" && (
+            <LinkAuthenticationElement
+              id="link-authentication-element"
+              onChange={(e) => handleInput(e)}
+            />
+          )}
           <PaymentElement id="payment-element" options={paymentElementOptions} />
           <button disabled={isLoading || !stripe || !elements} className="w-full mt-3 rounded-[6px] border-box bg-primary text-white text-center px-5 py-3" id="submit">
             <span id="button-text">

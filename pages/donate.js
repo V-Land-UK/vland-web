@@ -2,6 +2,8 @@ import { invalid } from "moment";
 import { Fragment, useEffect, useState } from "react"
 import Layout from "../defaults/Layout"
 
+
+
 const Donate = ()=>
 {
     const [singleActive, setSingleActive] = useState(true);
@@ -70,6 +72,7 @@ const Donate = ()=>
         setActivePrice(idx);
         setSelectionPrice(val);
     }
+    
     return (
         <Layout
             title = "Support us"
