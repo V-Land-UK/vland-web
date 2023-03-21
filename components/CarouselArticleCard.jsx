@@ -101,11 +101,11 @@ const CarouselArticleCard = ({articleID}) => {
             </a>
           </Link>
         </div>
-        <p className="lg:text-xs  article-desc my-auto px-4 lg:px-10">
+        {/*<p className="lg:text-xs  article-desc my-auto px-4 lg:px-10">
           {article?.attributes?.description?.length > 160
             ? article?.attributes?.description?.slice(0, 160) + "..."
             : article?.attributes?.description}
-        </p>
+          </p>*/}
         <div className="article-author ml-1 pb-2 lg:pb-3">
           <div className="relative  w-7 h-7 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9">
             <Image
