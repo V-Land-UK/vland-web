@@ -14,6 +14,16 @@ const Donate = ()=>
     const [index, setIndex] = useState(0);
     const emotions_list = ["inspired", "happy", "empowered", "excited", "informed" ]; 
 
+    useEffect(()=>{
+        const interval = setInterval(()=>{
+            const temp_index = index + 1;
+            const intial_transformation =  temp_index % emotions_list.length;
+            setIndex(intial_transformation ? emotions_list.length - intial_transformation: intial_transformation);
+        },2000);
+
+        return ()=> clearInterval(interval);
+    },[]);
+
     const handleInput = (e)=>{
         if(e.target.validity.valid){
             if(e.target.value ==="."){
