@@ -84,13 +84,13 @@ const Checkout = ({amt, frq, email}) =>
           </Layout>
         ):(
           <div className='relative w-[80%] mx-auto'>
-            <div className='block w-[64%] mx-auto lg:inline-block lg:border-gray-500 lg:align-top border-box lg:w-[50%] lg:pb-[100px]'>
-              <div className="mt-5">
+            <div className='block w-[64%]  mx-auto lg:inline-block lg:border-gray-500 lg:align-top border-box lg:w-[50%] lg:pb-[100px]'>
+              <div className="mt-5 max-w-[409.6px] mx-auto">
                 <Back/>
               </div>
-              <div className="mt-3 lg:ml-5">
-                <h1 className="text-[1.563rem] font-bold">{frq === "single" ? "You've chosen to donate:": "You've chosen a monthly donation of:"}</h1>
-                <h1 className="text-[1.563rem] text-primary font-bold">£{amt}</h1>
+              <div className="mt-3 max-w-[409.6px] mx-auto">
+                <h1 className="text-[1.25rem] lg:text-[1.563rem] font-bold">{frq === "single" ? "You've chosen to donate:": "You've chosen a monthly donation of:"}</h1>
+                <h1 className="text-[1.25rem] lg:text-[1.563rem] text-primary font-bold">£{amt}</h1>
               </div>
             </div>
             <div className="relative lg:inline-block border-box w-[80%] payment-interface--ws mx-auto lg:w-[50%] py-[100px]">
