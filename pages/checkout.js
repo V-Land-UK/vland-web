@@ -9,11 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import Layout from '../defaults/Layout';
 
-/*export const config= {
-  api:{
-    bodyParser:false
-  }
-};*/
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 

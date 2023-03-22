@@ -54,12 +54,19 @@ const NavMenu = () => {
                   Team
                 </div>
               </Link>
+              <Link href="/contact">
+                <div className="hover:text-primary hover:translate-x-3  text-2xl cursor-pointer transition-all">
+                  Donate
+                </div>
+              </Link>
 
               <Link href="/contact">
                 <div className="hover:text-primary hover:translate-x-3  text-2xl cursor-pointer transition-all">
                   Contact
                 </div>
               </Link>
+              
+             
 
               {/* <Link href="https://www.v-landeurope.com/">
                 <div className="hover:text-primary hover:translate-x-3  text-2xl cursor-pointer transition-all">
