@@ -306,12 +306,7 @@ const Layout = ({
                   Team
                 </div>
               </Link>
-              
-              <Link href="/donate">
-                <div className="hover:text-primary hover:translate-x-3 transition-all">
-                  Support
-                </div>
-              </Link>
+            
 
 
               <Link href="/contact">
@@ -319,12 +314,13 @@ const Layout = ({
                   Contact
                 </div>
               </Link>
-
               <Link href="/donate">
                 <div className="hover:text-primary hover:translate-x-3 transition-all">
-                  Support
+                  Support Us
                 </div>
               </Link>
+
+             
 
               {/* <Link href="https://www.v-landeurope.com/">
                 <div className="hover:text-primary hover:translate-x-3 transition-all">
