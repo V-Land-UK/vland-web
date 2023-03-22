@@ -54,7 +54,7 @@ const NavMenu = () => {
                   Team
                 </div>
               </Link>
-              <Link href="/contact">
+              <Link href="/donate">
                 <div className="hover:text-primary hover:translate-x-3  text-2xl cursor-pointer transition-all">
                   Donate
                 </div>
