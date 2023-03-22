@@ -12,17 +12,19 @@ const Donate = ()=>
     const [selectionPrice, setSelectionPrice] = useState("");
     const [Email, setEmail] = useState("");
     const [index, setIndex] = useState(0);
-    const emotions_list = ["inspired", "happy", "empowered", "excited", "informed" ]; 
+    const emotions_list = ["Inspired", "Happy", "Empowered", "Excited", "Informed" ]; 
 
     useEffect(()=>{
         const interval = setInterval(()=>{
-            const temp_index = index + 1;
-            const intial_transformation =  temp_index % emotions_list.length;
-            setIndex(intial_transformation ? emotions_list.length - intial_transformation: intial_transformation);
-        },2000);
+            
+            let temp_index = index + 1;
+            
+            
+            setIndex(temp_index % emotions_list.length);
+        },3000);
 
         return ()=> clearInterval(interval);
-    },[]);
+    },[index]);
 
     const handleInput = (e)=>{
         if(e.target.validity.valid){
@@ -91,7 +93,10 @@ const Donate = ()=>
         >
             <div className="w-full text-center">
                 <h1 className=" text-[3.052rem] font-bold">Support us</h1>
-                <h2 className="text-[1.953rem] font-semiBold mt-5">If our content made you</h2>
+                <h2 className="text-[1.953rem] font-semiBold mt-5">If our content made you feel</h2>
+                <h2 className=" text-primary text-[1.953rem] font-semiBold mt-3"><span key={index} className="mutable-statement--donate">{emotions_list[index]}</span></h2>
+                
+                
             </div>
             <div className="relative mx-auto w-[80%] rounded-[12px] md:w-[450px] border-box mt-5 pt-12 pb-4 bg-[#44b882] text-center">
                 <form method="POST" action="/checkout" className="relative w-[80%] mx-auto text-white">
