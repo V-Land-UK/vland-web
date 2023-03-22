@@ -306,10 +306,23 @@ const Layout = ({
                   Team
                 </div>
               </Link>
+              
+              <Link href="/donate">
+                <div className="hover:text-primary hover:translate-x-3 transition-all">
+                  Support
+                </div>
+              </Link>
+
 
               <Link href="/contact">
                 <div className="hover:text-primary hover:translate-x-3 transition-all">
                   Contact
+                </div>
+              </Link>
+
+              <Link href="/donate">
+                <div className="hover:text-primary hover:translate-x-3 transition-all">
+                  Support
                 </div>
               </Link>
 

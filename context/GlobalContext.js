@@ -127,7 +127,8 @@ const GlobalProvider = ({ children }) => {
         return { ...prev, loading: false };
       });
     }
-  }, [Object.keys(Cookies).length, Cookies]);
+  
+  },[ Object.keys(Cookies).length, Cookies])
 
   //Find a user by ID
   const findUserByID = (id) => {
