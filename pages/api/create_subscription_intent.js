@@ -4,9 +4,9 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req,res){
     const {item} = req.body
-    const sub_products = {"5":"price_1MnttQERkfkL5FXlUrOR8xos",
-                        "10":"price_1MntuBERkfkL5FXl9rQBL55w",
-                        "20":"price_1MntuxERkfkL5FXlu2Fae6aq"
+    const sub_products = {"5":"price_1MoPdHRmR3QOo6zuuB9OToeU",
+                        "10":"price_1MoPd6RmR3QOo6zu0yHLPmbB",
+                        "20":"price_1MoPcQRmR3QOo6zu2Nw6sc2U"
                     }
     const customer = await stripe.customers.create({
         email: item.email
