@@ -95,7 +95,7 @@ const Footer = () => {
               <Link href="/contact">Contact</Link>
             </div>
             <div className="hover:text-primary hover:translate-x-1 transition-all">
-              <Link href="/donate">Support Us</Link>
+              <Link href="/donate">Support us</Link>
             </div>
 
             {/*<div className="hover:text-primary hover:translate-x-1 transition-all">
