@@ -1,7 +1,8 @@
 import { GlobalContext } from "../context/GlobalContext";
 import AnimatedLink from "./AnimatedLink";
 import CarouselArticleCard from "./CarouselArticleCard";
-import { useRef, useState, useContext, useEffect } from "react";
+import { useRef, useState, useContext, useEffect, useCallback} from "react";
+
 import { SITE_URL,API } from "../config/api";
 
 
@@ -15,26 +16,59 @@ const Carousel = ({
     
     const [hasMoreRight, setHasMoreRight] = useState(false);
     const [hasMoreLeft, setHasMoreLeft] = useState(false);
-    const trackSize = useRef(null);
+    
     const sliderRef = useRef(null);
     const initialWidthDifference = useRef(null);
     const [widthDifference,setWidthDifference] = useState(0);
     const containerRef = useRef(null);
     const [finalScrollVal, setFinalScrollVal] = useState(0);
     const [translateVar,setTranslateVar] = useState(0);
+    const widthDiffRef = useRef(0);
+    const sliderScrollWidth = useRef(null);
+    const immutableWidthDiffRef = useRef(0);
    
-  
+    const handleResize = useCallback(()=>{
+        
+        sliderScrollWidth.current = sliderRef.current.clientWidth + sliderRef.current.offsetLeft;
+        if(!widthDiffRef.current) return;
+        const newInitialWidthDifference = (sliderRef.current.clientWidth + sliderRef.current.offsetLeft) - containerRef.current.clientWidth;
+        initialWidthDifference.current = newInitialWidthDifference;
+        const widthDifferenceRatio = widthDiffRef.current/immutableWidthDiffRef.current;
+        
+        const newWidthDifference = newInitialWidthDifference *  widthDifferenceRatio;
+        const newTranslateVar = (newWidthDifference + containerRef.current.clientWidth) - sliderScrollWidth.current;
+        
+        if(initialWidthDifference.current > 0)setTranslateVar(newTranslateVar);
+        
+
+    }, [widthDifference])
+
+    
 
     
     useEffect(()=>{
         if(sliderRef.current && containerRef.current)
         {
-            if(!initialWidthDifference.current)initialWidthDifference.current = sliderRef.current.clientWidth - containerRef.current.clientWidth;
+            if(!sliderScrollWidth.current)sliderScrollWidth.current = sliderRef.current.clientWidth + (sliderRef.current.getBoundingClientRect().left - containerRef.current.getBoundingClientRect().left);
             
+            if(!initialWidthDifference.current){
+                initialWidthDifference.current = (sliderRef.current.clientWidth + (sliderRef.current.getBoundingClientRect().left - containerRef.current.getBoundingClientRect().left)) - containerRef.current.clientWidth;
+                immutableWidthDiffRef.current = initialWidthDifference.current;
+            }
             setWidthDifference(initialWidthDifference.current);
             
         }
+        
+       
     },[])
+    useEffect(()=>{
+        window.addEventListener("resize", handleResize)
+        
+        return ()=>{ 
+            window.removeEventListener("resize", handleResize);
+        };
+
+    },[widthDifference,translateVar, handleResize])
 
     useEffect(()=>{
         
@@ -61,7 +95,8 @@ const Carousel = ({
     },[widthDifference]);
 
     useEffect(()=>{
-        setWidthDifference((sliderRef.current.clientWidth + translateVar) - containerRef.current.clientWidth);
+        
+        setWidthDifference((sliderScrollWidth.current + translateVar) - containerRef.current.clientWidth);
         
     },[translateVar])
 
@@ -71,8 +106,16 @@ const Carousel = ({
     const handleRightScroll = ()=>{
         
         const minTranslateVar = Math.min(sliderRef.current.clientWidth/8, widthDifference);
-        if(widthDifference < sliderRef.current.clientWidth/8) setFinalScrollVal(widthDifference);
-        setTranslateVar(prev => prev - minTranslateVar);
+        if(widthDifference < sliderRef.current.clientWidth/8){
+            setFinalScrollVal(widthDifference + 1.5);
+            widthDiffRef.current = (sliderScrollWidth.current +  (translateVar - (minTranslateVar + 1.5)))- containerRef.current.clientWidth;
+            setTranslateVar(prev => prev - (minTranslateVar + 1.5));
+        }
+        else{
+            widthDiffRef.current = (sliderScrollWidth.current +  (translateVar - minTranslateVar))- containerRef.current.clientWidth;
+
+            setTranslateVar(prev => prev - minTranslateVar);
+        }
         
        
       
@@ -91,9 +134,10 @@ const Carousel = ({
 
         }
         else{
-            minTranslateVar = (sliderRef.current.clientWidth/8);
+            minTranslateVar = Math.min(sliderRef.current.clientWidth/8,initialWidthDifference.current - widthDifference);
         }
-        
+        widthDiffRef.current = (sliderScrollWidth.current +  (translateVar + minTranslateVar))- containerRef.current.clientWidth;
+
         setTranslateVar(prev => prev + minTranslateVar);
         
         
