@@ -252,8 +252,8 @@ const Layout = ({
       </main>
 
       <Footer />
-      {/* {preferences_set && <AdUnit />} */}
       {preferences_set}
+      <AdUnit />
 
       {/* NAVIGATION DRAWER */}
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
@@ -306,8 +306,6 @@ const Layout = ({
                   Team
                 </div>
               </Link>
-            
-
 
               <Link href="/contact">
                 <div className="hover:text-primary hover:translate-x-3 transition-all">
@@ -319,8 +317,6 @@ const Layout = ({
                   Support Us
                 </div>
               </Link>
-
-             
 
               {/* <Link href="https://www.v-landeurope.com/">
                 <div className="hover:text-primary hover:translate-x-3 transition-all">
