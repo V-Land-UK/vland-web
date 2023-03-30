@@ -314,7 +314,7 @@ const Layout = ({
               </Link>
               <Link href="/donate">
                 <div className="hover:text-primary hover:translate-x-3 transition-all">
-                  Support Us
+                  Support us
                 </div>
               </Link>
 
