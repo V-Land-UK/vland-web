@@ -63,7 +63,7 @@ const NavMenu = () => {
               </Link>
               <Link href="/donate">
                 <div className="hover:text-primary hover:translate-x-3  text-2xl cursor-pointer transition-all">
-                  Support Us
+                  Support us
                 </div>
               </Link>
               
