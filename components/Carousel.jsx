@@ -28,20 +28,33 @@ const Carousel = ({
     const immutableWidthDiffRef = useRef(0);
    
     const handleResize = useCallback(()=>{
-        
+       
         sliderScrollWidth.current = sliderRef.current.clientWidth + sliderRef.current.offsetLeft;
-        if(!widthDiffRef.current) return;
         const newInitialWidthDifference = (sliderRef.current.clientWidth + sliderRef.current.offsetLeft) - containerRef.current.clientWidth;
         initialWidthDifference.current = newInitialWidthDifference;
+        
+        
+        
+       
+        if(!widthDiffRef.current || !hasMoreLeft ){
+            setWidthDifference(initialWidthDifference.current);
+            return;
+        }
         const widthDifferenceRatio = widthDiffRef.current/immutableWidthDiffRef.current;
         
         const newWidthDifference = newInitialWidthDifference *  widthDifferenceRatio;
         const newTranslateVar = (newWidthDifference + containerRef.current.clientWidth) - sliderScrollWidth.current;
         
-        if(initialWidthDifference.current > 0)setTranslateVar(newTranslateVar);
+        if(initialWidthDifference.current > 0){
+            setTranslateVar(newTranslateVar);
+        }
+        else{
+            setTranslateVar(0);
+
+        }
         
 
-    }, [widthDifference])
+    }, [widthDifference, translateVar,hasMoreLeft])
 
     
 
@@ -127,6 +140,7 @@ const Carousel = ({
     }
     const handleLeftScroll = ()=>{
         let minTranslateVar;
+        
         if(finalScrollVal){
             
             minTranslateVar = finalScrollVal;
