@@ -253,7 +253,7 @@ export async function getStaticProps({params})
                                       
                                       attributes{
                                         name
-                                        articles(filters:$filtervarTwo){
+                                        articles(filters:$filtervarTwo, sort:"publishedAt:DESC"){
                                           data{
                                             id
                                            

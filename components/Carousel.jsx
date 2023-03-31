@@ -23,7 +23,36 @@ const Carousel = ({
     const [finalScrollVal, setFinalScrollVal] = useState(0);
     const [translateVar,setTranslateVar] = useState(0);
    
-  
+    const handleResize = useCallback(()=>{
+       
+        sliderScrollWidth.current = sliderRef.current.clientWidth + sliderRef.current.offsetLeft;
+        const newInitialWidthDifference = (sliderRef.current.clientWidth + sliderRef.current.offsetLeft) - containerRef.current.clientWidth;
+        initialWidthDifference.current = newInitialWidthDifference;
+        
+        
+        
+       
+        if(!widthDiffRef.current || !hasMoreLeft ){
+            setWidthDifference(initialWidthDifference.current);
+            return;
+        }
+        const widthDifferenceRatio = widthDiffRef.current/immutableWidthDiffRef.current;
+        
+        const newWidthDifference = newInitialWidthDifference *  widthDifferenceRatio;
+        const newTranslateVar = (newWidthDifference + containerRef.current.clientWidth) - sliderScrollWidth.current;
+        
+        if(initialWidthDifference.current > 0){
+            setTranslateVar(newTranslateVar);
+        }
+        else{
+            setTranslateVar(0);
+
+        }
+        
+
+    }, [widthDifference, translateVar,hasMoreLeft])
+
+    
 
     
     useEffect(()=>{
@@ -84,6 +113,7 @@ const Carousel = ({
     }
     const handleLeftScroll = ()=>{
         let minTranslateVar;
+        
         if(finalScrollVal){
             
             minTranslateVar = finalScrollVal;
