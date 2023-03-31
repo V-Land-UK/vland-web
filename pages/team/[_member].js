@@ -253,7 +253,7 @@ export async function getStaticProps({params})
                                       
                                       attributes{
                                         name
-                                        articles(filters:$filtervarTwo){
+                                        articles(filters:$filtervarTwo, sort:"publishedAt:DESC"){
                                           data{
                                             id
                                            
@@ -263,6 +263,7 @@ export async function getStaticProps({params})
                                     }
                                   }
     }`;
+ 
     const currentDate = new Date().toISOString();
     const category_query_variables = {
       filtervarOne:{
