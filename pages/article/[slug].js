@@ -199,19 +199,23 @@ const Article = ({ article }) => {
 
               {/* AUTHOR AND DATE */}
               <div className="flex items-center gap-x-2 px-2 my-4">
-                <img
-                  src={
-                    findUserByID(article?.attributes?.author?.data?.id)
-                      ?.attributes?.image?.data?.attributes?.formats?.small
-                      ?.url ||
-                    findUserByID(article?.attributes?.author?.data?.id)
-                      ?.attributes?.image?.data?.attributes?.url ||
-                    "/User.svg"
-                  }
-                  alt="Author"
-                  className="w-11 aspect-square object-cover rounded-full"
-                  loading="lazy"
-                />
+                <Link className="h-fit w-fit" href={`/team/${findUserByID(article.attributes?.author?.data?.id)?.attributes?.fullname}`} passHref>
+                  <a>
+                    <img
+                      src={
+                        findUserByID(article?.attributes?.author?.data?.id)
+                          ?.attributes?.image?.data?.attributes?.formats?.small
+                          ?.url ||
+                        findUserByID(article?.attributes?.author?.data?.id)
+                          ?.attributes?.image?.data?.attributes?.url ||
+                        "/User.svg"
+                      }
+                      alt="Author"
+                      className="w-11 aspect-square object-cover rounded-full"
+                      loading="lazy"
+                    />
+                  </a>
+                </Link>
                 <div className="flex flex-col gap-y-[1px]">
                   <Link href={`/team/${findUserByID(article.attributes?.author?.data?.id)?.attributes?.fullname}`} passHref>
                     <a className="hover:underline text-sm font-semibold">
