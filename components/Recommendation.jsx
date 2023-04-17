@@ -72,10 +72,10 @@ const Recommendation = ({ article }) => {
         className={`${
           article.attributes?.categories?.data?.filter(
             (cat) => cat?.attributes?.name === "Food & Drink"
-          )?.length
+          ).length
         ? "green-body"
             
-          : ""}flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-b-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
+          : ""} flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-b-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
           <Link
@@ -141,12 +141,10 @@ const Recommendation = ({ article }) => {
             </p>
             <Moment format="MMM DD YYYY" className={`article-date
             ${
-              cat === "Food & Drink"
-                ? "article-date-green"
-                : article.attributes?.categories?.data?.filter(
-                    (cat) => cat?.attributes?.name === "Food & Drink"
-                  )?.length
-                ? "article-date-green"
+              article.attributes?.categories?.data?.filter(
+                (cat) => cat?.attributes?.name === "Food & Drink"
+              )?.length
+            ? "article-date-green"
                 : "article-date"
             }`}>
               {article?.attributes?.PublishDate ||
