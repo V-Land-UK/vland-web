@@ -69,7 +69,14 @@ const Recommendation = ({ article }) => {
       </div>
       {/* POST BODY */}
       <div
-        className={`flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-b-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
+        className={`${
+          cat === "Food & Drink"
+            ? "green-body"
+            : article.attributes?.categories?.data?.filter(
+                (cat) => cat?.attributes?.name === "Food & Drink"
+              )?.length
+            ? "green-body"
+            : ""}flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-b-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
           <Link
@@ -79,7 +86,16 @@ const Recommendation = ({ article }) => {
           >
             <a>
               <h1
-                className={`xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.1rem] md:text-[1.3rem] lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.12rem] mb-[0.1875rem] sm:pb-[0.11rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title rec__card`}
+                className={`xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.1rem] md:text-[1.3rem] lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.12rem] mb-[0.1875rem] sm:pb-[0.11rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title rec__card
+                ${
+                  cat === "Food & Drink"
+                    ? "article-title-green "
+                    : article.attributes?.categories?.data?.filter(
+                        (cat) => cat?.attributes?.name === "Food & Drink"
+                      )?.length
+                    ? "article-title-green"
+                    : "article-title"
+                }`}
               >
                 <span className="underline__span">
                   {article?.attributes?.title?.length > 65
@@ -115,11 +131,29 @@ const Recommendation = ({ article }) => {
           </div>
 
           <div className="article-author-data ">
-            <p className="txt authTxt">
+            <p className={`txt authTxt
+            ${
+              cat === "Food & Drink"
+                ? "text-white"
+                : article.attributes?.categories?.data?.filter(
+                    (cat) => cat?.attributes?.name === "Food & Drink"
+                  )?.length
+                ? "text-white"
+                : "text-primary"
+            }`}>
               {findUserByID(article?.attributes?.author?.data?.id)?.attributes
                 ?.fullname || "V-Land UK"}
             </p>
-            <Moment format="MMM DD YYYY" className="article-date">
+            <Moment format="MMM DD YYYY" className={`article-date
+            ${
+              cat === "Food & Drink"
+                ? "article-date-green"
+                : article.attributes?.categories?.data?.filter(
+                    (cat) => cat?.attributes?.name === "Food & Drink"
+                  )?.length
+                ? "article-date-green"
+                : "article-date"
+            }`}>
               {article?.attributes?.PublishDate ||
                 article?.attributes?.publishedAt ||
                 article?.attributes?.createdAt}
