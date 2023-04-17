@@ -75,7 +75,7 @@ const Recommendation = ({ article }) => {
           ).length
         ? "green-body"
             
-          : ""} flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-b-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
+          : "bg-white"} flex flex-col h-[12rem] lg:h-[18.3rem] rounded-b-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
           <Link
