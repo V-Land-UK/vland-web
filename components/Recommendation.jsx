@@ -70,13 +70,12 @@ const Recommendation = ({ article }) => {
       {/* POST BODY */}
       <div
         className={`${
-          cat === "Food & Drink"
-            ? "green-body"
-            : article.attributes?.categories?.data?.filter(
-                (cat) => cat?.attributes?.name === "Food & Drink"
-              )?.length
-            ? "green-body"
-            : ""}flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-b-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
+          article.attributes?.categories?.data?.filter(
+            (cat) => cat?.attributes?.name === "Food & Drink"
+          )?.length
+        ? "green-body"
+            
+          : ""}flex flex-col h-[12rem] lg:h-[18.3rem]  bg-white rounded-b-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
           <Link
@@ -88,12 +87,10 @@ const Recommendation = ({ article }) => {
               <h1
                 className={`xxs:text-[.8rem] xs:text-[1rem] sm:text-[1.1rem] md:text-[1.3rem] lg:text-2xl xl:text-3xl border-box xxs:pb-[0.12rem] xs:pb-[0.12rem] mb-[0.1875rem] sm:pb-[0.11rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] article-title rec__card
                 ${
-                  cat === "Food & Drink"
-                    ? "article-title-green "
-                    : article.attributes?.categories?.data?.filter(
-                        (cat) => cat?.attributes?.name === "Food & Drink"
-                      )?.length
-                    ? "article-title-green"
+                  article.attributes?.categories?.data?.filter(
+                    (cat) => cat?.attributes?.name === "Food & Drink"
+                  )?.length
+                ? "article-title-green"
                     : "article-title"
                 }`}
               >
@@ -133,12 +130,10 @@ const Recommendation = ({ article }) => {
           <div className="article-author-data ">
             <p className={`txt authTxt
             ${
-              cat === "Food & Drink"
-                ? "text-white"
-                : article.attributes?.categories?.data?.filter(
-                    (cat) => cat?.attributes?.name === "Food & Drink"
-                  )?.length
-                ? "text-white"
+              article.attributes?.categories?.data?.filter(
+                (cat) => cat?.attributes?.name === "Food & Drink"
+              )?.length
+            ? "text-white"
                 : "text-primary"
             }`}>
               {findUserByID(article?.attributes?.author?.data?.id)?.attributes
