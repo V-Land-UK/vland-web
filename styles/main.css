@@ -46,18 +46,14 @@ a {
   animation: 600ms FadeOutUp ease-out forwards;
   display: block;
 }
-.payment-interface--ws::before{
-  content:"";
-  position:fixed;
-  height:100%;
-  right:0;
-  top:0;
-  transform-origin:right;
-  width:50%;
-  
-  
-  
-  
+.payment-interface--ws::before {
+  content: "";
+  position: fixed;
+  height: 100%;
+  right: 0;
+  top: 0;
+  transform-origin: right;
+  width: 50%;
 }
 .cardList_ctnr {
   display: grid;
@@ -72,13 +68,13 @@ a {
 .hasMore {
   overflow-y: hidden;
 }
-.carousel-btns--ctnr div button{
-  opacity:0;
-  transform: scale(.5);
-  transition: all .4s ease-out;
+.carousel-btns--ctnr div button {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.4s ease-out;
 }
-.carousel-ctnr:hover .carousel-btns--ctnr div button{
-  opacity:1;
+.carousel-ctnr:hover .carousel-btns--ctnr div button {
+  opacity: 1;
   transform: scale(1);
 }
 
@@ -104,6 +100,13 @@ a {
   cursor: pointer;
 }
 
+.articleCardTxt {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .aCard__body {
   height: calc(50% + 0.625rem);
 }
@@ -113,7 +116,6 @@ a {
   font-weight: 500;
   font-family: "Poppins", "Segoe UI", Tahoma !important;
 }
-
 
 /* .article-poppins {
   font-family: "Poppins", Arial, Helvetica, sans-serif, "Segoe UI", Tahoma !important;
@@ -363,11 +365,11 @@ ul {
   grid-row-start: span 2;
   grid-row-end: span 2;
 }
-.toAuthorArticles--container{
-  transition: transform ease-in-out .5s;
+.toAuthorArticles--container {
+  transition: transform ease-in-out 0.5s;
 }
-.toAuthorArticles--container > a{
-  transition: opacity ease-in-out .5s;
+.toAuthorArticles--container > a {
+  transition: opacity ease-in-out 0.5s;
 }
 .article-title-green:hover .underline__span,
 .article-title-green:focus .underline__span {
@@ -462,28 +464,28 @@ ul {
   background-color: var(--primary);
 }
 
-.mutable-statement--donate{
+.mutable-statement--donate {
   animation-fill-mode: forwards;
   animation-name: fadeIn, fadeOut;
   animation-delay: 0ms, 2500ms;
   animation-duration: 500ms;
   animation-timing-function: ease-out;
 }
-@keyframes fadeIn{
+@keyframes fadeIn {
   from {
-    opacity:0;
+    opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
 
-@keyframes fadeOut{
+@keyframes fadeOut {
   from {
-    opacity:1;
+    opacity: 1;
   }
-  to{
-    opacity:0;
+  to {
+    opacity: 0;
   }
 }
 
@@ -536,16 +538,15 @@ ul {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .carousel-btns--ctnr div button{
-    opacity:0;
-    transform: scale(.5);
-    transition: all .4s ease-out;
+  .carousel-btns--ctnr div button {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.4s ease-out;
   }
-  .carousel-ctnr:hover .carousel-btns--ctnr div button{
-    opacity:1;
+  .carousel-ctnr:hover .carousel-btns--ctnr div button {
+    opacity: 1;
     transform: scale(1);
   }
-  
 
   .cardList_ctnr {
     grid-template-columns: repeat(auto-fit, 15.125rem);
@@ -590,12 +591,10 @@ ul {
       height: calc(2 * 15.125rem);
     }
   }
-  
-  
 }
-@media screen and (min-width: 1024px){
-  .payment-interface--ws::before{
-    box-shadow: 15px 0 30px 0 rgba(0,0,0,.18);
+@media screen and (min-width: 1024px) {
+  .payment-interface--ws::before {
+    box-shadow: 15px 0 30px 0 rgba(0, 0, 0, 0.18);
   }
 }
 @media screen and (max-width: 768px) {
@@ -746,14 +745,14 @@ ul {
       height: calc(2 * 10.1215rem);
     }
   }
-  .extAd{
+  .extAd {
     display: none !important;
   }
-  
-  .extContainer{
+
+  .extContainer {
     display: block !important;
   }
-  .adsContainer{
+  .adsContainer {
     background-color: white;
   }
 }

@@ -116,11 +116,14 @@ const ArticleCard = ({ article, index, cat = null }) => {
                     : "article-title"
                 }`}
               >
-                <span className="underline__span">
-                  {article?.attributes?.title?.length > 66
+                <p className="articleCardTxt">
+                  <span className="underline__span">
+                    {/* {article?.attributes?.title?.length > 66
                     ? article?.attributes?.title.slice(0, 66) + "..."
-                    : article?.attributes?.title}
-                </span>
+                    : article?.attributes?.title} */}
+                    {article?.attributes?.title}
+                  </span>
+                </p>
               </h1>
             </a>
           </Link>
