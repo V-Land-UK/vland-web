@@ -4,7 +4,7 @@ import Layout from "../defaults/Layout";
 
 const Contact = () => {
   return (
-    <Layout title="Contact Us">
+    <Layout title="Contact us">
       <Back />
       <main className="poppins text-base font-normal lg:pt-6 lg:pb-[20vh]">
         <h1 className="text-3xl lg:text-3xl text-primary font-bold mt-4 lg:mt-7">
@@ -16,15 +16,15 @@ const Contact = () => {
         If you are a business, event, public relations, or organization you can
         submit a story for consideration. Please send your pitch and press
         release to{" "}
-        <a href="mailto:press@v-landmagazine.com" className="email_txt">
-          press@v-landmagazine.com
+        <a href="mailto:press@v-landuk.com" className="email_txt">
+          press@v-landuk.com
         </a>
         .
         <p className="mt-2">
           If you are an individual who would like to submit an SEO-optimised
           article for consideration, please send it to{" "}
-          <a href="mailto:submissions@v-landmagazine.com" className="email_txt">
-            submissions@v-landmagazine.com
+          <a href="mailto:submissions@v-landuk.com" className="email_txt">
+            submissions@v-landuk.com
           </a>
           .
         </p>
@@ -33,16 +33,16 @@ const Contact = () => {
         </h1>
         For more information about advertising on our website and our social
         media accounts, email{" "}
-        <a href="mailto:advertising@v-landmagazine.com" className="email_txt">
-          advertising@v-landmagazine.com
+        <a href="mailto:advertising@v-landuk.com" className="email_txt">
+          advertising@v-landuk.com
         </a>
         .
         <h1 className="text-2xl lg:text-2xl text-primary font-bold mt-4 lg:mt-7 mb-1">
           General comments and questions
         </h1>
         Comments and questions? Send an email to{" "}
-        <a href="mailto:contact@v-landmagazine.com" className="email_txt">
-          contact@v-landmagazine.com
+        <a href="mailto:contact@v-landuk.com" className="email_txt">
+          contact@v-landuk.com
         </a>
         .
       </main>
