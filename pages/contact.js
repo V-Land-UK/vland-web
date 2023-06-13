@@ -17,14 +17,14 @@ const Contact = () => {
         submit a story for consideration. Please send your pitch and press
         release to{" "}
         <a href="mailto:press@v-landuk.com" className="email_txt">
-          press@v-landuk.com
+          press@v-landuk.email
         </a>
         .
         <p className="mt-2">
           If you are an individual who would like to submit an SEO-optimised
           article for consideration, please send it to{" "}
           <a href="mailto:submissions@v-landuk.com" className="email_txt">
-            submissions@v-landuk.com
+            submissions@v-landuk.email
           </a>
           .
         </p>
@@ -34,7 +34,7 @@ const Contact = () => {
         For more information about advertising on our website and our social
         media accounts, email{" "}
         <a href="mailto:advertising@v-landuk.com" className="email_txt">
-          advertising@v-landuk.com
+          advertising@v-landuk.email
         </a>
         .
         <h1 className="text-2xl lg:text-2xl text-primary font-bold mt-4 lg:mt-7 mb-1">
@@ -42,7 +42,7 @@ const Contact = () => {
         </h1>
         Comments and questions? Send an email to{" "}
         <a href="mailto:contact@v-landuk.com" className="email_txt">
-          contact@v-landuk.com
+          contact@v-landuk.email
         </a>
         .
       </main>
