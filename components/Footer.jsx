@@ -11,7 +11,7 @@ import {
 import { API, BASE_URL } from "../config/api";
 import Icon from "./Icon";
 import Loader from "./Loader";
-import {subscribeUser} from "@strapi-newsletter/react";
+import { subscribeUser } from "@strapi-newsletter/react";
 import { toast, ToastContainer } from "react-toastify";
 
 const Footer = () => {
@@ -31,13 +31,13 @@ const Footer = () => {
   };
 
   //Handle form submission
-  const emailSubmit = async(e) => {
+  const emailSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     const url = `${BASE_URL}`;
     const email = Mail.toLowerCase();
-  
-    subscribeUser(email,url)
+
+    subscribeUser(email, url)
       .then((res) => {
         setMail("");
         setLoading(false);
@@ -47,7 +47,7 @@ const Footer = () => {
         setLoading(false);
         toast.error("Something went wrong, please try again 🥲", options);
       });
-  }
+  };
   return (
     <footer className="w-full bg-neutral-50 bg-opacity-70 text-neutral-800 py-12 lg:py-16 px-4 mt-[8vh] lg:mt-[10vh]">
       <div className="w-full lg:w-4/6 2xl:w-3/5 mx-auto flex flex-col lg:flex-row gap-12 lg:gap-14 items-center justify-center lg:justify-evenly">
@@ -140,7 +140,7 @@ const Footer = () => {
       <div className="text-[10px] text-center font-medium lg:font-medium poppins mt-10 lg:mt-12">
         <div className="inline-block w-[50%] text-center m-auto">
           {/* {year} */}
-          V-Land Magazine Limited &copy; All Rights Reserved.{" "}
+          William Callaghan Group Ltd &copy; All Rights Reserved.{" "}
           {/* <a
             href="https://twitter.com/trulyao"
             target="_blank"
