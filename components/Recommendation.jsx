@@ -10,7 +10,7 @@ import Image from "next/image";
 
 const Recommendation = ({ article }) => {
   const { findUserByID } = useContext(GlobalContext);
-  
+
   const router = useRouter();
 
   return (
@@ -20,16 +20,14 @@ const Recommendation = ({ article }) => {
         <Image
           style={{ borderTopLeftRadius: 15, borderTopRightRadius: 15 }}
           src={`${
-            
             article?.attributes?.media?.data[0]?.attributes?.formats?.medium
-              ?.url||
+              ?.url ||
             article?.attributes?.media?.data[0]?.attributes?.formats?.large
-              ?.url||
+              ?.url ||
             article?.attributes?.media?.data[0]?.attributes?.formats?.small
-              ?.url||
+              ?.url ||
             article?.attributes?.media?.data[0]?.attributes?.formats?.thumbnail
-              ?.url||
-            
+              ?.url ||
             "/Placeholder.png"
           }`}
           layout="fill"
@@ -49,8 +47,13 @@ const Recommendation = ({ article }) => {
                 href={`/category/${category.attributes.slug}`}
                 passHref
               >
-                <a className={`no-underline ${category.attributes.name === "Ad Feature" ? "order-last"
-                : ""}`}>
+                <a
+                  className={`no-underline ${
+                    category.attributes.name === "Ad Feature"
+                      ? "order-last"
+                      : ""
+                  }`}
+                >
                   <p
                     className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
                       category.attributes.name.toLowerCase() === "sponsored"
@@ -73,9 +76,13 @@ const Recommendation = ({ article }) => {
           article.attributes?.categories?.data?.filter(
             (cat) => cat?.attributes?.name === "Food & Drink"
           ).length
-        ? "green-body"
-            
-          : "bg-white"} flex flex-col h-[12rem] lg:h-[18.3rem] rounded-b-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
+            ? "green-body"
+            : article.attributes?.categories?.data?.filter(
+                (cat) => cat?.attributes?.name === "Travel"
+              ).length
+            ? "bg-green-800"
+            : "bg-white"
+        } flex flex-col h-[12rem] lg:h-[18.3rem] rounded-b-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
       >
         <div className="article-body px-4 lg:px-5 my-auto ">
           <Link
@@ -90,7 +97,11 @@ const Recommendation = ({ article }) => {
                   article.attributes?.categories?.data?.filter(
                     (cat) => cat?.attributes?.name === "Food & Drink"
                   )?.length
-                ? "article-title-green"
+                    ? "article-title-green"
+                    : article.attributes?.categories?.data?.filter(
+                        (cat) => cat?.attributes?.name === "Travel"
+                      )?.length
+                    ? "article-title-green"
                     : "article-title"
                 }`}
               >
@@ -113,11 +124,9 @@ const Recommendation = ({ article }) => {
             <Image
               src={`${
                 findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                  ?.image?.data?.attributes?.url||
+                  ?.image?.data?.attributes?.url ||
                 findUserByID(article?.attributes?.author?.data?.id)?.attributes
-                  ?.image?.data?.attributes?.formats?.small?.url||
-                
-              
+                  ?.image?.data?.attributes?.formats?.small?.url ||
                 "/User.svg"
               }`}
               alt="Picture of author"
@@ -128,25 +137,34 @@ const Recommendation = ({ article }) => {
           </div>
 
           <div className="article-author-data ">
-            <p className={`txt authTxt
+            <p
+              className={`txt authTxt
             ${
               article.attributes?.categories?.data?.filter(
                 (cat) => cat?.attributes?.name === "Food & Drink"
               )?.length
-            ? "text-white"
+                ? "text-white"
+                : article.attributes?.categories?.data?.filter(
+                    (cat) => cat?.attributes?.name === "Travel"
+                  )?.length
+                ? "text-white"
                 : "text-primary"
-            }`}>
+            }`}
+            >
               {findUserByID(article?.attributes?.author?.data?.id)?.attributes
                 ?.fullname || "V-Land UK"}
             </p>
-            <Moment format="MMM DD YYYY" className={`article-date
+            <Moment
+              format="MMM DD YYYY"
+              className={`article-date
             ${
               article.attributes?.categories?.data?.filter(
                 (cat) => cat?.attributes?.name === "Food & Drink"
               )?.length
-            ? "article-date-green"
+                ? "article-date-green"
                 : "article-date"
-            }`}>
+            }`}
+            >
               {article?.attributes?.PublishDate ||
                 article?.attributes?.publishedAt ||
                 article?.attributes?.createdAt}
