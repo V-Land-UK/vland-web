@@ -74,6 +74,8 @@ const ArticleCard = ({ article, index, cat = null }) => {
                         ? "text-white bg-green-800 hover:bg-white hover:text-primary"
                         : category.attributes.name === "Ad Feature"
                         ? "text-white bg-green-800 hover:bg-white hover:text-primary"
+                        : category.attributes.name === "Travel"
+                        ? "text-white bg-green-800 hover:bg-white hover:text-primary"
                         : "text-white bg-primary hover:bg-white hover:text-primary"
                     }`}
                   >
@@ -90,10 +92,16 @@ const ArticleCard = ({ article, index, cat = null }) => {
         className={`${
           cat === "Food & Drink"
             ? "green-body"
+            : cat === "Travel"
+            ? "bg-green-800"
             : article.attributes?.categories?.data?.filter(
                 (cat) => cat?.attributes?.name === "Food & Drink"
               )?.length
             ? "green-body"
+            : article.attributes?.categories?.data?.filter(
+                (cat) => cat?.attributes?.name === "Travel"
+              )?.length
+            ? "bg-green-800 "
             : ""
         } aCard__body px-3 py-1 flex flex-col justify-between rounded-b-2xl`}
       >
@@ -109,8 +117,14 @@ const ArticleCard = ({ article, index, cat = null }) => {
                 border-box xxs:pb-[0.12rem] xs:pb-[0.17rem] mb-[0.1875rem] sm:pb-[0.15rem] mb-[0.1875rem] md: pb-[0.1875rem] mb-[0.1875rem] ${
                   cat === "Food & Drink"
                     ? "article-title-green "
+                    : cat === "Travel"
+                    ? "article-title-green "
                     : article.attributes?.categories?.data?.filter(
                         (cat) => cat?.attributes?.name === "Food & Drink"
+                      )?.length
+                    ? "article-title-green"
+                    : article.attributes?.categories?.data?.filter(
+                        (cat) => cat?.attributes?.name === "Travel"
                       )?.length
                     ? "article-title-green"
                     : "article-title"
@@ -174,6 +188,10 @@ const ArticleCard = ({ article, index, cat = null }) => {
                   ? "text-white"
                   : article.attributes?.categories?.data?.filter(
                       (cat) => cat?.attributes?.name === "Food & Drink"
+                    )?.length
+                  ? "text-white"
+                  : article.attributes?.categories?.data?.filter(
+                      (cat) => cat?.attributes?.name === "Travel"
                     )?.length
                   ? "text-white"
                   : "text-primary"
