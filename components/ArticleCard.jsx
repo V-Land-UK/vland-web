@@ -74,8 +74,6 @@ const ArticleCard = ({ article, index, cat = null }) => {
                         ? "text-white bg-green-800 hover:bg-white hover:text-primary"
                         : category.attributes.name === "Ad Feature"
                         ? "text-white bg-green-800 hover:bg-white hover:text-primary"
-                        : category.attributes.name === "Travel"
-                        ? "text-white bg-green-800 hover:bg-white hover:text-primary"
                         : "text-white bg-primary hover:bg-white hover:text-primary"
                     }`}
                   >
