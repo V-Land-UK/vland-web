@@ -36,7 +36,15 @@ const Contact = () => {
         <a href="mailto:advertising@v-landuk.email" className="email_txt">
           advertising@v-landuk.email
         </a>
-        .
+        <h1 className="text-2xl lg:text-2xl text-primary font-bold mt-4 lg:mt-7 mb-1">
+          Events
+        </h1>
+        If you run a vegan or sustainable business and want to join V-Land UK
+        events, email{" "}
+        <a href="mailto:events@v-landuk.email" className="email_txt">
+          events@v-landuk.email
+        </a>{" "}
+        for exclusive invitations and further information.
         <h1 className="text-2xl lg:text-2xl text-primary font-bold mt-4 lg:mt-7 mb-1">
           General comments and questions
         </h1>
