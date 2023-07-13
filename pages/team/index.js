@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import { motion } from "framer-motion";
 import Back from "../../components/Back";
@@ -25,7 +25,7 @@ const Team = ({ excerpt, team }) => {
   const facebook = "https://facebook.com";
   const linkedin = "https://www.linkedin.com/in";
   const [mobileView, setMobileView] = useState(false);
-  const {isMemberAuthor} = useContext(GlobalContext);
+  const { isMemberAuthor } = useContext(GlobalContext);
   useEffect(() => {
     if (window.screen.availWidth < 500) {
       setMobileView(true);
@@ -36,7 +36,7 @@ const Team = ({ excerpt, team }) => {
 
   return (
     <Layout
-      title="Meet The Team"
+      title="Team"
       desc="The V-Land UK team are a bunch of like-minded vegan writers, bloggers, influencers, designers etc who are dedicated to bringing you the best vegan content from around the UK"
     >
       <Back />
@@ -63,7 +63,6 @@ const Team = ({ excerpt, team }) => {
                     <div className="w-[50%] ">
                       <img
                         src={`${
-                         
                           staff?.attributes?.image?.data?.attributes?.formats
                             ?.small?.url ||
                           staff?.attributes?.image?.data?.attributes?.formats
@@ -122,10 +121,16 @@ const Team = ({ excerpt, team }) => {
                         )}
                       </div>
                       {isMemberAuthor(staff?.attributes?.name) && (
-                        <Link href={`/team/${staff?.attributes?.name}`} passHref>
+                        <Link
+                          href={`/team/${staff?.attributes?.name}`}
+                          passHref
+                        >
                           <a className="hover:underline text-primary text-xs mt-8">
                             View articles
-                            <FontAwesomeIcon className="text-primary w-[8px] h-[8px] font-semiBold inline-block" icon={faChevronRight}/>
+                            <FontAwesomeIcon
+                              className="text-primary w-[8px] h-[8px] font-semiBold inline-block"
+                              icon={faChevronRight}
+                            />
                           </a>
                         </Link>
                       )}
@@ -212,14 +217,19 @@ const Team = ({ excerpt, team }) => {
                           )}
                         </div>
                         {isMemberAuthor(staff?.attributes?.name) && (
-                          <Link href={`/team/${staff?.attributes?.name}`} passHref>
+                          <Link
+                            href={`/team/${staff?.attributes?.name}`}
+                            passHref
+                          >
                             <a className="hover:underline text-primary font-bold text-sm lg:text-xl ml-1 mt-3 poppins">
                               View articles
-                              <FontAwesomeIcon className="text-primary w-[10px] lg:w-[14px] h-[10px] lg:h-[14px] font-bold inline-block" icon={faChevronRight}/>
+                              <FontAwesomeIcon
+                                className="text-primary w-[10px] lg:w-[14px] h-[10px] lg:h-[14px] font-bold inline-block"
+                                icon={faChevronRight}
+                              />
                             </a>
                           </Link>
                         )}
-
                       </div>
                     </div>
                   </div>
@@ -235,7 +245,6 @@ const Team = ({ excerpt, team }) => {
 export async function getStaticProps() {
   const excerptRequest = await fetch(`${API}/team-excerpt`);
   const excerpt = await excerptRequest.json();
-  
 
   // Query
   const filters = qs.stringify(

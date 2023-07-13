@@ -4,7 +4,7 @@ import Layout from "../defaults/Layout";
 
 const Contact = () => {
   return (
-    <Layout title="Contact us">
+    <Layout title="Contact">
       <Back />
       <main className="poppins text-base font-normal lg:pt-6 lg:pb-[20vh]">
         <h1 className="text-3xl lg:text-3xl text-primary font-bold mt-4 lg:mt-7">
