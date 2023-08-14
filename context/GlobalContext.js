@@ -82,6 +82,11 @@ const GlobalProvider = ({ children }) => {
       arr[2] = item;
       arr[pos] = temp;
     }
+    if (item?.attributes?.name == "Travel") {
+      var temp = arr[3];
+      arr[3] = item;
+      arr[pos] = temp;
+    }
   };
 
   //Get all authors
@@ -127,8 +132,7 @@ const GlobalProvider = ({ children }) => {
         return { ...prev, loading: false };
       });
     }
-  
-  },[ Object.keys(Cookies).length, Cookies])
+  }, [Object.keys(Cookies).length, Cookies]);
 
   //Find a user by ID
   const findUserByID = (id) => {
@@ -138,18 +142,16 @@ const GlobalProvider = ({ children }) => {
     return author[0];
   };
 
-  const isMemberAuthor = (member)=>
-  {
+  const isMemberAuthor = (member) => {
     let isAuthor = false;
     const author = Authors?.filter(
       (user) => user?.attributes?.fullname === member
     );
-    if(author?.length) isAuthor = true;
+    if (author?.length) isAuthor = true;
 
     return isAuthor;
-  }
+  };
 
-  
   return (
     <Provider
       value={{
@@ -164,8 +166,7 @@ const GlobalProvider = ({ children }) => {
         setAuthors,
         setCategories,
         findUserByID,
-        isMemberAuthor
-        
+        isMemberAuthor,
       }}
     >
       {children}
