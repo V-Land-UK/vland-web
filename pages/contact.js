@@ -36,6 +36,7 @@ const Contact = () => {
         <a href="mailto:advertising@v-landuk.email" className="email_txt">
           advertising@v-landuk.email
         </a>
+        .
         <h1 className="text-2xl lg:text-2xl text-primary font-bold mt-4 lg:mt-7 mb-1">
           Events
         </h1>
