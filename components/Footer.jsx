@@ -94,9 +94,9 @@ const Footer = () => {
             <div className="hover:text-primary hover:translate-x-1 transition-all">
               <Link href="/contact">Contact</Link>
             </div>
-            <div className="hover:text-primary hover:translate-x-1 transition-all">
+            {/*<div className="hover:text-primary hover:translate-x-1 transition-all">
               <Link href="/donate">Support us</Link>
-            </div>
+  </div>*/}
 
             {/*<div className="hover:text-primary hover:translate-x-1 transition-all">
               <Link href="https://www.v-landeurope.com/">V-Land Europe</Link>

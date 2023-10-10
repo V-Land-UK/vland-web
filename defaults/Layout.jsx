@@ -177,7 +177,7 @@ const Layout = ({
           <div className="items-center space-x-4 hidden lg:block lg:place-self-start lg:self-center">
             <NavMenu />
           </div>
-          <Link href="/" passHref>
+          <Link href="/" className="no-underline block relative h-[8vh] lg:h-[9vh] py-[1.8vh] lg:py-[1.5vh] cursor-pointer" passHref>
             <a className=" no-underline block relative h-[8vh] lg:h-[9vh] py-[1.8vh] lg:py-[1.5vh] cursor-pointer">
               <img src="/Header.svg" alt="Header" className="h-full" />
             </a>
@@ -312,11 +312,11 @@ const Layout = ({
                   Contact
                 </div>
               </Link>
-              <Link href="/donate">
+              {/*<Link href="/donate">
                 <div className="hover:text-primary hover:translate-x-3 transition-all">
                   Support us
                 </div>
-              </Link>
+              </Link>*/}
 
               {/* <Link href="https://www.v-landeurope.com/">
                 <div className="hover:text-primary hover:translate-x-3 transition-all">
