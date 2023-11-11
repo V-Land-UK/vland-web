@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider>
       <GlobalProvider>
-        <Script
+        {/*<Script
           id="Adsense-id"
           async
           onError={(e) => {
@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9166716457553506"
           crossorigin="anonymous"
           data-checked-head="true" //Removes error: AdSense head tag doesn't support data-nscript attribute
-        />
+        />*/}
         <Component {...pageProps} />
       </GlobalProvider>
     </ChakraProvider>

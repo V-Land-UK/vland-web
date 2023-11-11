@@ -61,11 +61,11 @@ const NavMenu = () => {
                   Contact
                 </div>
               </Link>
-              <Link href="/donate">
+              {/*<Link href="/donate">
                 <div className="hover:text-primary hover:translate-x-3  text-2xl cursor-pointer transition-all">
                   Support us
                 </div>
-              </Link>
+              </Link>*/}
               
              
 
@@ -81,12 +81,12 @@ const NavMenu = () => {
                 <Icon url="http://instagram.com/vlanduk">
                   <FaInstagram size={18} />
                 </Icon>
-                <Icon url="https://www.facebook.com/V-Land-UK-100137252369546">
+                {/*<Icon url="https://www.facebook.com/V-Land-UK-100137252369546">
                   <FaFacebookF size={18} />
                 </Icon>
                 <Icon url="https://twitter.com/vlandukmag">
                   <FaTwitter size={18} />
-                </Icon>
+            </Icon>*/}
                 <Icon url="https://www.linkedin.com/company/v-land-uk">
                   <FaLinkedinIn size={18} />
                 </Icon>
