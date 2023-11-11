@@ -252,8 +252,8 @@ const Layout = ({
       </main>
 
       <Footer />
-      {preferences_set}
-      <AdUnit />
+     
+      {/*<AdUnit />*/}
 
       {/* NAVIGATION DRAWER */}
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
