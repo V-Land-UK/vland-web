@@ -208,7 +208,7 @@ const Layout = ({
               transition={{ duration: 0.2 }}
               exit={{ y: -45, originY: "top", zIndex: 0 }}
             >
-              <div className="h-auto bg-neutral-50 flex gap-1 lg:gap-2 flex-nowrap 2xl:justify-center overflow-x-scroll py-[12px] px-4 lg:pr-0 pr-6">
+              <div className="h-auto bg-primary flex gap-1 lg:gap-2 flex-nowrap 2xl:justify-center overflow-x-scroll py-[12px] px-4 lg:pr-0 pr-6">
                 {/* <NavLink link="/">Home</NavLink> */}
                 {Categories.filter(
                   (category) =>
