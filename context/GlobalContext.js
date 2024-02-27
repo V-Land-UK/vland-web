@@ -67,12 +67,12 @@ const GlobalProvider = ({ children }) => {
 
   //reorder Categories
   const reorder = (item, pos, arr) => {
-    if (item?.attributes?.name == "Food & Drink") {
+    if (item?.attributes?.name == "Interviews") {
       var temp = arr[0];
       arr[0] = item;
       arr[pos] = temp;
     }
-    if (item?.attributes?.name == "Interviews") {
+    if (item?.attributes?.name == "Food & Drink") {
       var temp = arr[1];
       arr[1] = item;
       arr[pos] = temp;
