@@ -67,26 +67,41 @@ const GlobalProvider = ({ children }) => {
 
   //reorder Categories
   const reorder = (item, pos, arr) => {
-    if (item?.attributes?.name == "Interviews") {
-      var temp = arr[0];
-      arr[0] = item;
-      arr[pos] = temp;
+    /**
+     *  1.⁠ ⁠Interviews
+         2.⁠ ⁠Food & Drink
+         3.⁠ ⁠Lifestyle
+         4.⁠ ⁠Travel
+         5.⁠ ⁠Culture
+         6.⁠ ⁠Health & Wellbeing
+         7.⁠ ⁠Environment 
+         8.⁠ ⁠Fashion & Beauty
+         9.⁠ ⁠Entertainment
+        10.⁠ ⁠Sport
+        11.⁠ ⁠Shopping
+        12.⁠ ⁠Recipes
+    */
+    const category_index = 
+    {
+      "Interviews": 0,
+      "Food & Drink": 1,
+      "Lifestyle": 2,
+      "Travel": 3,
+      "Culture": 4,
+      "Health & Wellbeing": 5,
+      "Environment": 6,
+      "Fashion & Beauty": 7,
+      "Entertainment": 8,
+      "Sport":9,
+      "Shopping": 10,
+      "Recipes": 11
     }
-    if (item?.attributes?.name == "Food & Drink") {
-      var temp = arr[1];
-      arr[1] = item;
-      arr[pos] = temp;
-    }
-    if (item?.attributes?.name == "Lifestyle") {
-      var temp = arr[2];
-      arr[2] = item;
-      arr[pos] = temp;
-    }
-    if (item?.attributes?.name == "Travel") {
-      var temp = arr[3];
-      arr[3] = item;
-      arr[pos] = temp;
-    }
+    
+    var temp = arr[category_index[item?.attributes?.name]];
+    arr[category_index[item?.attributes?.name]] = item;
+    arr[pos] = temp;
+
+    
   };
 
   //Get all authors
