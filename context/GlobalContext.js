@@ -26,8 +26,8 @@ const GlobalProvider = ({ children }) => {
         .get(`${API}/categories`)
         .then(({ data }) => {
           var catgs = data.data;
-          catgs.forEach(reorder);
-          setCategories(catgs);
+          var sorted_catgs = reorder(catgs);
+          setCategories(sorted_catgs);
         })
         .catch((err) => {
           setStatus((prev) => {
@@ -66,21 +66,10 @@ const GlobalProvider = ({ children }) => {
   }, [Categories.length, Categories, Articles.length, Articles]);
 
   //reorder Categories
-  const reorder = (item, pos, arr) => {
-    /**
-     *  1.⁠ ⁠Interviews
-         2.⁠ ⁠Food & Drink
-         3.⁠ ⁠Lifestyle
-         4.⁠ ⁠Travel
-         5.⁠ ⁠Culture
-         6.⁠ ⁠Health & Wellbeing
-         7.⁠ ⁠Environment 
-         8.⁠ ⁠Fashion & Beauty
-         9.⁠ ⁠Entertainment
-        10.⁠ ⁠Sport
-        11.⁠ ⁠Shopping
-        12.⁠ ⁠Recipes
-    */
+  const reorder = (cat_arr) => {
+    
+
+    
     const category_index = 
     {
       "Interviews": 0,
@@ -93,13 +82,36 @@ const GlobalProvider = ({ children }) => {
       "Fashion & Beauty": 7,
       "Entertainment": 8,
       "Sport":9,
-      "Shopping": 10,
-      "Recipes": 11
+      "Sponsored":10,
+      "Ad Feature": 11
+      
+      
     }
+    var sorted_arr = [];
+    Object.keys(category_index).forEach(function(key){
+
+      var found = false;
+      cat_arr = cat_arr.filter(function(cat){
+
+        if(!found && cat.attributes.name == key){
+          sorted_arr.push(cat)
+          found = true;
+          return false;
+        }
+        else{
+          return true;
+        }
+
+      })
+
+    })
+
+    return sorted_arr;
+
+
+   
+   
     
-    var temp = arr[category_index[item?.attributes?.name]];
-    arr[category_index[item?.attributes?.name]] = item;
-    arr[pos] = temp;
 
     
   };
@@ -182,6 +194,7 @@ const GlobalProvider = ({ children }) => {
         setCategories,
         findUserByID,
         isMemberAuthor,
+        reorder,
       }}
     >
       {children}
