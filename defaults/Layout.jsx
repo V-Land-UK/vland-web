@@ -47,7 +47,8 @@ const Layout = ({
   image,
 }) => {
   const router = useRouter();
-  const { Categories } = useContext(GlobalContext);
+  const { Categories} = useContext(GlobalContext);
+  
   const { isScrollingUp, isScrollingDown, isScrolling } = useScrollDirection();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [Open, setOpen] = useState(false);
@@ -55,6 +56,10 @@ const Layout = ({
   const [Query, setQuery] = useState("");
   const [MobileQuery, setMobileQuery] = useState("");
   const [preferences_set, setPreferences_set] = useState(true);
+  
+
+  
+  
   //Function to toggle drawer
   const toggleDrawer = () => {
     onOpen();
@@ -357,5 +362,5 @@ Layout.defaultProps = {
   image: "Logo.JPG",
   keywords:
     "vegan magazine, vegan magazine UK, vegan articles, veganism UK, veganism in the UK, rise of veganism UK, best vegan magazine UK, UK vegan magazine, v-land UK, v land uk, vland uk, vland, v-land",
-  desc: "Your trusted UK vegan magazine",
+  desc: "V-Land UK was founded with a passion for advocating the many benefits of living a vegan lifestyle, and sharing that passion with readers worldwide.",
 };
